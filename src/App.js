@@ -1,8 +1,11 @@
 import './App.css';
+import Favorites from './Components/Favorites'
 
-function App() {
+const App = () => {
+
   return (
     <div className="App">
+      <Favorites />
     </div>
   );
 }
