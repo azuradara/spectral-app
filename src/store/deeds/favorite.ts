@@ -165,7 +165,39 @@ export const deleteCategory = (id: number) => async (dispatch: Dispatch) => {
   }
 };
 
-// UPDATE FAVORITE
+// UPDATE CATEGORY
+
+export interface UpdateCategoryDeed {
+  type: DeedTypes.updateCategory;
+  payload: Category;
+}
+
+export const updateCategory =
+  (id: number, formData: NewCategory) => async (dispatch: Dispatch) => {
+    try {
+      const res = await axios.put<ApiResponse<Category>>(
+        `updateCat endpoint ${id}`,
+        formData
+      );
+
+      dispatch<CreateNotificationDeed>({
+        type: DeedTypes.createNotification,
+        payload: {
+          title: 'success',
+          message: `Category ${formData.name} updated`,
+        },
+      });
+
+      dispatch<UpdateCategoryDeed>({
+        type: DeedTypes.updateCategory,
+        payload: res.data.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+// DELETE FAVORITE
 
 export interface DeleteFavoriteDeed {
   type: DeedTypes.deleteFavorite;
@@ -178,7 +210,9 @@ export interface DeleteFavoriteDeed {
 export const deleteFavorite =
   (favId: number, catId: number) => async (dispatch: Dispatch) => {
     try {
-      await axios.delete<ApiResponse<{}>>(`deletefav endpoint ${favId}`);
+      await axios.delete<ApiResponse<Record<string, unknown>>>(
+        `deletefav endpoint ${favId}`
+      );
 
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
