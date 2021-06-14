@@ -1,12 +1,19 @@
 import React from 'react';
-
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-// Redux
-// import { Provider } from 'react-redux';
+import Favorites from './components/Favorites/Favorites';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const App = (): JSX.Element => {
-  return <div className="App">ae</div>;
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Favorites} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+  );
 };
 
 export default App;

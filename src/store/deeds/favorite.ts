@@ -26,17 +26,26 @@ export const fetchCategories = () => async (dispatch: Dispatch) => {
     payload: undefined,
   });
 
-  try {
-    const res = await axios.get<ApiResponse<Category[]>>('getcat endpoint');
+  // try {
+  const res = await axios.get<ApiResponse<Category[]>>(
+    'http://localhost:8000/api/cat',
+    {
+      headers: {
+        Authorization: 'Bearer 1|Ququ3YmqjeEgdYlhKSqjCImFz2Bhwg1g7q8TgxGy',
+      },
+    }
+  );
 
-    dispatch<FetchCategoriesDeed<Category[]>>({
-      type: DeedTypes.fetchCategoriesSuccess,
-      payload: res.data.data,
-    });
-  } catch (err) {
-    console.log(err);
-    // improve upon error handling later | too lazy
-  }
+  console.log(res);
+
+  dispatch<FetchCategoriesDeed<Category[]>>({
+    type: DeedTypes.fetchCategoriesSuccess,
+    payload: res.data.data,
+  });
+  // } catch (err) {
+  //   console.log(err);
+  //   // improve upon error handling later | too lazy
+  // }
 };
 
 // ADD CATEGORY
@@ -210,9 +219,7 @@ export interface DeleteFavoriteDeed {
 export const deleteFavorite =
   (favId: number, catId: number) => async (dispatch: Dispatch) => {
     try {
-      await axios.delete<ApiResponse<Record<string, unknown>>>(
-        `deletefav endpoint ${favId}`
-      );
+      await axios.delete<ApiResponse<unknown>>(`deletefav endpoint ${favId}`);
 
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,

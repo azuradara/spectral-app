@@ -24,7 +24,7 @@ const initState: State = {
   categories: [],
 };
 
-const fetchCategories = (state: State): State => {
+const fetchCategories = (state: State, deed: Deed): State => {
   return {
     ...state,
     seeking: true,
@@ -36,7 +36,7 @@ const fetchCategoriesSuccess = (state: State, deed: Deed): State => {
   return {
     ...state,
     seeking: false,
-    err: deed.payload,
+    categories: deed.payload,
   };
 };
 
@@ -171,7 +171,7 @@ const updateFavorite = (state: State, deed: UpdateFavoriteDeed): State => {
 const favoriteReducer = (state: State = initState, deed: Deed): State => {
   switch (deed.type) {
     case DeedTypes.fetchCategories:
-      return fetchCategories(state);
+      return fetchCategories(state, deed);
 
     case DeedTypes.fetchCategoriesSuccess:
       return fetchCategoriesSuccess(state, deed);
