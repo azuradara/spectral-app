@@ -1,12 +1,16 @@
 import React, { SyntheticEvent, ChangeEvent } from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { LoginData, GlobalState } from '../../lib/interfaces';
+import { LoginData, GlobalState, User } from '../../lib/interfaces';
 import { loginUser } from '../../store/deeds';
+import { useHistory } from 'react-router';
 
 interface ComponentProps {
   loginUser: (formData: LoginData) => void;
+  user: any;
 }
+
+// TODO: Fix props validation on the *user* property
 
 const Login = (props: ComponentProps): JSX.Element => {
   const [formData, setFormData] = useState<LoginData>({
@@ -14,11 +18,17 @@ const Login = (props: ComponentProps): JSX.Element => {
     password: '',
   });
 
+  const history = useHistory();
+
   const submitHandler = (e: SyntheticEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // handle submit
     if (formData.password && formData.identifier) {
       props.loginUser(formData);
+      
+      if (props.user.user !== null) {
+        history.push('/');
+      }
     } else {
       console.log('nae');
     }
