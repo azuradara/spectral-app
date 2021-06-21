@@ -26,15 +26,8 @@ export const fetchCategories = () => async (dispatch: Dispatch) => {
     payload: undefined,
   });
 
-  // try {
-  const res = await axios.get<ApiResponse<Category[]>>(
-    'http://localhost:8000/api/cat',
-    {
-      headers: {
-        Authorization: 'Bearer 1|Ququ3YmqjeEgdYlhKSqjCImFz2Bhwg1g7q8TgxGy',
-      },
-    }
-  );
+  try {
+  const res = await axios.get<ApiResponse<Category[]>>('/cat');
 
   console.log(res);
 
@@ -42,10 +35,10 @@ export const fetchCategories = () => async (dispatch: Dispatch) => {
     type: DeedTypes.fetchCategoriesSuccess,
     payload: res.data.data,
   });
-  // } catch (err) {
-  //   console.log(err);
-  //   // improve upon error handling later | too lazy
-  // }
+  } catch (err) {
+    console.log(err);
+    // improve upon error handling later | too lazy
+  }
 };
 
 // ADD CATEGORY

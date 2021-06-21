@@ -12,7 +12,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 if (localStorage.token) {
   axios.defaults.headers.common[
     'Authorization'
-  ] = `Bearer ${localStorage.token}`;
+  ] = `Bearer ${localStorage.getItem("token")}`;
 }
 
 ReactDOM.render(
