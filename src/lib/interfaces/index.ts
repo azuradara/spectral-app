@@ -3,3 +3,4 @@ export * from './Favorite';
 export * from './Category';
 export * from './Notification';
 export * from './GlobalState';
+export * from './Auth';

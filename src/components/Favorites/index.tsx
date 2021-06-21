@@ -2,7 +2,7 @@ import React from 'react';
 import { fetchCategories } from '../../store/deeds';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import FavoritegGrid from './FavoriteGrid/FavoriteGrid';
+import FavoritegGrid from './FavoriteGrid';
 import { Category, GlobalState } from '../../lib/interfaces';
 
 interface ComponentProps {

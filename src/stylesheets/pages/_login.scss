@@ -1,0 +1,25 @@
+._login {
+  color: white;
+  background-color: #151315;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_form {
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 400px;
+    max-width: $max-width;
+    margin: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 2rem 0;
+  }
+}

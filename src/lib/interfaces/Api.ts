@@ -5,6 +5,6 @@ export interface Model {
 }
 
 export interface ApiResponse<T> {
-  success: boolean;
   data: T;
+  success: boolean;
 }

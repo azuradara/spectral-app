@@ -1,6 +1,6 @@
 import React from 'react';
 import { Category } from '../../../lib/interfaces';
-import FavoriteCard from '../FavoriteCard/FavoriteCard';
+import FavoriteCard from '../FavoriteCard';
 
 interface ComponentProps {
   categories: Category[];

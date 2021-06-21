@@ -14,6 +14,9 @@ import {
   // Notifications
   CreateNotificationDeed,
   ClearNotificationDeed,
+
+  // User
+  LoginUserDeed,
 } from './';
 
 export enum DeedTypes {
@@ -34,6 +37,11 @@ export enum DeedTypes {
   // Notifications
   createNotification = 'CREATE_NOTIFICATION',
   clearNotification = 'CLEAR_NOTIFICATION',
+
+  // User
+  loginUser = 'LOGIN_USER',
+  loginUserSuccess = 'LOGIN_USER_SUCC',
+  loginUserError = 'LOGIN_USER_ERR',
 }
 
 export type Deed =
@@ -49,4 +57,6 @@ export type Deed =
   | UpdateFavoriteDeed
   // Notifications
   | CreateNotificationDeed
-  | ClearNotificationDeed;
+  | ClearNotificationDeed
+  // User
+  | LoginUserDeed<any>;
