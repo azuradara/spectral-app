@@ -31,3 +31,34 @@
     @content;
   }
 }
+
+/// @author azuradara
+
+@mixin transition(
+  $prop,
+  $delay: 0.5s,
+  $ease: cubic-bezier(0.14, 0.44, 0.13, 1.05),
+  $schleep: 0s
+) {
+  $transition: ();
+
+  @for $i from 1 through length($prop) {
+    @for $j from 0 to (length($prop)) - (length($delay)) {
+      $delay: join($delay, nth($delay, -1));
+    }
+    @for $j from 0 to (length($prop)) - (length($ease)) {
+      $ease: join($ease, nth($ease, -1));
+    }
+    @for $j from 0 to (length($prop)) - (length($schleep)) {
+      $schleep: join($schleep, nth($schleep, -1));
+    }
+
+    /* prettier-ignore */
+    $transition: append(
+      $transition,
+      (nth($prop, $i) nth($delay, $i) nth($ease, $i) nth($schleep, $i)),
+      $separator: comma,
+    );
+  }
+  transition: $transition;
+} ;

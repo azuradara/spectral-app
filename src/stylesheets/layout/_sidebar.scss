@@ -1,0 +1,23 @@
+.sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  &-inner {
+    width: 100%;
+    height: calc(100vh - 48px);
+    margin: 0 auto;
+    align-self: center;
+    border-right: 1px solid white;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+
+    &__single {
+      .btn + .btn {
+        margin-top: 1rem;
+      }
+    }
+  }
+}

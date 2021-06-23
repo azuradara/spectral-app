@@ -1,0 +1,78 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.ico-btn {
+  background: transparent;
+  border: 0;
+  margin: 0 auto;
+  display: block;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  svg {
+    width: 16px;
+    height: auto;
+  }
+}
+
+.btn {
+  @include transition(border-color background);
+
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  outline: 0;
+
+  &-default {
+    backdrop-filter: $blur-sm;
+    border: 1px solid $light-grey;
+    background: $light-glass;
+
+    &:hover {
+      border-color: $light-grey;
+      background: $light-glass;
+    }
+  }
+
+  &-btn {
+    color: white;
+    font-family: $text-font-stack;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+  }
+
+  * {
+    pointer-events: none;
+  }
+
+  &-ring {
+    position: absolute;
+    width: 100%;
+    padding-top: 100%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    animation: hamonAnim 0.5s ease-out;
+    animation-iteration-count: 1;
+    border-radius: 100%;
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+@keyframes hamonAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
