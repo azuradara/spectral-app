@@ -54,6 +54,7 @@
 
   &-ring {
     position: absolute;
+    filter: $blur-sm;
     width: 100%;
     padding-top: 100%;
     background-color: white;
