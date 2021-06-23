@@ -38,6 +38,15 @@ const loginUserError = (state: State, deed: Deed): State => {
   };
 };
 
+const logoutUser = (state: State, deed: Deed): State => {
+  return {
+    ...state,
+    seeking: false,
+    err: undefined,
+    user: null,
+  };
+};
+
 const AuthReducer = (state: State = initState, deed: Deed): State => {
   switch (deed.type) {
     case DeedTypes.loginUser:
@@ -48,6 +57,9 @@ const AuthReducer = (state: State = initState, deed: Deed): State => {
 
     case DeedTypes.loginUserError:
       return loginUserError(state, deed);
+
+    case DeedTypes.logoutUser:
+      return logoutUser(state, deed);
 
     default:
       return state;

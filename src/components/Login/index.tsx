@@ -21,13 +21,15 @@ const Login = (props: ComponentProps): JSX.Element => {
 
   const history = useHistory();
 
-  const submitHandler = (e: SyntheticEvent<HTMLFormElement>): void => {
+  // TODO:(azuradara) revisit redirects
+
+  const submitHandler = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     // handle submit
     if (formData.password && formData.identifier) {
-      props.loginUser(formData);
-      
-      if (props.user.user !== null) {
+      await props.loginUser(formData);
+
+      if (props.user !== null) {
         history.push('/');
       }
     } else {

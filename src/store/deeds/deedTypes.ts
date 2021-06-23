@@ -17,6 +17,7 @@ import {
 
   // User
   LoginUserDeed,
+  LogoutUserDeed,
 } from './';
 
 export enum DeedTypes {
@@ -42,6 +43,7 @@ export enum DeedTypes {
   loginUser = 'LOGIN_USER',
   loginUserSuccess = 'LOGIN_USER_SUCC',
   loginUserError = 'LOGIN_USER_ERR',
+  logoutUser = 'LOGOUT_USER',
 }
 
 export type Deed =
@@ -59,4 +61,5 @@ export type Deed =
   | CreateNotificationDeed
   | ClearNotificationDeed
   // User
-  | LoginUserDeed<any>;
+  | LoginUserDeed<any>
+  | LogoutUserDeed;

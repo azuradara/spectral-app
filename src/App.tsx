@@ -10,14 +10,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthRoute from './lib/util/AuthRoute';
 
 const App = (): JSX.Element => {
-
   return (
-      <BrowserRouter>
-        <Switch>
-          <AuthRoute exact path="/" component={Favorites} />
-          <Route exact path="/login" component={Login} />
-        </Switch>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Switch>
+        <AuthRoute exact path="/" component={Favorites} />
+        <Route exact path="/login" component={Login} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 

@@ -25,6 +25,17 @@ export const loginUser =
     try {
       const res = await axios.post<ApiResponse<User>>('/auth/login', formData);
 
+      if (res.data.error) {
+        console.log('err');
+        return dispatch<CreateNotificationDeed>({
+          type: DeedTypes.createNotification,
+          payload: {
+            title: 'error',
+            message: 'Invalid Credentials',
+          },
+        });
+      }
+
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
         payload: {
@@ -43,3 +54,23 @@ export const loginUser =
       console.log(err);
     }
   };
+
+export interface LogoutUserDeed {
+  type: DeedTypes.logoutUser;
+  payload: null;
+}
+
+export const logoutUser = () => async (dispatch: Dispatch) => {
+  dispatch<LogoutUserDeed>({
+    type: DeedTypes.logoutUser,
+    payload: null,
+  });
+
+  try {
+    await axios.post<ApiResponse<string>>('/auth/logout');
+  } catch (err) {
+    console.log(err);
+  }
+
+  localStorage.removeItem('token');
+};

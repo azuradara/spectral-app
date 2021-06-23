@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchCategories } from '../../store/deeds';
+import { fetchCategories, logoutUser } from '../../store/deeds';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import FavoritegGrid from './FavoriteGrid';
@@ -9,6 +9,7 @@ interface ComponentProps {
   seeking: boolean;
   categories: Category[];
   fetchCategories: () => void;
+  logoutUser: () => void;
 }
 
 export enum ContentType {
@@ -17,7 +18,7 @@ export enum ContentType {
 }
 
 const Favorites = (props: ComponentProps): JSX.Element => {
-  const { fetchCategories, categories, seeking } = props;
+  const { fetchCategories, categories, seeking, logoutUser } = props;
 
   useEffect(() => {
     if (categories.length === 0) {
@@ -28,6 +29,7 @@ const Favorites = (props: ComponentProps): JSX.Element => {
   return (
     <div>
       {seeking ? <p>loading</p> : <FavoritegGrid categories={categories} />}
+      <button onClick={async () => await logoutUser()}>ye</button>
     </div>
   );
 };
@@ -39,4 +41,6 @@ const mapStateToProps = (state: GlobalState) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCategories })(Favorites);
+export default connect(mapStateToProps, { fetchCategories, logoutUser })(
+  Favorites
+);
