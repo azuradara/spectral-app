@@ -12,7 +12,7 @@ import favoriteReducer from './favorite';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user']
+  whitelist: ['user'],
 };
 
 const rootReducer = combineReducers<GlobalState>({

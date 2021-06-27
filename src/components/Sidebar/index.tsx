@@ -1,17 +1,40 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router';
 import { IcoBtn } from '../helpers';
+import LogoutIcon from '../../Icons/LogoutIcon';
+import FavoritesIcon from '../../Icons/FavoritesIcon';
+import { connect } from 'react-redux';
+import { GlobalState } from '../../lib/interfaces';
+import { logoutUser } from '../../store/deeds';
 
-const Sidebar = (): ReactElement => {
+interface ComponentProps {
+  logoutUser: () => void;
+}
+
+const Sidebar = (props: ComponentProps): ReactElement => {
+  const { logoutUser } = props;
   const { push } = useHistory();
 
   return (
     <div className="sidebar-inner">
-      <div className="siderbar-inner__single">
-        <IcoBtn onClick={() => push('/login')}>ye</IcoBtn>
+      <div className="sidebar-inner__single">
+        <IcoBtn onClick={() => push('/')}>
+          <FavoritesIcon />
+        </IcoBtn>
+      </div>
+      <div className="sidebar-inner__single">
+        <IcoBtn onClick={async () => await logoutUser()}>
+          <LogoutIcon />
+        </IcoBtn>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state: GlobalState) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, { logoutUser })(Sidebar);

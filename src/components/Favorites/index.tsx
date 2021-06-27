@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import FavoritegGrid from './FavoriteGrid';
 import { Category, GlobalState } from '../../lib/interfaces';
+import Clock from '../Clock';
 
 interface ComponentProps {
   seeking: boolean;
@@ -28,8 +29,8 @@ const Favorites = (props: ComponentProps): JSX.Element => {
 
   return (
     <div>
+      <Clock />
       {seeking ? <p>loading</p> : <FavoritegGrid categories={categories} />}
-      <button onClick={async () => await logoutUser()}>ye</button>
     </div>
   );
 };
