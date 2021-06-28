@@ -7,8 +7,9 @@
 
   &-select {
     position: absolute;
+    font-size: 1rem;
     right: 0;
-    top: 50%;
+    top: 46%;
     transform: translate(0, -50%);
 
     .select-bako {
@@ -28,9 +29,9 @@
 
     input {
       padding: 1rem 2rem;
-      background: $light-glass;
+      background: $trans-light-xs;
       backdrop-filter: blur(1px);
-      border: 1px solid $light-grey;
+      border: 1px solid $opaque-light;
       border-radius: 4px;
       color: $text-light;
       width: 100%;
@@ -38,16 +39,16 @@
       outline: none;
 
       &::placeholder {
-        color: $light-grey;
+        color: $opaque-light;
       }
 
       @include transition(border-color backdrop-filter background);
       font-size: 1.2rem;
 
       &:focus {
-        background: $light-grey;
+        background: rgba($color: #fff, $alpha: 0.15);
         backdrop-filter: blur(7px);
-        border: 1px solid $light-grey;
+        border: 1px solid $opaque-light;
       }
     }
   }

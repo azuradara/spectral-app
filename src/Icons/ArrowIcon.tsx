@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
-const BASE_ORIENTATION = 90; // DEG | Down by default
+const BASE_ORIENTATION = 0; // DEG | Down by default
 
 type Orientation = 'up' | 'right' | 'down' | 'left';
 
 const orientationToDeg = (o: Orientation): number => {
   switch (o) {
     case 'up':
-      return BASE_ORIENTATION * 3;
+      return BASE_ORIENTATION + 180;
 
     case 'left':
       return BASE_ORIENTATION * 2;
@@ -28,7 +28,7 @@ interface ArrowProps extends React.SVGProps<SVGSVGElement> {
 const ArrowIcon = (props: ArrowProps): React.ReactElement => {
   const arrSpring = useSpring({
     to: {
-      transform: `rotate(${orientationToDeg(props.orientation)})deg`,
+      transform: `rotate(${orientationToDeg(props.orientation)}deg)`,
       display: 'flex',
     },
   });

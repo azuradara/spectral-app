@@ -12,19 +12,32 @@ $text-font-stack: 'Karla', 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue'
 $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
   'Monaco', monospace !default;
 
+// colors
+$text-light: rgb(210, 210, 210) !default;
+$brand-color: #ff7420 !default;
+
+$trans-light-xs: rgba(
+  $color: #fff,
+  $alpha: 0.05,
+);
+
+$opaque-light: rgba(
+  $color: #fff,
+  $alpha: 0.4,
+);
+
+//colors
+
 /// Copy text color
 /// @type Color
 $text-dark: rgb(34, 34, 34) !default;
 
-$text-light: rgb(200, 200, 200) !default;
-
 /// Main brand color
 /// @type Color
-$brand-color: #ff7420 !default;
 
 /// Light grey
 /// @type Color
-$light-grey: rgb(237, 237, 237) !default;
+// $opaque-light: rgb(237, 237, 237) !default;
 
 /// Medium grey
 /// @type Color
@@ -39,10 +52,6 @@ $main-dark: #151315;
 $blur-sm: blur(3px);
 /// Glassy On Dark
 /// @type Color
-$light-glass: rgba(
-  $color: #fff,
-  $alpha: 0.1,
-);
 
 /// Container's maximum width
 /// @type Length

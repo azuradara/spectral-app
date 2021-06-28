@@ -31,12 +31,12 @@
 
   &-default {
     backdrop-filter: $blur-sm;
-    border: 1px solid $light-grey;
-    background: $light-glass;
+    border: 1px solid $opaque-light;
+    background: $trans-light-xs;
 
     &:hover {
-      border-color: $light-grey;
-      background: $light-glass;
+      border-color: $opaque-light;
+      background: $trans-light-xs;
     }
   }
 

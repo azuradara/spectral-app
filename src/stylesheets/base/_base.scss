@@ -94,7 +94,7 @@ input {
   // border-radius: 4px;
   outline: none;
   border: none;
-  background: rgba($color: $light-grey, $alpha: 0.1);
+  background: $trans-light-xs;
   color: $text-light;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
@@ -116,7 +116,7 @@ input {
 //   }
 
 //   &--primary {
-//     background: $light-glass;
+//     background: $trans-light-xs;
 //     color: $text-light;
 //   }
 // }
