@@ -6,6 +6,9 @@ import FavoritesIcon from '../../Icons/FavoritesIcon';
 import { connect } from 'react-redux';
 import { GlobalState } from '../../lib/interfaces';
 import { logoutUser } from '../../store/deeds';
+import { useModal } from '../../lib/modal/ModalCtx';
+import { keys } from 'ramda';
+import SettingsIcon from '../../Icons/SettingsIcon';
 
 interface ComponentProps {
   logoutUser: () => void;
@@ -14,6 +17,8 @@ interface ComponentProps {
 const Sidebar = (props: ComponentProps): ReactElement => {
   const { logoutUser } = props;
   const { push } = useHistory();
+  const [bindSettings, bindTrigger] = useModal();
+  keys({ push, settings: bindTrigger().onClick });
 
   return (
     <div className="sidebar-inner">
@@ -23,10 +28,15 @@ const Sidebar = (props: ComponentProps): ReactElement => {
         </IcoBtn>
       </div>
       <div className="sidebar-inner__single">
+        <IcoBtn {...bindTrigger()}>
+          <SettingsIcon />
+        </IcoBtn>
+
         <IcoBtn onClick={async () => await logoutUser()}>
           <LogoutIcon />
         </IcoBtn>
       </div>
+      {/* <SettingsModal {...bindSettings()} /> */}
     </div>
   );
 };
