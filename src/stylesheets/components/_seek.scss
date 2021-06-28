@@ -1,0 +1,54 @@
+.seek {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  flex-flow: column;
+
+  &-select {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    .select-bako {
+      text-align: right;
+    }
+  }
+
+  &-bar {
+    margin-top: 1rem;
+    position: relative;
+    display: flex;
+
+    form {
+      width: 100%;
+      display: flex;
+    }
+
+    input {
+      padding: 1rem 2rem;
+      background: $light-glass;
+      backdrop-filter: blur(1px);
+      border: 1px solid $light-grey;
+      border-radius: 4px;
+      color: $text-light;
+      width: 100%;
+      width: 100%;
+      outline: none;
+
+      &::placeholder {
+        color: $light-grey;
+      }
+
+      @include transition(border-color backdrop-filter background);
+      font-size: 1.2rem;
+
+      &:focus {
+        background: $light-grey;
+        backdrop-filter: blur(7px);
+        border: 1px solid $light-grey;
+      }
+    }
+  }
+}

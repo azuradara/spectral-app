@@ -53,3 +53,62 @@
   position: absolute;
   width: 1px;
 }
+
+.select {
+  z-index: 100;
+  font-size: 0.8rem;
+  outline: none;
+  appearance: none;
+  background: none;
+  color: $text-light;
+  border: none;
+
+  &-bako {
+    cursor: pointer;
+    padding: 1rem;
+    padding-right: 3rem;
+
+    &__arrow {
+      position: absolute;
+      width: max-content;
+      height: max-content;
+      right: 1rem;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &-inner {
+      position: relative;
+    }
+    &-opts {
+      position: absolute;
+      width: max-content;
+      top: calc(100%);
+      left: 50%;
+      background: $light-grey;
+      backdrop-filter: $blur-sm;
+      border-radius: 0.2rem;
+      @include transition(width);
+      &__single {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        position: relative;
+        overflow: hidden;
+        @include transition(background);
+        &:hover {
+          background: $light-grey;
+        }
+        & + .select-opts__single {
+          border-top: 1px solid $light-grey;
+        }
+      }
+    }
+  }
+
+  option {
+    color: black;
+    outline: none;
+    border: none;
+    appearance: none;
+  }
+}

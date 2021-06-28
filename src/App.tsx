@@ -10,10 +10,14 @@ const App = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Sidebar />
-      <Switch>
-        <AuthRoute exact path="/" component={Favorites} />
-        <Route exact path="/login" component={Login} />
-      </Switch>
+      <div className="App_inner">
+        <div className="App_inner--router">
+          <Switch>
+            <AuthRoute exact path="/" component={Favorites} />
+            <Route exact path="/login" component={Login} />
+          </Switch>
+        </div>
+      </div>
     </BrowserRouter>
   );
 };

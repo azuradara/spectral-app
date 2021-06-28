@@ -6,7 +6,6 @@ import useBtnHelper from '../../lib/hooks/useBtnHelper';
 import useMeasure from 'react-use-measure';
 import useExternalClick from '../../lib/hooks/useExternalClick';
 import { useSpring, a } from '@react-spring/web';
-import { none } from 'ramda';
 import clsx from 'clsx';
 import ArrowIcon from '../../Icons/ArrowIcon';
 
@@ -80,7 +79,7 @@ export const Slc: React.FC<SlcProps> = ({
 }) => {
   const [value, setValue] = React.useState<any>(iValue);
   const [shown, setShown] = React.useState<boolean>(false);
-  const [bounderRef, bounds] = useMeasure();
+  const [boundRef, bounds] = useMeasure();
 
   const ref = useExternalClick(() => {
     setShown(false);
@@ -100,8 +99,8 @@ export const Slc: React.FC<SlcProps> = ({
 
       await next({
         opacity: 0,
-        transform: 'translate(-50%, 25%',
-        pointerEvents: none,
+        transform: 'translate(-50%, 25%)',
+        pointerEvents: 'none',
       });
     },
   });
@@ -112,7 +111,7 @@ export const Slc: React.FC<SlcProps> = ({
         e.preventDefault();
       }
 
-      if ((e as any).key && (e as any).key !== 'enter') {
+      if ((e as any).key && (e as any).key !== 'Enter') {
         return;
       }
 
@@ -128,6 +127,8 @@ export const Slc: React.FC<SlcProps> = ({
     }
   }, [value, onChange]);
 
+  //TODO: (azuradara) revisit styling
+
   return (
     <div
       ref={ref}
@@ -138,14 +139,15 @@ export const Slc: React.FC<SlcProps> = ({
       onClick={show}
     >
       <div className="select-inner">
-        <div className="select-box" style={{ minWidth: bounds.width + 32 }}>
+        <div className="select-bako" style={{ minWidth: bounds.width - 32 }}>
           <span>{value || placeholder}</span>
-          <div className="select-box__arrow">
+
+          <div className="select-bako__arrow">
             <ArrowIcon orientation={shown ? 'up' : 'down'} />
           </div>
         </div>
 
-        <a.div ref={bounderRef} style={bakoSpring} className="select-options">
+        <a.div ref={boundRef} style={bakoSpring} className="select-opts">
           {options.map((opt) => {
             return <SlcOpt key={opt.value} opt={opt} setValue={setValue} />;
           })}

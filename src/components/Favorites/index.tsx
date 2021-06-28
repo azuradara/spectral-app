@@ -28,9 +28,13 @@ const Favorites = (props: ComponentProps): JSX.Element => {
   }, [fetchCategories]);
 
   return (
-    <div>
-      <Clock />
-      <SeekBar />
+    <div className="nexus">
+      <div className="seek">
+        <div className="seek-header">
+          <Clock />
+        </div>
+        <SeekBar />
+      </div>
       {seeking ? <p>loading</p> : <FavoritegGrid categories={categories} />}
     </div>
   );
