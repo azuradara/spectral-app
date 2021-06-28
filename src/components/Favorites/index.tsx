@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import FavoritegGrid from './FavoriteGrid';
 import { Category, GlobalState } from '../../lib/interfaces';
 import Clock from '../Clock';
+import SeekBar from '../Seek';
 
 interface ComponentProps {
   seeking: boolean;
   categories: Category[];
   fetchCategories: () => void;
-  logoutUser: () => void;
 }
 
 export enum ContentType {
@@ -19,7 +19,7 @@ export enum ContentType {
 }
 
 const Favorites = (props: ComponentProps): JSX.Element => {
-  const { fetchCategories, categories, seeking, logoutUser } = props;
+  const { fetchCategories, categories, seeking } = props;
 
   useEffect(() => {
     if (categories.length === 0) {
@@ -30,6 +30,7 @@ const Favorites = (props: ComponentProps): JSX.Element => {
   return (
     <div>
       <Clock />
+      <SeekBar />
       {seeking ? <p>loading</p> : <FavoritegGrid categories={categories} />}
     </div>
   );
@@ -42,6 +43,4 @@ const mapStateToProps = (state: GlobalState) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCategories, logoutUser })(
-  Favorites
-);
+export default connect(mapStateToProps, { fetchCategories })(Favorites);

@@ -1,3 +1,61 @@
 import React, { ReactElement, useCallback, useRef } from 'react';
 import { keys } from 'ramda';
-import { Select } from '../helpers';
+import { Slc } from '../helpers';
+
+interface SeekProviders {
+  Google: (e: string) => string;
+  YouTube: (e: string) => string;
+}
+
+// TODO: (azuradara) add more search engines later
+// some of 'em don't like redirects
+
+const SEEK_PROVIDERS: SeekProviders = {
+  Google: (e: string) => `https://www.google.com/search?q=${encodeURI(e)}`,
+  YouTube: (e: string) =>
+    `https://www.youtube.com/results?search_query=${encodeURI(e)}`,
+};
+
+const SEEK_ENGINES = keys(SEEK_PROVIDERS);
+
+const redirSeek = (e: string) => {
+  window.location.href = e;
+};
+
+function SeekBar(): ReactElement {
+  const seekFunction = useRef(SEEK_PROVIDERS[SEEK_ENGINES[0]]);
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const formData = new FormData(e.target as HTMLFormElement);
+      const seek: string = (formData.get('seek') as string) || '';
+      redirSeek(seekFunction.current(seek));
+    },
+    [seekFunction]
+  );
+
+  return (
+    <div className="seek-bar">
+      <form onSubmit={handleSubmit}>
+        <input
+          name="seek"
+          placeholder="Search.."
+          className="seek-bar__facade"
+        />
+        <Slc
+          className="seek-select"
+          iValue={SEEK_ENGINES[0]}
+          options={SEEK_ENGINES.map((engine) => ({
+            label: engine,
+            value: engine,
+          }))}
+          onChange={(e) => {
+            seekFunction.current = SEEK_PROVIDERS[e as keyof SeekProviders];
+          }}
+        />
+      </form>
+    </div>
+  );
+}
+
+export default SeekBar;
