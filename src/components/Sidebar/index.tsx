@@ -9,6 +9,7 @@ import { logoutUser } from '../../store/deeds';
 import { useModal } from '../../lib/modal/ModalCtx';
 import { keys } from 'ramda';
 import SettingsIcon from '../../Icons/SettingsIcon';
+import SettingsModal from '../ModalContent/SettingsModal';
 
 interface ComponentProps {
   logoutUser: () => void;
@@ -36,7 +37,7 @@ const Sidebar = (props: ComponentProps): ReactElement => {
           <LogoutIcon />
         </IcoBtn>
       </div>
-      {/* <SettingsModal {...bindSettings()} /> */}
+      <SettingsModal {...bindSettings()} />
     </div>
   );
 };

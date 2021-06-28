@@ -26,17 +26,17 @@ const portalToSource = (elem: React.ReactElement, id: string) => {
 const Modal: React.FC<ModalProps> = (props) => {
   const { content, closeModal } = useModalCtx();
   const [shown, setShown] = React.useState<boolean>(false);
+
   const spring = useSpring<{ opacity: string; transform: string }>({
     to: async (next) => {
       if (content === props.id) {
         setShown(true);
-
         await next({ opacity: 1, transform: 'translate(0%,0%)' });
-
         return;
       }
 
       await next({ opacity: 0, transform: 'translate(0%, 20%)' });
+      setShown(false);
     },
   });
 

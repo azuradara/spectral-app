@@ -6,19 +6,25 @@ import AuthRoute from './lib/util/AuthRoute';
 
 import Sidebar from './components/Sidebar';
 
+import ModalSrc from './lib/modal/ModalCtx';
+
 const App = (): JSX.Element => {
   return (
-    <BrowserRouter>
-      <Sidebar />
-      <div className="App_inner">
-        <div className="App_inner--router">
-          <Switch>
-            <AuthRoute exact path="/" component={Favorites} />
-            <Route exact path="/login" component={Login} />
-          </Switch>
+    <ModalSrc>
+      <BrowserRouter>
+        <div className="App">
+          <Sidebar />
+          <div className="App_inner">
+            <div className="App_inner--router">
+              <Switch>
+                <AuthRoute exact path="/" component={Favorites} />
+                <Route exact path="/login" component={Login} />
+              </Switch>
+            </div>
+          </div>
         </div>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ModalSrc>
   );
 };
 

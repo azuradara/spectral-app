@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import * as React from 'react';
 import concoct_id from '../helpers/concoct_id';
 
@@ -11,12 +12,8 @@ export const MODAL_SRC_ID = 'modal-src';
 
 const iState: ModalState = {
   content: '',
-  openModal: () => {
-    return;
-  },
-  closeModal: () => {
-    return;
-  },
+  openModal: () => {},
+  closeModal: () => {},
 };
 
 const ModalCtx = React.createContext(iState);
@@ -46,9 +43,9 @@ export const useModal = (): [
 
 // eslint-disable-next-line react/prop-types
 const ModalSrc: React.FC<any> = ({ children }) => {
-  const [content, setContent] = React.useState<string>('');
-  const openModal = (e: string) => setContent(e);
-  const closeModal = () => setContent('');
+  const [content, setModal] = React.useState<string>('');
+  const openModal = (e: string) => setModal(e);
+  const closeModal = () => setModal('');
 
   return (
     <ModalCtx.Provider value={{ content, openModal, closeModal }}>
