@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { fetchCategories, openModal } from '../../store/deeds';
+import { fetchCategories } from '../../store/deeds';
 import { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import FavoritegGrid from './FavoriteGrid';
 import { GlobalState } from '../../lib/interfaces';
 import Clock from '../Clock';
 import SeekBar from '../Seek';
-import Modal from '../Modal';
 
 const mapStateToProps = (state: GlobalState) => {
   return {
@@ -16,7 +15,7 @@ const mapStateToProps = (state: GlobalState) => {
   };
 };
 
-const connector = connect(mapStateToProps, { fetchCategories, openModal });
+const connector = connect(mapStateToProps, { fetchCategories });
 
 type ComponentProps = Record<string, undefined> &
   ConnectedProps<typeof connector>;
@@ -27,7 +26,7 @@ export enum ContentType {
 }
 
 const Favorites = (props: ComponentProps): JSX.Element => {
-  const { fetchCategories, categories, seeking, openModal } = props;
+  const { fetchCategories, categories, seeking } = props;
 
   useEffect(() => {
     if (categories.length === 0) {
@@ -37,7 +36,6 @@ const Favorites = (props: ComponentProps): JSX.Element => {
 
   return (
     <div className="nexus">
-      <Modal />
       <div className="seek">
         <div className="seek-header">
           <Clock />
@@ -45,11 +43,6 @@ const Favorites = (props: ComponentProps): JSX.Element => {
         <SeekBar />
       </div>
       {seeking ? <p>loading</p> : <FavoritegGrid categories={categories} />}
-      <button
-        onClick={() => openModal({ title: 'seek', content: <SeekBar /> })}
-      >
-        ye
-      </button>
     </div>
   );
 };

@@ -3,18 +3,25 @@ import { useHistory } from 'react-router';
 import { IcoBtn } from '../helpers';
 import LogoutIcon from '../../Icons/LogoutIcon';
 import FavoritesIcon from '../../Icons/FavoritesIcon';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '../../lib/interfaces';
-import { logoutUser } from '../../store/deeds';
-import { keys } from 'ramda';
+import { logoutUser, openModal } from '../../store/deeds';
 import SettingsIcon from '../../Icons/SettingsIcon';
+import SeekBar from '../Seek';
 
-interface ComponentProps {
-  logoutUser: () => void;
-}
+const mapStateToProps = (state: GlobalState) => {
+  return {
+    user: state.user,
+  };
+};
+
+const connector = connect(mapStateToProps, { openModal, logoutUser });
+
+type ComponentProps = Record<string, undefined> &
+  ConnectedProps<typeof connector>;
 
 const Sidebar = (props: ComponentProps): ReactElement => {
-  const { logoutUser } = props;
+  const { logoutUser, openModal } = props;
   const { push } = useHistory();
 
   return (
@@ -25,7 +32,9 @@ const Sidebar = (props: ComponentProps): ReactElement => {
         </IcoBtn>
       </div>
       <div className="sidebar-inner__single">
-        <IcoBtn>
+        <IcoBtn
+          onClick={() => openModal({ title: 'Settings', content: <SeekBar /> })}
+        >
           <SettingsIcon />
         </IcoBtn>
 
@@ -37,10 +46,4 @@ const Sidebar = (props: ComponentProps): ReactElement => {
   );
 };
 
-const mapStateToProps = (state: GlobalState) => {
-  return {
-    user: state.user,
-  };
-};
-
-export default connect(mapStateToProps, { logoutUser })(Sidebar);
+export default connector(Sidebar);

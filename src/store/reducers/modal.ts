@@ -22,7 +22,7 @@ const openModal = (state: State, deed: OpenModalDeed): State => {
 const closeModal = (state: State, deed: Deed): State => {
   return {
     ...state,
-    modal: null,
+    // modal: null,
     open: false,
   };
 };

@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthRoute from './lib/util/AuthRoute';
 
 import Sidebar from './components/Sidebar';
+import Modal from './components/Modal';
 
 const App = (): JSX.Element => {
   return (
@@ -18,6 +19,7 @@ const App = (): JSX.Element => {
           </Switch>
         </div>
       </div>
+      <Modal />
     </BrowserRouter>
   );
 };
