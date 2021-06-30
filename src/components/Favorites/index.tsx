@@ -1,17 +1,25 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { fetchCategories, logoutUser } from '../../store/deeds';
+import { fetchCategories, openModal } from '../../store/deeds';
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import FavoritegGrid from './FavoriteGrid';
-import { Category, GlobalState } from '../../lib/interfaces';
+import { GlobalState } from '../../lib/interfaces';
 import Clock from '../Clock';
 import SeekBar from '../Seek';
+import Modal from '../Modal';
 
-interface ComponentProps {
-  seeking: boolean;
-  categories: Category[];
-  fetchCategories: () => void;
-}
+const mapStateToProps = (state: GlobalState) => {
+  return {
+    seeking: state.favorite.seeking,
+    categories: state.favorite.categories,
+  };
+};
+
+const connector = connect(mapStateToProps, { fetchCategories, openModal });
+
+type ComponentProps = Record<string, undefined> &
+  ConnectedProps<typeof connector>;
 
 export enum ContentType {
   category,
@@ -19,7 +27,7 @@ export enum ContentType {
 }
 
 const Favorites = (props: ComponentProps): JSX.Element => {
-  const { fetchCategories, categories, seeking } = props;
+  const { fetchCategories, categories, seeking, openModal } = props;
 
   useEffect(() => {
     if (categories.length === 0) {
@@ -29,6 +37,7 @@ const Favorites = (props: ComponentProps): JSX.Element => {
 
   return (
     <div className="nexus">
+      <Modal />
       <div className="seek">
         <div className="seek-header">
           <Clock />
@@ -36,15 +45,13 @@ const Favorites = (props: ComponentProps): JSX.Element => {
         <SeekBar />
       </div>
       {seeking ? <p>loading</p> : <FavoritegGrid categories={categories} />}
+      <button
+        onClick={() => openModal({ title: 'seek', content: <SeekBar /> })}
+      >
+        ye
+      </button>
     </div>
   );
 };
 
-const mapStateToProps = (state: GlobalState) => {
-  return {
-    loading: state.favorite.seeking,
-    categories: state.favorite.categories,
-  };
-};
-
-export default connect(mapStateToProps, { fetchCategories })(Favorites);
+export default connector(Favorites);

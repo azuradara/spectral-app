@@ -18,6 +18,10 @@ import {
   // User
   LoginUserDeed,
   LogoutUserDeed,
+
+  //Modal
+  OpenModalDeed,
+  CloseModalDeed,
 } from './';
 
 export enum DeedTypes {
@@ -44,6 +48,11 @@ export enum DeedTypes {
   loginUserSuccess = 'LOGIN_USER_SUCC',
   loginUserError = 'LOGIN_USER_ERR',
   logoutUser = 'LOGOUT_USER',
+
+  //Modal
+
+  openModal = '@modal/OPEN_MODAL',
+  closeModal = '@modal/CLOSE_MODAL',
 }
 
 export type Deed =
@@ -62,4 +71,7 @@ export type Deed =
   | ClearNotificationDeed
   // User
   | LoginUserDeed<any>
-  | LogoutUserDeed;
+  | LogoutUserDeed
+  //Modal
+  | OpenModalDeed
+  | CloseModalDeed;
