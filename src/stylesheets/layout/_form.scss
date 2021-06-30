@@ -44,5 +44,40 @@
         }
       }
     }
+
+    &__slider {
+      display: flex;
+      flex-flow: column;
+      padding: 1rem 2rem;
+
+      input {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 25px;
+        background: $opaque-light;
+        outline: none;
+        opacity: 0.7;
+        transition: opacity 200ms;
+        height: 1px;
+        margin: 2rem 0;
+        border: 1px solid $opaque-light;
+        border-radius: 20rem;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 1rem;
+          height: 1rem;
+          background: $text-light;
+          cursor: grab;
+          border-radius: 1rem;
+        }
+      }
+    }
   }
 }

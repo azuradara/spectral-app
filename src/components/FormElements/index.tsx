@@ -82,4 +82,44 @@ const DropZoneInput: React.FC<DropZoneProps> = ({
   );
 };
 
-export { DropZoneInput };
+interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  label: string;
+  min: number;
+  max: number;
+}
+
+const SliderInput: React.FC<SliderProps> = ({
+  name,
+  label,
+  min,
+  max,
+}: SliderProps) => {
+  const [field, meta] = useField(name);
+
+  const id = React.useRef(concoct_id());
+
+  return (
+    <div className="form-control">
+      <div className="form-control__slider">
+        <label htmlFor={id.current}>{label}</label>
+        <input
+          type="range"
+          max={max}
+          min={min}
+          step={0.01}
+          id={id.current}
+          {...field}
+        />
+      </div>
+
+      {Boolean(meta.touched && meta.error) && (
+        <div className="form-control__error">
+          <span>{meta.error}</span>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export { DropZoneInput, SliderInput };

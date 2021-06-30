@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
-import { DropZoneInput } from '../../FormElements';
+import { DropZoneInput, SliderInput } from '../../FormElements';
 import { byte_size } from '../../../lib/util/byte_size';
 
 const iValue = {
@@ -42,7 +42,21 @@ const SettingsModal: React.FC = () => {
             <DropZoneInput
               name="bg.url"
               label="Drag a background image here, or click to browse."
-            ></DropZoneInput>
+            />
+
+            <SliderInput
+              name="bg.opacity"
+              label="Overlay Opacity"
+              max={1}
+              min={0}
+            />
+
+            <SliderInput
+              name="bg.blur"
+              label="Overlay Blur"
+              max={500}
+              min={0}
+            />
           </Form>
         );
       }}
