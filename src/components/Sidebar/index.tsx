@@ -7,7 +7,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '../../lib/interfaces';
 import { logoutUser, openModal } from '../../store/deeds';
 import SettingsIcon from '../../Icons/SettingsIcon';
-import SeekBar from '../Seek';
+import SettingsModal from '../ModalContent/SettingsModal';
 
 const mapStateToProps = (state: GlobalState) => {
   return {
@@ -33,7 +33,12 @@ const Sidebar = (props: ComponentProps): ReactElement => {
       </div>
       <div className="sidebar-inner__single">
         <IcoBtn
-          onClick={() => openModal({ title: 'Settings', content: <SeekBar /> })}
+          onClick={() =>
+            openModal({
+              title: 'Settings',
+              content: <SettingsModal />,
+            })
+          }
         >
           <SettingsIcon />
         </IcoBtn>

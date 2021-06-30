@@ -35,17 +35,16 @@ const Modal = (props: ModalProps) => {
 
   const onCloseBtnClick = () => closeModal();
 
-  console.log('went thru');
-
   return (
     <animated.div style={{ opacity: spring.opacity }} className="modal">
       <animated.div style={spring} className="modal-body">
-        <div className="modal-close">
-          <IcoBtn onClick={() => onCloseBtnClick()}>
-            <CloseIcon />
-          </IcoBtn>
+        <IcoBtn className="modal-close" onClick={() => onCloseBtnClick()}>
+          <CloseIcon />
+        </IcoBtn>
+        <div className="modal-body__title">
+          <h2>{modal.modal?.title}</h2>
         </div>
-        {modal.modal?.content}
+        <div className="modal-body__content">{modal.modal?.content}</div>
       </animated.div>
     </animated.div>
   );
