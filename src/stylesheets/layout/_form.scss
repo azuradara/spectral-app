@@ -1,0 +1,48 @@
+.form {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  &-control {
+    margin-top: 2rem;
+
+    &.dropzone {
+      padding: 2rem;
+    }
+
+    &__dropzone {
+      padding: 2rem;
+      border: 1px dashed $trans-light-s;
+      display: block;
+      margin: -2rem;
+      border-radius: 1rem;
+
+      @include transition(background border);
+
+      user-select: none;
+
+      &.grabbing {
+        border: 1px dashed $opaque-light;
+        background: $trans-light-s;
+      }
+
+      &__input {
+        display: none;
+      }
+
+      &__preview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: auto;
+          max-width: 100%;
+          margin-top: 2rem;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}

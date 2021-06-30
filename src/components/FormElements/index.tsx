@@ -26,7 +26,7 @@ const DropZoneInput: React.FC<DropZoneProps> = ({
   return (
     <div className="form-control dropzone">
       <div
-        className={clsx('form-control__dropzone', grabbing && 'dropping')}
+        className={clsx('form-control__dropzone', grabbing && 'grabbing')}
         role="button"
         tabIndex={-1}
         // Metric ****load of event listeners

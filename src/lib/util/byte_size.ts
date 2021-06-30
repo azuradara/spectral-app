@@ -1,1 +1,1 @@
-export const byte_size = (str: string) => new Blob([str]).size;
+export const byte_size = (str: string): number => new Blob([str]).size;
