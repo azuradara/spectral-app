@@ -2,6 +2,7 @@ import React from 'react';
 import { IcoBtn } from '../helpers';
 import CloseIcon from '../../Icons/CloseIcon';
 import { connect, ConnectedProps } from 'react-redux';
+import { animated, useSpring } from '@react-spring/web';
 import { GlobalState } from '../../lib/interfaces';
 import { closeModal } from '../../store/deeds';
 
@@ -16,23 +17,37 @@ type ModalProps = Record<string, unknown> & ConnectedProps<typeof connector>;
 const Modal = (props: ModalProps) => {
   const { closeModal, modal } = props;
 
-  if (!modal.open) return null;
+  const [show, setShow] = React.useState<boolean>(false);
+
+  const spring = useSpring<{ opacity: string; transform: string }>({
+    to: async (next) => {
+      if (modal.open) {
+        setShow(true);
+        await next({ opacity: 1, transform: 'translate(0%,0%)' });
+        return;
+      }
+      await next({ opacity: 0, transform: 'translate(0%,20%)' });
+      setShow(false);
+    },
+  });
+
+  if (!show) return null;
 
   const onCloseBtnClick = () => closeModal();
 
   console.log('went thru');
 
   return (
-    <div className="modal">
-      <div className="modal-body">
+    <animated.div style={{ opacity: spring.opacity }} className="modal">
+      <animated.div style={spring} className="modal-body">
         <div className="modal-close">
           <IcoBtn onClick={() => onCloseBtnClick()}>
             <CloseIcon />
           </IcoBtn>
         </div>
         {modal.modal?.content}
-      </div>
-    </div>
+      </animated.div>
+    </animated.div>
   );
 };
 
