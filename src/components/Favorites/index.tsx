@@ -17,7 +17,7 @@ const mapStateToProps = (state: GlobalState) => {
 
 const connector = connect(mapStateToProps, { fetchCategories });
 
-type ComponentProps = Record<string, undefined> &
+type ComponentProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
 
 export enum ContentType {
