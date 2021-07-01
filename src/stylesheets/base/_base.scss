@@ -149,3 +149,14 @@ input {
     opacity: 0.8;
   }
 }
+
+.scrollbars-knob {
+  background: $opaque-light;
+  border-radius: 2rem;
+
+  @include transition(background);
+
+  &:hover {
+    background: $text-light;
+  }
+}

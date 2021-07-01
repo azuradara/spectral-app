@@ -5,10 +5,15 @@
   justify-content: flex-end;
 
   &-control {
-    margin-top: 2rem;
+    margin-top: 1rem;
+
+    &__submission {
+      margin-top: 3rem;
+    }
 
     &.dropzone {
       padding: 2rem;
+      cursor: pointer;
     }
 
     &__dropzone {
@@ -60,7 +65,7 @@
         opacity: 0.7;
         transition: opacity 200ms;
         height: 1px;
-        margin: 2rem 0;
+        margin: 1rem 0;
         border: 1px solid $opaque-light;
         border-radius: 20rem;
 

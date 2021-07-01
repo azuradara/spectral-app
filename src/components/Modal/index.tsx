@@ -5,6 +5,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
 import { GlobalState } from '../../lib/interfaces';
 import { closeModal } from '../../store/deeds';
+import Scrollbar from '../Scrollbar';
 
 const mapStateToProps = (state: GlobalState) => ({
   modal: state.modal,
@@ -37,15 +38,21 @@ const Modal = (props: ModalProps) => {
 
   return (
     <animated.div style={{ opacity: spring.opacity }} className="modal">
-      <animated.div style={spring} className="modal-body">
-        <IcoBtn className="modal-close" onClick={() => onCloseBtnClick()}>
-          <CloseIcon />
-        </IcoBtn>
-        <div className="modal-body__title">
-          <h2>{modal.modal?.title}</h2>
-        </div>
-        <div className="modal-body__content">{modal.modal?.content}</div>
-      </animated.div>
+      <Scrollbar
+        autoHeight
+        autoHeightMin={window.innerHeight}
+        height={window.innerHeight}
+      >
+        <animated.div style={spring} className="modal-body">
+          <IcoBtn className="modal-close" onClick={() => onCloseBtnClick()}>
+            <CloseIcon />
+          </IcoBtn>
+          <div className="modal-body__title">
+            <h2>{modal.modal?.title}</h2>
+          </div>
+          <div className="modal-body__content">{modal.modal?.content}</div>
+        </animated.div>
+      </Scrollbar>
     </animated.div>
   );
 };

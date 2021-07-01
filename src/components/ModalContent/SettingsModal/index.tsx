@@ -69,7 +69,9 @@ const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
             />
 
             <SliderInput name="bg.blur" label="Overlay Blur" max={50} min={0} />
-            <FormBtn />
+            <div className="form-control__submission">
+              <FormBtn />
+            </div>
           </Form>
         );
       }}

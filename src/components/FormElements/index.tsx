@@ -133,7 +133,7 @@ const FormBtn: React.FC<any> = () => {
       <button
         onClick={() => formik.resetForm()}
         type="button"
-        className="btn btn-default btn-btn"
+        className="btn btn-default btn-btn btn-btn__reset"
       >
         Reset
       </button>
