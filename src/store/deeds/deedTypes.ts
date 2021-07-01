@@ -19,9 +19,12 @@ import {
   LoginUserDeed,
   LogoutUserDeed,
 
-  //Modal
+  // Modal
   OpenModalDeed,
   CloseModalDeed,
+
+  // Settings
+  UpdateSettingsDeed,
 } from './';
 
 export enum DeedTypes {
@@ -49,10 +52,12 @@ export enum DeedTypes {
   loginUserError = 'LOGIN_USER_ERR',
   logoutUser = 'LOGOUT_USER',
 
-  //Modal
-
+  // Modal
   openModal = '@modal/OPEN_MODAL',
   closeModal = '@modal/CLOSE_MODAL',
+
+  // Settings
+  updateSettings = '@settings/UPDATE_SETTINGS',
 }
 
 export type Deed =
@@ -74,4 +79,6 @@ export type Deed =
   | LogoutUserDeed
   //Modal
   | OpenModalDeed
-  | CloseModalDeed;
+  | CloseModalDeed
+  //Settings
+  | UpdateSettingsDeed;

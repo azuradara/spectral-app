@@ -5,3 +5,4 @@ export * from './Notification';
 export * from './GlobalState';
 export * from './Auth';
 export * from './Modal';
+export * from './Settings';

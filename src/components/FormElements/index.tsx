@@ -122,4 +122,23 @@ const SliderInput: React.FC<SliderProps> = ({
   );
 };
 
-export { DropZoneInput, SliderInput };
+const FormBtn: React.FC<any> = () => {
+  const formik = useFormikContext();
+
+  return (
+    <div className="form-buttons">
+      <button type="submit" className="btn btn-default btn-btn">
+        Submit
+      </button>
+      <button
+        onClick={() => formik.resetForm()}
+        type="button"
+        className="btn btn-default btn-btn"
+      >
+        Reset
+      </button>
+    </div>
+  );
+};
+
+export { DropZoneInput, SliderInput, FormBtn };

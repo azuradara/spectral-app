@@ -6,11 +6,15 @@ import AuthRoute from './lib/util/AuthRoute';
 
 import Sidebar from './components/Sidebar';
 import Modal from './components/Modal';
+import Background from './components/Background';
 
 const App = (): JSX.Element => {
   return (
     <BrowserRouter>
-      <Sidebar />
+      <Background />
+      <div className="sidebar">
+        <Sidebar />
+      </div>
       <div className="App_inner">
         <div className="App_inner--router">
           <Switch>

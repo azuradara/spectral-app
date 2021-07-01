@@ -1,8 +1,12 @@
 import * as React from 'react';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
-import { DropZoneInput, SliderInput } from '../../FormElements';
+import { DropZoneInput, FormBtn, SliderInput } from '../../FormElements';
 import { byte_size } from '../../../lib/util/byte_size';
+import { connect, ConnectedProps } from 'react-redux';
+import { GlobalState } from '../../../lib/interfaces';
+import { updateSettings, closeModal } from '../../../store/deeds';
+import { equals, reject } from 'ramda';
 
 const iValue = {
   bg: {
@@ -12,7 +16,18 @@ const iValue = {
   },
 };
 
-const SettingsModal: React.FC = () => {
+const mapStateToProps = (state: GlobalState) => ({
+  initialSettings: state.settings.settings,
+});
+
+const connector = connect(mapStateToProps, { updateSettings, closeModal });
+
+type SettingsModalProps = Record<string, unknown> &
+  ConnectedProps<typeof connector>;
+
+const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
+  const { updateSettings, initialSettings, closeModal } = props;
+
   return (
     <Formik
       validationSchema={yup.object().shape({
@@ -23,17 +38,19 @@ const SettingsModal: React.FC = () => {
               return byte_size(val) <= 8 * 1048576;
             }),
           opacity: yup.number().min(0).max(1),
-          blur: yup.number().min(0).max(500),
+          blur: yup.number().min(0).max(50),
         }),
       })}
       onSubmit={(e) => {
         // save changes
         // close modal
-        return;
+        updateSettings(e);
+        closeModal();
       }}
       initialValues={{
         // use reducer state here later
         ...iValue,
+        ...reject(equals(''))(initialSettings as any),
       }}
     >
       {(formik) => {
@@ -51,12 +68,8 @@ const SettingsModal: React.FC = () => {
               min={0}
             />
 
-            <SliderInput
-              name="bg.blur"
-              label="Overlay Blur"
-              max={500}
-              min={0}
-            />
+            <SliderInput name="bg.blur" label="Overlay Blur" max={50} min={0} />
+            <FormBtn />
           </Form>
         );
       }}
@@ -64,4 +77,4 @@ const SettingsModal: React.FC = () => {
   );
 };
 
-export default SettingsModal;
+export default connector(SettingsModal);
