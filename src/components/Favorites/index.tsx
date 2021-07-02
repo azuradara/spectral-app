@@ -39,7 +39,7 @@ const Favorites = (props: ComponentProps): JSX.Element => {
         </div>
         <SeekBar />
       </div>
-      {seeking ? <p>loading</p> : pins[0].title}
+      {seeking ? <p>loading</p> : 'fix this later'}
     </div>
   );
 };
