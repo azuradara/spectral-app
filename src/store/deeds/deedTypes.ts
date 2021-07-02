@@ -2,7 +2,7 @@ import {
   // Categories
   FetchCategoriesDeed,
   AddCategoryDeed,
-  PinCategoryDeed,
+  // PinCategoryDeed,
   DeleteCategoryDeed,
   UpdateCategoryDeed,
 
@@ -10,6 +10,7 @@ import {
   AddFavoriteDeed,
   DeleteFavoriteDeed,
   UpdateFavoriteDeed,
+  FetchPinnedFavoritesDeed,
 
   // Notifications
   CreateNotificationDeed,
@@ -33,7 +34,7 @@ export enum DeedTypes {
   fetchCategoriesSuccess = 'FETCH_CATEGORIES_SUCC',
   fetchCategoriesError = 'FETCH_CATEGORIES_ERR',
   addCategory = 'ADD_CATEGORY',
-  pinCategory = 'PIN_CATEGORY',
+  // pinCategory = 'PIN_CATEGORY',
   deleteCategory = 'DELETE_CATEGORY',
   updateCategory = 'UPDATE_CATEGORY',
 
@@ -41,6 +42,9 @@ export enum DeedTypes {
   addFavorite = 'ADD_FAVORITE',
   deleteFavorite = 'DELETE_FAVORITE',
   updateFavorite = 'UPDATE_FAVORITE',
+  fetchPinnedFavorites = 'FETCH_PINNED_FAVORITES',
+  fetchPinnedFavoritesSuccess = 'FETCH_PINNED_FAVORITES_SUCC',
+  fetchPinnedFavoritesError = 'FETCH_PINNED_FAVORITES_ERR',
 
   // Notifications
   createNotification = 'CREATE_NOTIFICATION',
@@ -64,13 +68,14 @@ export type Deed =
   // Categories
   | FetchCategoriesDeed<any>
   | AddCategoryDeed
-  | PinCategoryDeed
+  // | PinCategoryDeed
   | DeleteCategoryDeed
   | UpdateCategoryDeed
   // Favorite
   | AddFavoriteDeed
   | DeleteFavoriteDeed
   | UpdateFavoriteDeed
+  | FetchPinnedFavoritesDeed<any>
   // Notifications
   | CreateNotificationDeed
   | ClearNotificationDeed

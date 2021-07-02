@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { fetchCategories } from '../../store/deeds';
+import { fetchPinnedFavorites } from '../../store/deeds';
 import { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import FavoritegGrid from './FavoriteGrid';
 import { GlobalState } from '../../lib/interfaces';
 import Clock from '../Clock';
 import SeekBar from '../Seek';
@@ -11,11 +10,11 @@ import SeekBar from '../Seek';
 const mapStateToProps = (state: GlobalState) => {
   return {
     seeking: state.favorite.seeking,
-    categories: state.favorite.categories,
+    pins: state.favorite.pinnedFavorites,
   };
 };
 
-const connector = connect(mapStateToProps, { fetchCategories });
+const connector = connect(mapStateToProps, { fetchPinnedFavorites });
 
 type ComponentProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
@@ -26,13 +25,11 @@ export enum ContentType {
 }
 
 const Favorites = (props: ComponentProps): JSX.Element => {
-  const { fetchCategories, categories, seeking } = props;
+  const { seeking, pins, fetchPinnedFavorites } = props;
 
   useEffect(() => {
-    if (categories.length === 0) {
-      fetchCategories();
-    }
-  }, [fetchCategories]);
+    fetchPinnedFavorites();
+  }, [fetchPinnedFavorites]);
 
   return (
     <div className="nexus">
@@ -42,7 +39,7 @@ const Favorites = (props: ComponentProps): JSX.Element => {
         </div>
         <SeekBar />
       </div>
-      {seeking ? <p>loading</p> : <FavoritegGrid categories={categories} />}
+      {seeking ? <p>loading</p> : pins[0].title}
     </div>
   );
 };

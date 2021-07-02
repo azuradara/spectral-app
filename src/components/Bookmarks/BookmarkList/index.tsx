@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import PinnedIcon from '../../../Icons/PinnedIcon';
 import { Category, Favorite } from '../../../lib/interfaces';
 import { parse_url } from '../../../lib/util/parse_url';
 import { get_url_ico } from '../../../store/deeds/get_url_ico';
@@ -30,6 +31,14 @@ const BookmarkList = (props: ComponentProps): React.ReactElement => {
                 <img src={get_url_ico(fav.url)} alt={fav.title} />
               </div>
               <p>{fav.title}</p>
+              {Boolean(fav.is_pinned) && (
+                <PinnedIcon
+                  style={{
+                    opacity: 0.3,
+                    transform: 'rotate(45deg) scale(0.8)',
+                  }}
+                />
+              )}
             </a>
           );
         })}

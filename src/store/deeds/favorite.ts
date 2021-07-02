@@ -106,38 +106,38 @@ export const addFavorite =
 
 // PIN CATEGORY
 
-export interface PinCategoryDeed {
-  type: DeedTypes.pinCategory;
-  payload: Category;
-}
+// export interface PinCategoryDeed {
+//   type: DeedTypes.pinCategory;
+//   payload: Category;
+// }
 
-export const pinCategory =
-  (category: Category) => async (dispatch: Dispatch) => {
-    try {
-      const { id, is_pinned, name } = category;
-      const res = await axios.put<ApiResponse<Category>>(
-        `updatecategory endpoint ${id}`,
-        { is_pinned: !is_pinned }
-      );
+// export const pinCategory =
+//   (category: Category) => async (dispatch: Dispatch) => {
+//     try {
+//       const { id, name } = category;
+//       const res = await axios.put<ApiResponse<Category>>(
+//         `updatecategory endpoint ${id}`,
+//         { is_pinned: !is_pinned }
+//       );
 
-      const msgSubstr = is_pinned ? 'unpinned cat' : 'pinned cat';
+//       const msgSubstr = is_pinned ? 'unpinned cat' : 'pinned cat';
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
-        payload: {
-          title: 'success',
-          message: `category ${name} ${msgSubstr}`,
-        },
-      });
+//       dispatch<CreateNotificationDeed>({
+//         type: DeedTypes.createNotification,
+//         payload: {
+//           title: 'success',
+//           message: `category ${name} ${msgSubstr}`,
+//         },
+//       });
 
-      dispatch<PinCategoryDeed>({
-        type: DeedTypes.pinCategory,
-        payload: res.data.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+//       dispatch<PinCategoryDeed>({
+//         type: DeedTypes.pinCategory,
+//         payload: res.data.data,
+//       });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
 
 // DELETE CATEGORY
 
@@ -283,3 +283,30 @@ export const updateFavorite =
       console.log(err);
     }
   };
+
+export interface FetchPinnedFavoritesDeed<T> {
+  type:
+    | DeedTypes.fetchPinnedFavorites
+    | DeedTypes.fetchPinnedFavoritesSuccess
+    | DeedTypes.fetchPinnedFavoritesError;
+  payload: T;
+}
+
+export const fetchPinnedFavorites = () => async (dispatch: Dispatch) => {
+  dispatch<FetchPinnedFavoritesDeed<undefined>>({
+    type: DeedTypes.fetchPinnedFavorites,
+    payload: undefined,
+  });
+
+  try {
+    const res = await axios.get<ApiResponse<Favorite[]>>('/fav/pinned');
+
+    dispatch<FetchPinnedFavoritesDeed<Favorite[]>>({
+      type: DeedTypes.fetchPinnedFavoritesSuccess,
+      payload: res.data.data,
+    });
+  } catch (e) {
+    // ye
+    console.log(e);
+  }
+};

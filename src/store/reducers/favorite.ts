@@ -3,7 +3,6 @@ import {
   Deed,
   AddFavoriteDeed,
   AddCategoryDeed,
-  PinCategoryDeed,
   DeleteCategoryDeed,
   UpdateCategoryDeed,
   DeleteFavoriteDeed,
@@ -16,12 +15,14 @@ export interface State {
   seeking: boolean;
   err: string | undefined;
   categories: Category[];
+  pinnedFavorites: Favorite[];
 }
 
 const initState: State = {
   seeking: true,
   err: undefined,
   categories: [],
+  pinnedFavorites: [],
 };
 
 const fetchCategories = (state: State, deed: Deed): State => {
@@ -77,21 +78,21 @@ const addFavorite = (state: State, deed: AddFavoriteDeed): State => {
   };
 };
 
-const pinCategory = (state: State, deed: PinCategoryDeed): State => {
-  const tempCat = [...state.categories];
-  const catAffected = tempCat.find(
-    (category: Category) => category.id === deed.payload.id
-  );
+// const pinCategory = (state: State, deed: PinCategoryDeed): State => {
+//   const tempCat = [...state.categories];
+//   const catAffected = tempCat.find(
+//     (category: Category) => category.id === deed.payload.id
+//   );
 
-  if (catAffected) {
-    catAffected.is_pinned = deed.payload.is_pinned;
-  }
+//   if (catAffected) {
+//     catAffected.is_pinned = deed.payload.is_pinned;
+//   }
 
-  return {
-    ...state,
-    categories: tempCat,
-  };
-};
+//   return {
+//     ...state,
+//     categories: tempCat,
+//   };
+// };
 
 const deleteCategory = (state: State, deed: DeleteCategoryDeed): State => {
   const catIdx = state.categories.findIndex(
@@ -168,6 +169,24 @@ const updateFavorite = (state: State, deed: UpdateFavoriteDeed): State => {
   };
 };
 
+const fetchPinnedFavorites = (state: State, deed: Deed): State => {
+  return {
+    ...state,
+    seeking: true,
+    err: undefined,
+  };
+};
+
+const fetchPinnedFavoritesSuccess = (state: State, deed: Deed): State => {
+  return {
+    ...state,
+    seeking: false,
+    pinnedFavorites: deed.payload,
+  };
+};
+
+// implement error case
+
 const favoriteReducer = (state: State = initState, deed: Deed): State => {
   switch (deed.type) {
     case DeedTypes.fetchCategories:
@@ -182,8 +201,8 @@ const favoriteReducer = (state: State = initState, deed: Deed): State => {
     case DeedTypes.deleteCategory:
       return deleteCategory(state, deed);
 
-    case DeedTypes.pinCategory:
-      return pinCategory(state, deed);
+    // case DeedTypes.pinCategory:
+    //   return pinCategory(state, deed);
 
     case DeedTypes.updateCategory:
       return updateCategory(state, deed);
@@ -196,6 +215,12 @@ const favoriteReducer = (state: State = initState, deed: Deed): State => {
 
     case DeedTypes.deleteFavorite:
       return deleteFavorite(state, deed);
+
+    case DeedTypes.fetchPinnedFavorites:
+      return fetchPinnedFavorites(state, deed);
+
+    case DeedTypes.fetchPinnedFavoritesSuccess:
+      return fetchPinnedFavoritesSuccess(state, deed);
 
     default:
       return state;
