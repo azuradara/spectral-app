@@ -6,6 +6,7 @@ import { animated, useSpring } from '@react-spring/web';
 import { GlobalState } from '../../lib/interfaces';
 import { closeModal } from '../../store/deeds';
 import Scrollbar from '../Scrollbar';
+import useExternalClick from '../../lib/hooks/useExternalClick';
 
 const mapStateToProps = (state: GlobalState) => ({
   modal: state.modal,
@@ -32,6 +33,10 @@ const Modal = (props: ModalProps) => {
     },
   });
 
+  const ref = useExternalClick(() => {
+    closeModal();
+  }) as React.MutableRefObject<HTMLDivElement>;
+
   if (!show) return null;
 
   const onCloseBtnClick = () => closeModal();
@@ -43,7 +48,7 @@ const Modal = (props: ModalProps) => {
         autoHeightMin={window.innerHeight}
         height={window.innerHeight}
       >
-        <animated.div style={spring} className="modal-body">
+        <animated.div style={spring} ref={ref} className="modal-body">
           <IcoBtn className="modal-close" onClick={() => onCloseBtnClick()}>
             <CloseIcon />
           </IcoBtn>

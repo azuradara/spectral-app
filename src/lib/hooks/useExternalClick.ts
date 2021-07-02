@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+// Had to switch this to "mousedown" event instead of "click" for
+// the target to even open up
+
 function useExternalClick<T extends HTMLElement>(
   onExternalClick: (e: MouseEvent) => any
 ): React.MutableRefObject<T | undefined> {
@@ -14,11 +17,11 @@ function useExternalClick<T extends HTMLElement>(
     };
 
     // bind to doc
-    document.addEventListener('click', handleExternalClick);
+    document.addEventListener('mousedown', handleExternalClick);
 
     // unbind when done
     return () => {
-      document.removeEventListener('click', handleExternalClick);
+      document.removeEventListener('mousedown', handleExternalClick);
     };
   }, [ref, onExternalClick]);
 
