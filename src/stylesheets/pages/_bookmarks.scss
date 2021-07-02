@@ -1,0 +1,68 @@
+.bookmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  height: 100%;
+
+  .bookmarks-list {
+    &__title {
+      // margin-bottom: 1rem;
+      padding: 0.5rem;
+    }
+
+    &__favorite {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: $text-light;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 5px;
+
+      @include transition(background-color);
+
+      &:hover,
+      &:focus {
+        background: $trans-light-s;
+      }
+
+      p {
+        margin-left: 0.5rem;
+      }
+
+      &__img {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+
+        img {
+          height: 32px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 430px) {
+  .bookmarks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 670px) {
+  .bookmarks-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .bookmarks-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .bookmarks-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

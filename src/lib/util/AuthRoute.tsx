@@ -15,3 +15,5 @@ const mapStateToProps = (state: GlobalState) => {
 };
 
 export default connect(mapStateToProps)(AuthRoute);
+
+// TODO: convert this to a hook

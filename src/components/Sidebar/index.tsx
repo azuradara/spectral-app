@@ -8,6 +8,7 @@ import { GlobalState } from '../../lib/interfaces';
 import { logoutUser, openModal } from '../../store/deeds';
 import SettingsIcon from '../../Icons/SettingsIcon';
 import SettingsModal from '../ModalContent/SettingsModal';
+import BookmarkIcon from '../../Icons/BookmarkIcon';
 
 const mapStateToProps = (state: GlobalState) => {
   return {
@@ -29,6 +30,10 @@ const Sidebar = (props: ComponentProps): ReactElement => {
       <div className="sidebar-inner__single">
         <IcoBtn onClick={() => push('/')}>
           <FavoritesIcon />
+        </IcoBtn>
+
+        <IcoBtn onClick={() => push('/bookmarks')}>
+          <BookmarkIcon />
         </IcoBtn>
       </div>
       <div className="sidebar-inner__single">

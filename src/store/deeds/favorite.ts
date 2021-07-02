@@ -27,14 +27,14 @@ export const fetchCategories = () => async (dispatch: Dispatch) => {
   });
 
   try {
-  const res = await axios.get<ApiResponse<Category[]>>('/cat');
+    const res = await axios.get<ApiResponse<Category[]>>('/cat');
 
-  console.log(res);
+    console.log(res);
 
-  dispatch<FetchCategoriesDeed<Category[]>>({
-    type: DeedTypes.fetchCategoriesSuccess,
-    payload: res.data.data,
-  });
+    dispatch<FetchCategoriesDeed<Category[]>>({
+      type: DeedTypes.fetchCategoriesSuccess,
+      payload: res.data.data,
+    });
   } catch (err) {
     console.log(err);
     // improve upon error handling later | too lazy

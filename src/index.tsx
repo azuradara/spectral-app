@@ -15,6 +15,10 @@ if (localStorage.token) {
   ] = `Bearer ${localStorage.getItem('token')}`;
 }
 
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
