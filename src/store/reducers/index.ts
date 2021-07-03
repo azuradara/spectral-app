@@ -10,6 +10,7 @@ import AuthReducer from './auth';
 import favoriteReducer from './favorite';
 import ModalReducer from './modal';
 import SettingsReducer from './settings';
+import notificationReducer from './notification';
 
 const persistConfig = {
   key: 'root',
@@ -22,6 +23,7 @@ const rootReducer = combineReducers<GlobalState>({
   user: AuthReducer,
   modal: ModalReducer,
   settings: SettingsReducer,
+  notification: notificationReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

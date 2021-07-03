@@ -32,6 +32,7 @@ export const loginUser =
           payload: {
             title: 'error',
             message: 'Invalid Credentials',
+            type: 'error',
           },
         });
       }
@@ -41,6 +42,7 @@ export const loginUser =
         payload: {
           title: 'success',
           message: `User ${res.data.data.user.username} logged in.`,
+          type: 'default',
         },
       });
 

@@ -118,3 +118,46 @@
     appearance: none;
   }
 }
+
+.notification-dispatcher {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  min-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .notification {
+    background: $trans-light-s;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border-radius: 4px;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      height: 100%;
+      width: 5px;
+      right: 0;
+      top: 0;
+      z-index: 2000;
+      border-radius: 0 4px 4px 0;
+    }
+
+    &--error::after {
+      background-color: #f72119;
+      filter: drop-shadow(4px 4px 50px #f72119)
+        drop-shadow(-4px -4px 20px #f72119);
+    }
+
+    &--default::after {
+      background-color: white;
+      filter: drop-shadow(6px 6px 20px white) drop-shadow(-4px -4px 20px white);
+    }
+  }
+}

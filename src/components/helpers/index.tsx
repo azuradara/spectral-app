@@ -8,6 +8,8 @@ import useExternalClick from '../../lib/hooks/useExternalClick';
 import { useSpring, a } from '@react-spring/web';
 import clsx from 'clsx';
 import ArrowIcon from '../../Icons/ArrowIcon';
+import { connect, ConnectedProps } from 'react-redux';
+import { clearNotification } from '../../store/deeds';
 
 export const IcoBtn = (
   props: React.ButtonHTMLAttributes<any>

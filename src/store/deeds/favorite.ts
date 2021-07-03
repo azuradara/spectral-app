@@ -61,6 +61,7 @@ export const addCategory =
         payload: {
           title: 'success',
           message: `Category ${formData.name} created.`,
+          type: 'default',
         },
       });
 
@@ -92,6 +93,7 @@ export const addFavorite =
         payload: {
           title: 'success',
           message: `Favorite ${formData.title} created`,
+          type: 'default',
         },
       });
 
@@ -155,6 +157,7 @@ export const deleteCategory = (id: number) => async (dispatch: Dispatch) => {
       payload: {
         title: 'success',
         message: `category deleted`,
+        type: 'default',
       },
     });
 
@@ -187,6 +190,7 @@ export const updateCategory =
         payload: {
           title: 'success',
           message: `Category ${formData.name} updated`,
+          type: 'default',
         },
       });
 
@@ -219,6 +223,7 @@ export const deleteFavorite =
         payload: {
           title: 'success',
           message: `favorite deleted`,
+          type: 'default',
         },
       });
 
@@ -253,8 +258,9 @@ export const updateFavorite =
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
         payload: {
-          title: 'success',
-          message: `Favorite ${formData.title} updated`,
+          title: 'Updated',
+          message: `Favorite ${formData.title} updated successfully.`,
+          type: 'default',
         },
       });
 
@@ -300,6 +306,15 @@ export const pinFavorite =
       const msgSubstr = !is_pinned ? 'Pinned Fav' : 'Unpinned Fav';
 
       // dispatch notification here
+
+      dispatch<CreateNotificationDeed>({
+        type: DeedTypes.createNotification,
+        payload: {
+          title: 'Updated',
+          message: 'ae',
+          type: 'default',
+        },
+      });
 
       dispatch<UpdateFavoriteDeed>({
         type: DeedTypes.updateFavorite,
