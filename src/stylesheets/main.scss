@@ -13,7 +13,8 @@
 @import 'layout/header', 'layout/footer', 'layout/sidebar', 'layout/form';
 
 // 5. Components
-@import 'components/buttons', 'components/seek', 'components/modal';
+@import 'components/buttons', 'components/seek', 'components/modal',
+  'components/contextmenu';
 
 // 6. Page-specific styles
 @import 'pages/home', 'pages/login', 'pages/bookmarks';

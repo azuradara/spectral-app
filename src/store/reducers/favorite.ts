@@ -7,6 +7,7 @@ import {
   UpdateCategoryDeed,
   DeleteFavoriteDeed,
   UpdateFavoriteDeed,
+  PinFavoriteDeed,
 } from '../deeds';
 
 import { Category, Favorite } from '../../lib/interfaces';
@@ -124,25 +125,29 @@ const updateCategory = (state: State, deed: UpdateCategoryDeed): State => {
   };
 };
 
-const deleteFavorite = (state: State, deed: DeleteFavoriteDeed): State => {
-  const tempCat = [...state.categories];
-  const affectedCat = tempCat.find(
+const deleteFavorite = (state: State, deed: Deed): State => {
+  const catIdx = state.categories.findIndex(
     (category: Category) => category.id === deed.payload.catId
   );
 
-  if (affectedCat) {
-    affectedCat.favorites = affectedCat.favorites.filter(
-      (favorite: Favorite) => favorite.id !== deed.payload.favId
-    );
-  }
-
   return {
     ...state,
-    categories: tempCat,
+    categories: [
+      ...state.categories.slice(0, catIdx),
+      {
+        ...state.categories[catIdx],
+        favorites: [
+          ...state.categories[catIdx].favorites.filter(
+            (favorite: Favorite) => favorite.id !== deed.payload.favId
+          ),
+        ],
+      },
+      ...state.categories.slice(catIdx + 1),
+    ],
   };
 };
 
-const updateFavorite = (state: State, deed: UpdateFavoriteDeed): State => {
+const updateFavorite = (state: State, deed: Deed): State => {
   const catIdx = state.categories.findIndex(
     (category: Category) => category.id === deed.payload.category_id
   );

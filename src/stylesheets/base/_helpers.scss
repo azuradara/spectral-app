@@ -102,7 +102,7 @@
       @include transition(background);
 
       &:hover {
-        background: $opaque-light;
+        background: $trans-light-s;
       }
 
       & + .select-opts__single {

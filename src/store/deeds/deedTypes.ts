@@ -42,6 +42,7 @@ export enum DeedTypes {
   addFavorite = 'ADD_FAVORITE',
   deleteFavorite = 'DELETE_FAVORITE',
   updateFavorite = 'UPDATE_FAVORITE',
+  pinFavorite = 'PIN_FAVORITE',
   fetchPinnedFavorites = 'FETCH_PINNED_FAVORITES',
   fetchPinnedFavoritesSuccess = 'FETCH_PINNED_FAVORITES_SUCC',
   fetchPinnedFavoritesError = 'FETCH_PINNED_FAVORITES_ERR',

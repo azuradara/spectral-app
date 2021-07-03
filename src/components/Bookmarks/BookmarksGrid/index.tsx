@@ -21,8 +21,6 @@ const BookmarksGrid = (props: ComponentProps): React.ReactElement => {
     if (props.categories.length === 0) props.fetchCategories();
   }, [props.fetchCategories]);
 
-  console.log(props.categories);
-
   if (props.categories.length === 0) return <p>no bookmarks</p>;
 
   return (

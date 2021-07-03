@@ -212,7 +212,7 @@ export interface DeleteFavoriteDeed {
 export const deleteFavorite =
   (favId: number, catId: number) => async (dispatch: Dispatch) => {
     try {
-      await axios.delete<ApiResponse<unknown>>(`deletefav endpoint ${favId}`);
+      await axios.delete<ApiResponse<unknown>>(`/fav/${favId}`);
 
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
@@ -279,6 +279,32 @@ export const updateFavorite =
           payload: res.data.data,
         });
       }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+export interface PinFavoriteDeed {
+  type: DeedTypes.pinFavorite;
+  payload: Favorite;
+}
+
+export const pinFavorite =
+  (favorite: Favorite) => async (dispatch: Dispatch) => {
+    try {
+      const { id, is_pinned } = favorite;
+      const res = await axios.put<ApiResponse<Favorite>>(`fav/pin/${id}`, {
+        is_pinned: !is_pinned,
+      });
+
+      const msgSubstr = !is_pinned ? 'Pinned Fav' : 'Unpinned Fav';
+
+      // dispatch notification here
+
+      dispatch<UpdateFavoriteDeed>({
+        type: DeedTypes.updateFavorite,
+        payload: res.data.data,
+      });
     } catch (err) {
       console.log(err);
     }

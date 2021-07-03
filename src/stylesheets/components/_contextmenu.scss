@@ -1,0 +1,45 @@
+.react-contextmenu {
+  font-size: 1rem;
+  outline: none;
+  appearance: none;
+  color: $text-light;
+  border: none;
+  transition: opacity 250ms ease-out !important;
+}
+
+.react-contextmenu.react-contextmenu--visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 9999;
+  position: absolute;
+  width: max-content;
+  top: calc(100%);
+  left: 50%;
+  background: rgba($color: $main-dark, $alpha: 0.7);
+  backdrop-filter: $blur-sm;
+  border-radius: 4px;
+}
+
+.react-contextmenu-item {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  padding-left: 0.25rem;
+  position: relative;
+  overflow: hidden;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 0.5rem;
+
+  @include transition(background);
+
+  &:hover {
+    border-color: $opaque-light;
+    background: $trans-light-xs;
+  }
+
+  & + .react-contextmenu-item {
+    border-top: 1px solid $opaque-light;
+  }
+}

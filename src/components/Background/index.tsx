@@ -15,7 +15,6 @@ type BackgroundProps = Record<string, unknown> &
 
 const Background = (props: BackgroundProps): ReactElement => {
   const { bg } = props;
-  console.log(bg);
   return (
     <div className="bg">
       <div
