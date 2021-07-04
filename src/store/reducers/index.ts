@@ -15,8 +15,14 @@ import notificationReducer from './notification';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'settings'],
+  whitelist: ['user', 'settings', 'favorite'],
 };
+
+/**
+ * TODO: https://github.com/edy/redux-persist-transform-filter
+ * persist nested pinnedFavorites only instead
+ * of entire favorites state
+ */
 
 const rootReducer = combineReducers<GlobalState>({
   favorite: favoriteReducer,

@@ -1,3 +1,53 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
+.nexus {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100%;
+  grid-gap: 2rem;
+  grid-template-rows: 1fr 1fr;
+
+  &__bookmarks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(64px, 64px));
+
+    .bookmark {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: $text-light;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 5px;
+
+      @include transition(all);
+
+      &:hover,
+      &:focus {
+        background: $trans-light-s;
+      }
+
+      p {
+        margin-left: 0.5rem;
+      }
+
+      svg {
+        margin-left: auto;
+      }
+
+      &__img {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+
+        img {
+          height: 32px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

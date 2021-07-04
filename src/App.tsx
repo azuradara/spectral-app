@@ -1,5 +1,5 @@
 import React from 'react';
-import Favorites from './components/Favorites';
+import Home from './components/Home';
 import Login from './components/Login';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthRoute from './lib/util/AuthRoute';
@@ -27,7 +27,7 @@ const App = (): JSX.Element => {
           >
             <div className="App_inner--router">
               <Switch>
-                <AuthRoute exact path="/" component={Favorites} />
+                <AuthRoute exact path="/" component={Home} />
                 <AuthRoute exact path="/bookmarks" component={Bookmarks} />
                 <Route exact path="/login" component={Login} />
               </Switch>

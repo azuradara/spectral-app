@@ -20,7 +20,7 @@ const Clock = (props: ComponentProps): ReactElement => {
 
   return (
     <div className="clock">
-      {Boolean(user) && <div className="clock-msg">{user?.username}</div>}
+      {Boolean(user) && <div className="clock__msg">{user?.username}</div>}
       <h2>
         {hour}:{minute}:{seconds}
       </h2>

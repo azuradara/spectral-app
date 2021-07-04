@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .ico-btn {
-  background: transparent;
+  background: none !important;
   border: 0;
   margin: 0 auto;
   display: block;
@@ -29,12 +29,12 @@
 
   &-default {
     backdrop-filter: $blur-sm;
-    border: 1px solid $opaque-light;
+    border: 1px solid $trans-light-s;
     background: $trans-light-xs;
 
     &:hover {
-      border-color: $opaque-light;
-      background: $trans-light-s;
+      border-color: $trans-light-s;
+      background: $trans-light-s !important;
     }
   }
 
