@@ -9,12 +9,15 @@ import {
   deleteFavorite,
   updateFavorite,
   pinFavorite,
+  openModal,
 } from '../../../../store/deeds';
+import EditBookmarkModal from '../../../ModalContent/EditBookmarkModal';
 
 const connector = connect(null, {
   deleteFavorite,
   updateFavorite,
   pinFavorite,
+  openModal,
 });
 
 type ComponentProps = {
@@ -23,7 +26,7 @@ type ComponentProps = {
 } & ConnectedProps<typeof connector>;
 
 const BookmarkSingleMenu = (props: ComponentProps): React.ReactElement => {
-  const { id, fav, deleteFavorite, pinFavorite } = props;
+  const { id, fav, deleteFavorite, pinFavorite, openModal } = props;
 
   return (
     <ContextMenu id={id}>
@@ -47,7 +50,14 @@ const BookmarkSingleMenu = (props: ComponentProps): React.ReactElement => {
         {fav.is_pinned ? 'Unpin' : 'Pin'}
       </MenuItem>
 
-      <MenuItem onClick={() => deleteFavorite(fav.id, fav.category_id)}>
+      <MenuItem
+        onClick={() =>
+          openModal({
+            title: 'Edit Bookmark',
+            content: <EditBookmarkModal fav={fav} />,
+          })
+        }
+      >
         <SettingsIcon
           style={{
             opacity: 0.5,
