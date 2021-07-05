@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { DeedTypes } from './deedTypes';
+import { DeedTypes } from '.';
 import { CreateNotificationDeed } from './notification';
 import {
   Category,
@@ -303,7 +303,7 @@ export const pinFavorite =
         is_pinned: !is_pinned,
       });
 
-      const msgSubstr = !is_pinned ? 'Pinned Fav' : 'Unpinned Fav';
+      const msgSubstr = !is_pinned ? 'Bookmark pinned.' : 'Bookmark unpinned.';
 
       // dispatch notification here
 
@@ -311,7 +311,7 @@ export const pinFavorite =
         type: DeedTypes.createNotification,
         payload: {
           title: 'Updated',
-          message: 'ae',
+          message: msgSubstr,
           type: 'default',
         },
       });

@@ -44,7 +44,7 @@ const BookmarkSingleMenu = (props: ComponentProps): React.ReactElement => {
             height: '1.2rem',
           }}
         />
-        Pin
+        {fav.is_pinned ? 'Unpin' : 'Pin'}
       </MenuItem>
 
       <MenuItem onClick={() => deleteFavorite(fav.id, fav.category_id)}>
