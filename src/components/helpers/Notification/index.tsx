@@ -25,7 +25,7 @@ const Notification = (props: NotificationProps) => {
       }
 
       await next({ opacity: 0, transform: 'translate(50%,0%)' });
-      await setShow(false);
+      setShow(false);
     },
   });
 

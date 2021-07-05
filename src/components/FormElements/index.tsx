@@ -5,6 +5,7 @@ import { useField, useFormikContext } from 'formik';
 import clsx from 'clsx';
 import { urlifyFile } from '../../lib/util/urlifyFile';
 import concoct_id from '../../lib/helpers/concoct_id';
+import mergeProps from 'merge-props';
 
 type DropZoneProps = {
   name: string;
@@ -141,4 +142,63 @@ const FormBtn: React.FC<any> = () => {
   );
 };
 
-export { DropZoneInput, SliderInput, FormBtn };
+interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+// eslint-disable-next-line react/prop-types
+const TextInput: React.FC<TextInputProps> = ({ label, name = '', ...rest }) => {
+  const id = React.useRef(concoct_id());
+  const [isFocused, setIsFocused] = React.useState<boolean>(false);
+  const [field, meta] = useField(name);
+
+  return (
+    <div
+      className={clsx(
+        'form-control',
+        Boolean(meta.touched && meta.error) && 'error'
+      )}
+    >
+      <div className="form-control__inner">
+        <label
+          className={clsx(
+            'form-control__label',
+            Boolean(field.value || isFocused) && 'hide'
+          )}
+          htmlFor={id.current}
+        >
+          {label}
+        </label>
+        <label
+          className={clsx(
+            'form-control__placeholder',
+            Boolean(field.value || !isFocused) && 'hide'
+          )}
+          htmlFor={id.current}
+        >
+          {rest.placeholder}
+        </label>
+        <input
+          {...mergeProps(field, rest, {
+            onBlur: () => {
+              setIsFocused(false);
+            },
+          })}
+          onFocus={() => {
+            setIsFocused(true);
+          }}
+          className="form-control__input"
+          placeholder=""
+          id={id.current}
+        />
+      </div>
+      {Boolean(meta.touched && meta.error) && (
+        <div className="form-control__error">
+          <span>{meta.error}</span>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export { DropZoneInput, SliderInput, FormBtn, TextInput };
