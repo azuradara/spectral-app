@@ -12,11 +12,17 @@
 
   .clock {
     &__msg {
-      // color: red;
+      font-size: 1.2rem;
+
+      &__name {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
     }
 
     h2 {
       font-size: 5rem;
+      line-height: 5.1rem;
     }
   }
 

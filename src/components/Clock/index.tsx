@@ -20,7 +20,12 @@ const Clock = (props: ComponentProps): ReactElement => {
 
   return (
     <div className="clock">
-      {Boolean(user) && <div className="clock__msg">{user?.username}</div>}
+      {/* TODO: Change this to user's display name instead of username when profile component is built */}
+      {Boolean(user?.username) && (
+        <div className="clock__msg">
+          Welcome, <span className="clock__msg__name">{user?.username}</span>
+        </div>
+      )}
       <h2>
         {hour}:{minute}:{seconds}
       </h2>
