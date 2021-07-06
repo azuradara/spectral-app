@@ -95,6 +95,7 @@ const SliderInput: React.FC<SliderProps> = ({
   label,
   min,
   max,
+  step,
 }: SliderProps) => {
   const [field, meta] = useField(name);
 
@@ -103,12 +104,17 @@ const SliderInput: React.FC<SliderProps> = ({
   return (
     <div className="form-control">
       <div className="form-control__slider">
-        <label htmlFor={id.current}>{label}</label>
+        <label htmlFor={id.current}>
+          {label}
+          <div className="form-control__slider__value">
+            Value: <span>{field.value}</span>
+          </div>
+        </label>
         <input
           type="range"
           max={max}
           min={min}
-          step={0.01}
+          step={step}
           id={id.current}
           {...field}
         />

@@ -14,6 +14,9 @@ const iValue = {
     opacity: 0,
     blur: 0,
   },
+  bookmarks: {
+    category_columns: 0,
+  },
 };
 
 const mapStateToProps = (state: GlobalState) => ({
@@ -39,6 +42,9 @@ const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
             }),
           opacity: yup.number().min(0).max(1),
           blur: yup.number().min(0).max(50),
+        }),
+        bookmarks: yup.object().shape({
+          category_columns: yup.number().min(1).max(5),
         }),
       })}
       onSubmit={(e) => {
@@ -66,9 +72,24 @@ const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
               label="Overlay Opacity"
               max={1}
               min={0}
+              step={0.01}
             />
 
-            <SliderInput name="bg.blur" label="Overlay Blur" max={50} min={0} />
+            <SliderInput
+              step={1}
+              name="bg.blur"
+              label="Overlay Blur"
+              max={50}
+              min={0}
+            />
+
+            <SliderInput
+              name="bookmarks.category_columns"
+              label="Category Columns"
+              max={5}
+              min={1}
+              step={1}
+            />
             <div className="form-control__submission">
               <FormBtn />
             </div>

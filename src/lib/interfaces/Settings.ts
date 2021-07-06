@@ -4,4 +4,7 @@ export interface Settings {
     opacity?: number;
     blur?: number;
   };
+  bookmarks: {
+    category_columns?: number;
+  };
 }

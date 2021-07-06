@@ -51,10 +51,7 @@ export interface AddCategoryDeed {
 export const addCategory =
   (formData: NewCategory) => async (dispatch: Dispatch) => {
     try {
-      const res = await axios.post<ApiResponse<Category>>(
-        'addcat endpoint',
-        formData
-      );
+      const res = await axios.post<ApiResponse<Category>>('/cat', formData);
 
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,

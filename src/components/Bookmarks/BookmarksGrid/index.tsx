@@ -3,11 +3,13 @@ import { connect, ConnectedProps } from 'react-redux';
 import { Category, GlobalState } from '../../../lib/interfaces';
 import BookmarkList from '../BookmarkList';
 import { fetchCategories } from '../../../store/deeds';
+import Masonry from 'react-masonry-css';
 
 const mapStatetoProps = (state: GlobalState) => {
   return {
     categories: state.favorite.categories,
     seeking: state.favorite.seeking,
+    columns: state.settings.settings.bookmarks.category_columns,
   };
 };
 
@@ -17,6 +19,8 @@ type ComponentProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
 
 const BookmarksGrid = (props: ComponentProps): React.ReactElement => {
+  const { columns } = props;
+
   React.useEffect(() => {
     if (props.categories.length === 0) props.fetchCategories();
   }, [props.fetchCategories]);
@@ -24,13 +28,17 @@ const BookmarksGrid = (props: ComponentProps): React.ReactElement => {
   if (props.categories.length === 0) return <p>no bookmarks</p>;
 
   return (
-    <div className="bookmarks-grid">
+    <Masonry
+      className="bookmarks-grid"
+      breakpointCols={columns}
+      columnClassName="bookmarks-grid__category"
+    >
       {props.categories.map(
         (cat: Category): React.ReactElement => (
           <BookmarkList category={cat} key={cat.id} />
         )
       )}
-    </div>
+    </Masonry>
   );
 };
 

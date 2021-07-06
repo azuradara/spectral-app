@@ -13,6 +13,9 @@ const initState: State = {
       opacity: 0,
       blur: 0,
     },
+    bookmarks: {
+      category_columns: 2,
+    },
   },
 };
 

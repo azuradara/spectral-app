@@ -23,7 +23,7 @@ const App = (): JSX.Element => {
           <Scrollbar
             autoHeight
             autoHeightMin={window.innerHeight}
-            height={window.innerHeight}
+            height="100vw"
           >
             <div className="App_inner--router">
               <Switch>

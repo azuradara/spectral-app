@@ -68,6 +68,22 @@
       flex-flow: column;
       padding: 1rem 2rem;
 
+      label {
+        display: flex;
+        justify-content: space-between;
+
+        div {
+          color: $trans-light-md;
+          font-size: 0.8rem;
+
+          span {
+            color: $text-light;
+            font-size: 1rem;
+            font-weight: 500;
+          }
+        }
+      }
+
       input {
         -webkit-appearance: none;
         appearance: none;
