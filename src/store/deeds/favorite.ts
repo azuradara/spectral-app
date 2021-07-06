@@ -84,18 +84,16 @@ export interface AddFavoriteDeed {
 export const addFavorite =
   (formData: NewFavorite) => async (dispatch: Dispatch) => {
     try {
-      const res = await axios.post<ApiResponse<Favorite>>(
-        'addfav endpoint',
-        formData
-      );
+      const res = await axios.post<ApiResponse<Favorite>>('/fav', formData);
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
         payload: {
           title: 'success',
-          message: `Favorite ${formData.title} created`,
+          message: `Bookmark ${formData.title} created`,
           type: 'default',
         },
       });
+      console.log(res.data.data);
 
       dispatch<AddFavoriteDeed>({
         type: DeedTypes.addFavorite,
@@ -150,7 +148,7 @@ export interface DeleteCategoryDeed {
 
 export const deleteCategory = (id: number) => async (dispatch: Dispatch) => {
   try {
-    await axios.delete<ApiResponse<Category>>(`deletecat endpoint ${id}`);
+    await axios.delete<ApiResponse<Category>>(`/cat/${id}`);
 
     dispatch<CreateNotificationDeed>({
       type: DeedTypes.createNotification,
@@ -181,14 +179,14 @@ export const updateCategory =
   (id: number, formData: NewCategory) => async (dispatch: Dispatch) => {
     try {
       const res = await axios.put<ApiResponse<Category>>(
-        `updateCat endpoint ${id}`,
+        `/cat/${id}`,
         formData
       );
 
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
         payload: {
-          title: 'success',
+          title: 'Success',
           message: `Category ${formData.name} updated`,
           type: 'default',
         },

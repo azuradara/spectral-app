@@ -1,27 +1,24 @@
 import { Formik, Form } from 'formik';
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
-import { Favorite } from '../../../lib/interfaces';
 import * as yup from 'yup';
-import { reject, equals } from 'ramda';
 import { TextInput, FormBtn } from '../../FormElements';
-import { closeModal, updateFavorite } from '../../../store/deeds';
+import { addFavorite, closeModal } from '../../../store/deeds';
 
-const connector = connect(null, { closeModal, updateFavorite });
+const connector = connect(null, { closeModal, addFavorite });
 
-type EditBookmarkModalProps = {
-  fav: Favorite;
+type AddBookmarkModalProps = {
+  category_id: string | number;
 } & ConnectedProps<typeof connector>;
 
 const iValue = {
+  category_id: '',
   title: '',
   url: '',
 };
 
-const EditBookmarkModal = (
-  props: EditBookmarkModalProps
-): React.ReactElement => {
-  const { closeModal, updateFavorite, fav } = props;
+const AddBookmarkModal = (props: AddBookmarkModalProps): React.ReactElement => {
+  const { closeModal, addFavorite, category_id } = props;
   return (
     <Formik
       validationSchema={yup.object().shape({
@@ -29,15 +26,14 @@ const EditBookmarkModal = (
         url: yup.string().url(),
       })}
       onSubmit={(e) => {
-        const updatedFav: any = (({ title, url }) => ({ title, url }))(e);
-        updatedFav.category_id = fav.category_id;
+        const nuFav: any = (({ title, url }) => ({ title, url }))(e);
+        nuFav.category_id = category_id;
 
-        updateFavorite(fav.id, updatedFav, fav.category_id);
+        addFavorite(nuFav);
         closeModal();
       }}
       initialValues={{
         ...iValue,
-        ...reject(equals(''))(fav as any),
       }}
     >
       {(formik) => {
@@ -55,4 +51,4 @@ const EditBookmarkModal = (
   );
 };
 
-export default connector(EditBookmarkModal);
+export default connector(AddBookmarkModal);

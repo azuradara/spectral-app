@@ -110,18 +110,19 @@ const deleteCategory = (state: State, deed: DeleteCategoryDeed): State => {
 };
 
 const updateCategory = (state: State, deed: UpdateCategoryDeed): State => {
-  const tempCat = [...state.categories];
-  const catAffected = tempCat.find(
+  const catIdx = state.categories.findIndex(
     (category: Category) => category.id === deed.payload.id
   );
 
-  if (catAffected) {
-    catAffected.name = deed.payload.name;
-  }
-
   return {
     ...state,
-    categories: tempCat,
+    categories: [
+      ...state.categories.slice(0, catIdx),
+      {
+        ...deed.payload,
+      },
+      ...state.categories.slice(catIdx + 1),
+    ],
   };
 };
 

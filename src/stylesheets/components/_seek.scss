@@ -5,6 +5,11 @@
   justify-content: flex-end;
   flex-flow: column;
 
+  &--not-home {
+    justify-content: flex-start;
+    height: fit-content;
+  }
+
   .clock {
     &__msg {
       // color: red;

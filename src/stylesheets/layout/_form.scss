@@ -7,6 +7,15 @@
   &-control {
     margin-top: 1rem;
 
+    &__question {
+      font-size: 1.2rem;
+    }
+    &__warning {
+      color: #f72119;
+      margin-top: 1rem;
+      padding-bottom: 1.5rem;
+    }
+
     &__submission {
       margin-top: 3rem;
     }
