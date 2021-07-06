@@ -18,27 +18,35 @@ const BookmarkSingle = (props: ComponentProps): React.ReactElement => {
 
   return (
     <>
-      <ContextMenuTrigger id={ctxId}>
-        <a
-          className="bookmarks-list__favorite"
-          key={`bm_${fav.id}`}
-          rel="noreferrer"
-          href={redir}
-        >
-          <div className="bookmarks-list__favorite__img">
-            <img src={get_url_ico(fav.url)} alt={fav.title} />
-          </div>
-          <p>{fav.title}</p>
-          {Boolean(fav.is_pinned) && (
-            <PinnedIcon
-              style={{
-                opacity: 0.3,
-                transform: 'rotate(45deg) scale(0.8)',
-              }}
-            />
-          )}
-        </a>
-      </ContextMenuTrigger>
+      <div
+        onDragStart={(e) => {
+          console.log('ae');
+          e.dataTransfer.setData('fav', JSON.stringify(fav));
+        }}
+        style={{ userSelect: 'all' }}
+      >
+        <ContextMenuTrigger id={ctxId} holdToDisplay={-1}>
+          <a
+            className="bookmarks-list__favorite"
+            key={`bm_${fav.id}`}
+            rel="noreferrer"
+            href={redir}
+          >
+            <div className="bookmarks-list__favorite__img">
+              <img src={get_url_ico(fav.url)} alt={fav.title} />
+            </div>
+            <p>{fav.title}</p>
+            {Boolean(fav.is_pinned) && (
+              <PinnedIcon
+                style={{
+                  opacity: 0.3,
+                  transform: 'rotate(45deg) scale(0.8)',
+                }}
+              />
+            )}
+          </a>
+        </ContextMenuTrigger>
+      </div>
 
       <BookmarkSingleMenu id={ctxId} fav={fav} />
     </>

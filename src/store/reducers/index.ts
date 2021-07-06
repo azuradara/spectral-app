@@ -15,7 +15,7 @@ import notificationReducer from './notification';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'settings', 'favorite'],
+  whitelist: ['user', 'settings'],
 };
 
 /**

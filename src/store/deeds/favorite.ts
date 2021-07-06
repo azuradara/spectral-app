@@ -250,10 +250,13 @@ export const updateFavorite =
   (favId: number, formData: NewFavorite, prevCatId: number) =>
   async (dispatch: Dispatch) => {
     try {
-      const res = await axios.put<ApiResponse<Favorite>>(
-        `updatefav endpoint ${favId}`,
-        formData
-      );
+      const fav = (({ title, url, category_id }) => ({
+        title,
+        url,
+        category_id,
+      }))(formData);
+
+      const res = await axios.put<ApiResponse<Favorite>>(`/fav/${favId}`, fav);
 
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
@@ -265,16 +268,17 @@ export const updateFavorite =
       });
 
       const catChanged = formData.category_id !== prevCatId;
+      console.log(catChanged);
+
+      dispatch<DeleteFavoriteDeed>({
+        type: DeedTypes.deleteFavorite,
+        payload: {
+          favId,
+          catId: prevCatId,
+        },
+      });
 
       if (catChanged) {
-        dispatch<DeleteFavoriteDeed>({
-          type: DeedTypes.deleteFavorite,
-          payload: {
-            favId,
-            catId: prevCatId,
-          },
-        });
-
         dispatch<AddFavoriteDeed>({
           type: DeedTypes.addFavorite,
           payload: res.data.data,
