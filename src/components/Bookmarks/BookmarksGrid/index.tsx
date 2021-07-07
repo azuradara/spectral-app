@@ -9,7 +9,7 @@ const mapStatetoProps = (state: GlobalState) => {
   return {
     categories: state.favorite.categories,
     seeking: state.favorite.seeking,
-    columns: state.settings.settings.bookmarks.category_columns,
+    columns: state.settings.settings.bookmarks?.category_columns,
   };
 };
 
