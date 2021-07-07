@@ -9,6 +9,7 @@ import { logoutUser, openModal } from '../../store/deeds';
 import SettingsIcon from '../../Icons/SettingsIcon';
 import SettingsModal from '../ModalContent/SettingsModal';
 import BookmarkIcon from '../../Icons/BookmarkIcon';
+import TaskIcon from '../../Icons/TaskIcon';
 
 const mapStateToProps = (state: GlobalState) => {
   return {
@@ -34,6 +35,10 @@ const Sidebar = (props: ComponentProps): ReactElement => {
 
         <IcoBtn onClick={() => push('/bookmarks')}>
           <BookmarkIcon />
+        </IcoBtn>
+
+        <IcoBtn onClick={() => push('/tasks')}>
+          <TaskIcon />
         </IcoBtn>
       </div>
       <div className="sidebar-inner__single">

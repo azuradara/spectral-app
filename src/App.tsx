@@ -10,6 +10,7 @@ import Background from './components/Background';
 import Bookmarks from './components/Bookmarks';
 import Scrollbar from './components/Scrollbar';
 import NotificationDispatcher from './components/helpers/NotificationDispatcher';
+import Tasks from './components/Tasks';
 
 const App = (): JSX.Element => {
   return (
@@ -29,6 +30,7 @@ const App = (): JSX.Element => {
               <Switch>
                 <AuthRoute exact path="/" component={Home} />
                 <AuthRoute exact path="/bookmarks" component={Bookmarks} />
+                <AuthRoute exact path="/tasks" component={Tasks} />
                 <Route exact path="/login" component={Login} />
               </Switch>
             </div>
