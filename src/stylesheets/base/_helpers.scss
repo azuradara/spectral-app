@@ -67,6 +67,10 @@
     cursor: pointer;
     padding: 1rem;
     padding-right: 3rem;
+    // text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    opacity: 0.5;
 
     &__arrow {
       position: absolute;
@@ -87,22 +91,42 @@
     width: max-content;
     top: calc(100%);
     left: 50%;
-    background: $trans-light-xs;
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba($color: $main-dark, $alpha: 0.7);
     backdrop-filter: $blur-sm;
-    border-radius: 0.2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    appearance: none;
+    color: $text-light;
+    border: none;
+    transition: opacity 250ms ease-out !important;
 
     @include transition(width);
 
     &__single {
       cursor: pointer;
-      padding: 0.5rem 1rem;
+      padding: 1rem 2rem;
+      padding-left: 1rem;
       position: relative;
       overflow: hidden;
+      display: flex !important;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 1rem;
+      min-width: fit-content;
+      width: 10rem;
+      // text-transform: uppercase;
+      font-weight: 700;
+      max-width: 100%;
 
       @include transition(background);
 
       &:hover {
-        background: $trans-light-s;
+        border-color: $opaque-light;
+        background: $trans-light-xs;
       }
 
       & + .select-opts__single {

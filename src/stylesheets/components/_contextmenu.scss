@@ -22,15 +22,20 @@
 
 .react-contextmenu-item {
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  padding-left: 0.25rem;
+  padding: 1rem 2rem;
+  padding-left: 1rem;
   position: relative;
   overflow: hidden;
   display: flex !important;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  gap: 0.5rem;
+  gap: 1rem;
+  min-width: fit-content;
+  width: 15rem;
+  // text-transform: uppercase;
+  font-weight: 700;
+  max-width: 100%;
 
   @include transition(background);
 
