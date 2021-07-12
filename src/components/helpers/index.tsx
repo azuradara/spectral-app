@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
+
 import clsx from 'clsx';
+import mergeProps from 'merge-props';
 import useMeasure from 'react-use-measure';
 import { useSpring, a } from '@react-spring/web';
 
-import mergeProps from 'merge-props';
-import yeetChildren from '#lib/util/omitChildren';
-
-import useExternalClick from '#lib/hooks/useExternalClick';
-import useBtnHelper from '#lib/hooks/useBtnHelper';
+import { prune_children } from '#utils';
+import useBtnHelper from '#hooks/useButton';
+import useExternalClick from '#hooks/useExternalClick';
 
 import ArrowIcon from '#components/Icons/ArrowIcon';
 
@@ -20,7 +20,7 @@ export const IcoBtn = (
   return (
     <button
       type="button"
-      {...mergeProps(yeetChildren(props), {
+      {...mergeProps(prune_children(props), {
         className: 'ico-btn btn btn-default',
         onClick,
         children: el,

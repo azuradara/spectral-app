@@ -1,9 +1,9 @@
 import React, { ReactElement, useCallback, useState } from 'react';
 import CSS from 'csstype';
-import yeetFromListWhereId from '#lib/util/yeetFromListWhereId';
-import schleep from '#lib/helpers/schleep';
-import { HAMON_DELAY } from '#lib/fax';
-import concoct_id from '#lib/helpers/concoct_id';
+import { delete_from_list_where } from '#utils';
+import { sleep } from '#utils';
+import { HAMON_DELAY } from '#utils';
+import { generate_id } from '#utils';
 
 interface HamonProps {
   style: CSS.Properties;
@@ -30,7 +30,7 @@ const useBtnHelper = (): [
         top: `${y - top}px`,
       };
 
-      const id = concoct_id();
+      const id = generate_id();
 
       setHamon((hamonState) => {
         const newHamon = [
@@ -42,8 +42,8 @@ const useBtnHelper = (): [
         return newHamon;
       });
 
-      schleep(HAMON_DELAY).then(() => {
-        setHamon(yeetFromListWhereId(id));
+      sleep(HAMON_DELAY).then(() => {
+        setHamon(delete_from_list_where(id));
       });
     },
     [setHamon]

@@ -2,7 +2,7 @@ import React from 'react';
 import Home from '#components/Home';
 import Login from '#components/Login';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import AuthRoute from '#lib/hooks/AuthRoute';
+import AuthRoute from '#hooks/AuthRoute';
 
 import Sidebar from '#components/Sidebar';
 import Modal from '#components/Modal';

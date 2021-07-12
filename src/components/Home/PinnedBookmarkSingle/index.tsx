@@ -1,6 +1,6 @@
 import React from 'react';
 import { Favorite } from '#interfaces';
-import { parse_url } from '#lib/util/parse_url';
+import { parse_url } from '#utils';
 import { get_url_ico } from '#store/deeds/get_url_ico';
 
 import { ContextMenuTrigger } from 'react-contextmenu';

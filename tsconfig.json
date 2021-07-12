@@ -17,10 +17,12 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "#interfaces": ["src/lib/interfaces"],
       "#store/*": ["src/store/*"],
       "#components/*": ["src/components/*"],
-      "#lib/*": ["src/lib/*"]
+      "#hooks/*": ["./src/helpers/hooks/*"],
+
+      "#interfaces": ["src/lib/interfaces"],
+      "#utils": ["./src/helpers/utils"]
     }
   },
   "include": ["src"]
