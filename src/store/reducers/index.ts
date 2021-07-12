@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { GlobalState } from '../../lib/interfaces/GlobalState';
+import { GlobalState } from '$interfaces';
 
 import { persistReducer } from 'redux-persist';
 
