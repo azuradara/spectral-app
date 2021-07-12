@@ -36,14 +36,14 @@ const ArrowIcon = (props: ArrowProps): React.ReactElement => {
     <animated.div style={arrSpring}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        height="24px"
+        id="Bold"
         viewBox="0 0 24 24"
+        fill="#ffffff"
         width="24px"
-        fill="#FFFFFF"
+        height="24px"
         {...props}
       >
-        <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
-        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+        <path d="M19.061,7.854a1.5,1.5,0,0,0-2.122,0l-4.586,4.585a.5.5,0,0,1-.707,0L7.061,7.854A1.5,1.5,0,0,0,4.939,9.975l4.586,4.586a3.5,3.5,0,0,0,4.95,0l4.586-4.586A1.5,1.5,0,0,0,19.061,7.854Z" />
       </svg>
     </animated.div>
   );

@@ -40,7 +40,7 @@ const BookmarkSingle = (props: ComponentProps): React.ReactElement => {
               <PinnedIcon
                 style={{
                   opacity: 0.3,
-                  transform: 'rotate(45deg) scale(0.8)',
+                  width: '18px',
                 }}
               />
             )}

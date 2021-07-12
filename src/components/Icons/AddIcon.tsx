@@ -3,22 +3,14 @@ import * as React from 'react';
 const AddIcon = (props: React.SVGProps<SVGSVGElement>): React.ReactElement => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      enableBackground="new 0 0 24 24"
-      height="24px"
+      id="Layer_1"
+      height="512"
       viewBox="0 0 24 24"
-      width="24px"
-      fill="#FFFFFF"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="#ffffff"
       {...props}
     >
-      <g>
-        <rect fill="none" height="24" width="24" />
-      </g>
-      <g>
-        <g>
-          <path d="M19,13h-6v6h-2v-6H5v-2h6V5h2v6h6V13z" />
-        </g>
-      </g>
+      <path d="m12 0a12 12 0 1 0 12 12 12.013 12.013 0 0 0 -12-12zm0 21a9 9 0 1 1 9-9 9.01 9.01 0 0 1 -9 9zm5-9a1.5 1.5 0 0 1 -1.5 1.5h-2v2a1.5 1.5 0 0 1 -3 0v-2h-2a1.5 1.5 0 0 1 0-3h2v-2a1.5 1.5 0 0 1 3 0v2h2a1.5 1.5 0 0 1 1.5 1.5z" />
     </svg>
   );
 };
