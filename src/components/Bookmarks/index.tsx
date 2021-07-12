@@ -1,9 +1,9 @@
 import React from 'react';
-import BookmarksGrid from './BookmarksGrid';
-import SeekBar from '../Seek';
+import BookmarksGrid from '#components/Bookmarks/BookmarksGrid';
+import SeekBar from '#components/Seek';
 import { ContextMenuTrigger } from 'react-contextmenu';
-import concoct_id from '../../lib/helpers/concoct_id';
-import CtxMenu from './CtxMenu';
+import concoct_id from '#lib/helpers/concoct_id';
+import CtxMenu from '#components/Bookmarks/CtxMenu';
 
 const Bookmarks = (): React.ReactElement => {
   const ctxId = `ctx_bkpage_${concoct_id()}`;

@@ -2,9 +2,9 @@ import { Formik, Form } from 'formik';
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import * as yup from 'yup';
-import { TextInput, FormBtn } from '../../FormElements';
-import { addCategory, closeModal } from '../../../store/deeds';
-import { NewCategory } from '../../../lib/interfaces';
+import { TextInput, FormBtn } from '#components/FormElements';
+import { addCategory, closeModal } from '#store/deeds';
+import { NewCategory } from '#interfaces';
 
 const connector = connect(null, { closeModal, addCategory });
 

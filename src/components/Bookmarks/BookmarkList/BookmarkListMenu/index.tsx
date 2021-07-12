@@ -1,14 +1,14 @@
 import { connect, ConnectedProps } from 'react-redux';
 import * as React from 'react';
-import { Category } from '../../../../lib/interfaces';
+import { Category } from '#interfaces';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
-import AddIcon from '../../../../Icons/AddIcon';
-import { openModal } from '../../../../store/deeds';
-import EditCategoryModal from '../../../ModalContent/EditCategoryModal';
-import SettingsIcon from '../../../../Icons/SettingsIcon';
-import AddBookmarkModal from '../../../ModalContent/AddBookmarkModal';
-import TrashIcon from '../../../../Icons/TrashIcon';
-import DeleteCategoryModal from '../../../ModalContent/DeleteCategoryModal';
+import AddIcon from '#components/Icons/AddIcon';
+import { openModal } from '#store/deeds';
+import EditCategoryModal from '#components/ModalContent/EditCategoryModal';
+import SettingsIcon from '#components/Icons/SettingsIcon';
+import AddBookmarkModal from '#components/ModalContent/AddBookmarkModal';
+import TrashIcon from '#components/Icons/TrashIcon';
+import DeleteCategoryModal from '#components/ModalContent/DeleteCategoryModal';
 
 const connector = connect(null, { openModal });
 

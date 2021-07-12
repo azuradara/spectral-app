@@ -1,7 +1,7 @@
 import React from 'react';
-import { deleteCategory, closeModal } from '../../../store/deeds';
+import { deleteCategory, closeModal } from '#store/deeds';
 import { ConnectedProps, connect } from 'react-redux';
-import { Category } from '../../../lib/interfaces';
+import { Category } from '#interfaces';
 
 const connector = connect(null, { closeModal, deleteCategory });
 

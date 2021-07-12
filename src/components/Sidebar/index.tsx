@@ -1,15 +1,15 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router';
-import { IcoBtn } from '../helpers';
-import LogoutIcon from '../../Icons/LogoutIcon';
-import FavoritesIcon from '../../Icons/FavoritesIcon';
+import { IcoBtn } from '#components/helpers';
+import LogoutIcon from '#components/Icons/LogoutIcon';
+import FavoritesIcon from '#components/Icons/FavoritesIcon';
 import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState } from '../../lib/interfaces';
-import { logoutUser, openModal } from '../../store/deeds';
-import SettingsIcon from '../../Icons/SettingsIcon';
-import SettingsModal from '../ModalContent/SettingsModal';
-import BookmarkIcon from '../../Icons/BookmarkIcon';
-import TaskIcon from '../../Icons/TaskIcon';
+import { GlobalState } from '#interfaces';
+import { logoutUser, openModal } from '#store/deeds';
+import SettingsIcon from '#components/Icons/SettingsIcon';
+import SettingsModal from '#components/ModalContent/SettingsModal';
+import BookmarkIcon from '#components/Icons/BookmarkIcon';
+import TaskIcon from '#components/Icons/TaskIcon';
 
 const mapStateToProps = (state: GlobalState) => {
   return {

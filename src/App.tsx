@@ -1,16 +1,16 @@
 import React from 'react';
-import Home from './components/Home';
-import Login from './components/Login';
+import Home from '#components/Home';
+import Login from '#components/Login';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import AuthRoute from './lib/util/AuthRoute';
+import AuthRoute from '#lib/hooks/AuthRoute';
 
-import Sidebar from './components/Sidebar';
-import Modal from './components/Modal';
-import Background from './components/Background';
-import Bookmarks from './components/Bookmarks';
-import Scrollbar from './components/Scrollbar';
-import NotificationDispatcher from './components/helpers/NotificationDispatcher';
-import Tasks from './components/Tasks';
+import Sidebar from '#components/Sidebar';
+import Modal from '#components/Modal';
+import Background from '#components/Background';
+import Bookmarks from '#components/Bookmarks';
+import Scrollbar from '#components/Scrollbar';
+import NotificationDispatcher from '#components/helpers/NotificationDispatcher';
+import Tasks from '#components/Tasks';
 
 const App = (): JSX.Element => {
   return (

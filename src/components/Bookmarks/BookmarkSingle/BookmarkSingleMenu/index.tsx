@@ -1,17 +1,17 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 import { connect, ConnectedProps } from 'react-redux';
-import PinnedIcon from '../../../../Icons/PinnedIcon';
-import SettingsIcon from '../../../../Icons/SettingsIcon';
-import TrashIcon from '../../../../Icons/TrashIcon';
-import { Favorite } from '../../../../lib/interfaces';
+import PinnedIcon from '#components/Icons/PinnedIcon';
+import SettingsIcon from '#components/Icons/SettingsIcon';
+import TrashIcon from '#components/Icons/TrashIcon';
+import { Favorite } from '#interfaces';
 import {
   deleteFavorite,
   updateFavorite,
   pinFavorite,
   openModal,
-} from '../../../../store/deeds';
-import EditBookmarkModal from '../../../ModalContent/EditBookmarkModal';
+} from '#store/deeds';
+import EditBookmarkModal from '#components/ModalContent/EditBookmarkModal';
 
 const connector = connect(null, {
   deleteFavorite,

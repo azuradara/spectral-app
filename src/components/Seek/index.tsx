@@ -1,6 +1,6 @@
 import React, { ReactElement, useCallback, useRef } from 'react';
 import { keys } from 'ramda';
-import { Slc } from '../helpers';
+import { Slc } from '#components/helpers';
 
 interface SeekProviders {
   Google: (e: string) => string;

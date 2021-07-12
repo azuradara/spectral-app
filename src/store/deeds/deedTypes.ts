@@ -26,7 +26,7 @@ import {
 
   // Settings
   UpdateSettingsDeed,
-} from './';
+} from '#store/deeds';
 
 export enum DeedTypes {
   // Categories

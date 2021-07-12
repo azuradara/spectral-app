@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { DeedTypes } from '.';
-import { NewNotification } from '../../lib/interfaces';
+import { DeedTypes } from '#store/deeds';
+import { NewNotification } from '#interfaces';
 
 export interface CreateNotificationDeed {
   type: DeedTypes.createNotification;

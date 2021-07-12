@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import useClock from '../../lib/hooks/useClock';
-import { GlobalState } from '../../lib/interfaces';
+import useClock from '#lib/hooks/useClock';
+import { GlobalState } from '#interfaces';
 import { connect, ConnectedProps } from 'react-redux';
 
 const mapStateToProps = (state: GlobalState) => {

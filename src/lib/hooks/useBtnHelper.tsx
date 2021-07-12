@@ -1,9 +1,9 @@
 import React, { ReactElement, useCallback, useState } from 'react';
 import CSS from 'csstype';
-import yeetFromListWhereId from '../util/yeetFromListWhereId';
-import schleep from '../helpers/schleep';
-import { HAMON_DELAY } from '../fax';
-import concoct_id from '../helpers/concoct_id';
+import yeetFromListWhereId from '#lib/util/yeetFromListWhereId';
+import schleep from '#lib/helpers/schleep';
+import { HAMON_DELAY } from '#lib/fax';
+import concoct_id from '#lib/helpers/concoct_id';
 
 interface HamonProps {
   style: CSS.Properties;

@@ -3,8 +3,8 @@ import { useField, useFormikContext } from 'formik';
 // import mergeProps from 'merge-props';
 // import { useSpring, animated } from '@react-spring/web';
 import clsx from 'clsx';
-import { urlifyFile } from '../../lib/util/urlifyFile';
-import concoct_id from '../../lib/helpers/concoct_id';
+import { urlifyFile } from '#lib/util/urlifyFile';
+import concoct_id from '#lib/helpers/concoct_id';
 import mergeProps from 'merge-props';
 
 type DropZoneProps = {

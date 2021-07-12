@@ -1,11 +1,11 @@
 import React from 'react';
-import { Favorite } from '../../../lib/interfaces';
-import { parse_url } from '../../../lib/util/parse_url';
-import { get_url_ico } from '../../../store/deeds/get_url_ico';
-import PinnedIcon from '../../../Icons/PinnedIcon';
+import { Favorite } from '#interfaces';
+import { parse_url } from '#lib/util/parse_url';
+import { get_url_ico } from '#store/deeds/get_url_ico';
+import PinnedIcon from '#components/Icons/PinnedIcon';
+import BookmarkSingleMenu from '#components/Bookmarks/BookmarkSingle/BookmarkSingleMenu';
 
 import { ContextMenuTrigger } from 'react-contextmenu';
-import BookmarkSingleMenu from './BookmarkSingleMenu';
 
 type ComponentProps = {
   fav: Favorite;
