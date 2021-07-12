@@ -1,4 +1,4 @@
-import { Model } from './Api';
+import { Model } from '#interfaces';
 
 export interface User extends Model {
   user: {

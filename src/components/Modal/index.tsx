@@ -1,12 +1,12 @@
 import React from 'react';
-import { IcoBtn } from '../helpers';
-import CloseIcon from '../../Icons/CloseIcon';
+import { IcoBtn } from '#components/helpers';
+import CloseIcon from '#components/Icons/CloseIcon';
 import { connect, ConnectedProps } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
-import { GlobalState } from '$interfaces';
-import { closeModal } from '../../store/deeds';
-import Scrollbar from '../Scrollbar';
-import useExternalClick from '../../lib/hooks/useExternalClick';
+import { GlobalState } from '#interfaces';
+import { closeModal } from '#store/deeds';
+import Scrollbar from '#components/Scrollbar';
+import useExternalClick from '#lib/hooks/useExternalClick';
 
 const mapStateToProps = (state: GlobalState) => ({
   modal: state.modal,

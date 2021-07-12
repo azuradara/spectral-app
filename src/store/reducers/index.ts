@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 
-import { GlobalState } from '$interfaces';
+import { GlobalState } from '#interfaces';
 
 import { persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
 
-import AuthReducer from './auth';
-import favoriteReducer from './favorite';
-import ModalReducer from './modal';
-import SettingsReducer from './settings';
-import notificationReducer from './notification';
+import AuthReducer from '#store/reducers/auth';
+import favoriteReducer from '#store/reducers/favorite';
+import ModalReducer from '#store/reducers/modal';
+import SettingsReducer from '#store/reducers/settings';
+import notificationReducer from '#store/reducers/notification';
 
 const persistConfig = {
   key: 'root',

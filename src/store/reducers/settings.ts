@@ -1,5 +1,5 @@
-import { DeedTypes, Deed } from '../deeds';
-import { Settings } from '$interfaces';
+import { DeedTypes, Deed } from '#store/deeds';
+import { Settings } from '#interfaces';
 
 // Just to keep consistency
 export interface State {

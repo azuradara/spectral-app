@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState, Notification as _Notif } from '$interfaces';
-import Notification from '../Notification';
+import { GlobalState, Notification as _Notification } from '#interfaces';
+import Notification from '#components/helpers/Notification';
 
 const mapStateToProps = (state: GlobalState) => {
   return {
@@ -20,7 +20,7 @@ const NotificationDispatcher = (props: ComponentProps): React.ReactElement => {
       className="notification-dispatcher"
       style={{ height: `${props.notifications.length * 75}px` }}
     >
-      {props.notifications.map((notification: _Notif) => {
+      {props.notifications.map((notification: _Notification) => {
         const { title, message, id, type } = notification;
 
         return (

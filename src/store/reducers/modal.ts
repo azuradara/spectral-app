@@ -1,5 +1,5 @@
-import { DeedTypes, Deed, OpenModalDeed } from '../deeds';
-import { Modal } from '$interfaces';
+import { DeedTypes, Deed, OpenModalDeed } from '#store/deeds';
+import { Modal } from '#interfaces';
 
 export interface State {
   modal: Modal | null;

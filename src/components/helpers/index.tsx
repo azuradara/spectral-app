@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import mergeProps from 'merge-props';
-import yeetChildren from '../../lib/util/omitChildren';
-import useBtnHelper from '../../lib/hooks/useBtnHelper';
-import useMeasure from 'react-use-measure';
-import useExternalClick from '../../lib/hooks/useExternalClick';
-import { useSpring, a } from '@react-spring/web';
 import clsx from 'clsx';
-import ArrowIcon from '../../Icons/ArrowIcon';
-import { connect, ConnectedProps } from 'react-redux';
-import { clearNotification } from '../../store/deeds';
+import useMeasure from 'react-use-measure';
+import { useSpring, a } from '@react-spring/web';
+
+import mergeProps from 'merge-props';
+import yeetChildren from '#lib/util/omitChildren';
+
+import useExternalClick from '#lib/hooks/useExternalClick';
+import useBtnHelper from '#lib/hooks/useBtnHelper';
+
+import ArrowIcon from '#components/Icons/ArrowIcon';
 
 export const IcoBtn = (
   props: React.ButtonHTMLAttributes<any>

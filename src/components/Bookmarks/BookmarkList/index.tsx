@@ -1,11 +1,11 @@
 import React from 'react';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { connect, ConnectedProps } from 'react-redux';
-import { Category, Favorite } from '$interfaces';
-import { updateFavorite } from '../../../store/deeds';
+import { Category, Favorite } from '#interfaces';
+import { updateFavorite } from '#store/deeds';
 
-import BookmarkSingle from '../BookmarkSingle';
-import BookmarkListMenu from './BookmarkListMenu';
+import BookmarkSingle from '#components/Bookmarks/BookmarkSingle';
+import BookmarkListMenu from '#components/Bookmarks/BookmarkList/BookmarkListMenu';
 
 const connector = connect(null, { updateFavorite });
 

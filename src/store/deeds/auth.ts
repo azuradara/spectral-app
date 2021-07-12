@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 
 import { DeedTypes } from '.';
 import { CreateNotificationDeed } from '.';
-import { ApiResponse, LoginData, User } from '$interfaces';
+import { ApiResponse, LoginData, User } from '#interfaces';
 
 // LOGIN USER
 

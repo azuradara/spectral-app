@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
-import { Category } from '$interfaces';
-import { closeModal, updateCategory } from '../../../store/deeds';
+import { Category } from '#interfaces';
+import { closeModal, updateCategory } from '#store/deeds';
 import * as yup from 'yup';
 import { reject, equals } from 'ramda';
-import { TextInput, FormBtn } from '../../FormElements';
+import { TextInput, FormBtn } from '#components/FormElements';
 import { Formik, Form } from 'formik';
 
 const connector = connect(null, { closeModal, updateCategory });

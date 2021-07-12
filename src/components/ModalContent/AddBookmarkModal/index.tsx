@@ -2,8 +2,8 @@ import { Formik, Form } from 'formik';
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import * as yup from 'yup';
-import { TextInput, FormBtn } from '../../FormElements';
-import { addFavorite, closeModal } from '../../../store/deeds';
+import { TextInput, FormBtn } from '#components/FormElements';
+import { addFavorite, closeModal } from '#store/deeds';
 
 const connector = connect(null, { closeModal, addFavorite });
 

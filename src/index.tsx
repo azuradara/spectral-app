@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import { store, persistor } from './store/store';
+import { store, persistor } from '#store/index';
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 if (localStorage.token) {

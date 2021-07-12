@@ -1,15 +1,11 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 import { connect, ConnectedProps } from 'react-redux';
-import PinnedIcon from '../../../../Icons/PinnedIcon';
-import SettingsIcon from '../../../../Icons/SettingsIcon';
-import TrashIcon from '../../../../Icons/TrashIcon';
-import { Favorite } from '$interfaces';
-import {
-  deleteFavorite,
-  updateFavorite,
-  pinFavorite,
-} from '../../../../store/deeds';
+import PinnedIcon from '#components/Icons/PinnedIcon';
+import SettingsIcon from '#components/Icons/SettingsIcon';
+import TrashIcon from '#components/Icons/TrashIcon';
+import { Favorite } from '#interfaces';
+import { deleteFavorite, updateFavorite, pinFavorite } from '#store/deeds';
 
 const connector = connect(null, {
   deleteFavorite,

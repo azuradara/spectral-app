@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { fetchPinnedFavorites } from '../../store/deeds';
+import { fetchPinnedFavorites } from '#store/deeds';
 import { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState } from '$interfaces';
-import Clock from '../Clock';
-import SeekBar from '../Seek';
-import PinnedBookmarkSingle from './PinnedBookmarkSingle';
+import { GlobalState } from '#interfaces';
+import Clock from '#components/Clock';
+import SeekBar from '#components/Seek';
+import PinnedBookmarkSingle from '#components/Home/PinnedBookmarkSingle';
 
 const mapStateToProps = (state: GlobalState) => {
   return {

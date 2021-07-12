@@ -5,12 +5,9 @@ import {
   AddCategoryDeed,
   DeleteCategoryDeed,
   UpdateCategoryDeed,
-  DeleteFavoriteDeed,
-  UpdateFavoriteDeed,
-  PinFavoriteDeed,
-} from '../deeds';
+} from '#store/deeds';
 
-import { Category, Favorite } from '$interfaces';
+import { Category, Favorite } from '#interfaces';
 
 export interface State {
   seeking: boolean;

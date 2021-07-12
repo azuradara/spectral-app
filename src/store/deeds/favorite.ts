@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { DeedTypes } from '.';
-import { CreateNotificationDeed } from './notification';
+import { CreateNotificationDeed } from '#store/deeds';
 import {
   Category,
   ApiResponse,
   NewCategory,
   Favorite,
   NewFavorite,
-} from '$interfaces';
+} from '#interfaces';
 
 // FETCH CATEGORIES
 

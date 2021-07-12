@@ -1,11 +1,11 @@
 import { Formik, Form } from 'formik';
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
-import { Favorite } from '$interfaces';
+import { Favorite } from '#interfaces';
 import * as yup from 'yup';
 import { reject, equals } from 'ramda';
-import { TextInput, FormBtn } from '../../FormElements';
-import { closeModal, updateFavorite } from '../../../store/deeds';
+import { TextInput, FormBtn } from '#components/FormElements';
+import { closeModal, updateFavorite } from '#store/deeds';
 
 const connector = connect(null, { closeModal, updateFavorite });
 

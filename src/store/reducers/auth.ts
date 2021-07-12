@@ -1,6 +1,6 @@
-import { DeedTypes, Deed } from '../deeds';
+import { DeedTypes, Deed } from '#store/deeds';
 
-import { User } from '$interfaces';
+import { User } from '#interfaces';
 
 export interface State {
   seeking: boolean;
