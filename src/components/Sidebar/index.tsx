@@ -4,7 +4,7 @@ import { IcoBtn } from '../helpers';
 import LogoutIcon from '../../Icons/LogoutIcon';
 import FavoritesIcon from '../../Icons/FavoritesIcon';
 import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState } from '../../lib/interfaces';
+import { GlobalState } from '$interfaces';
 import { logoutUser, openModal } from '../../store/deeds';
 import SettingsIcon from '../../Icons/SettingsIcon';
 import SettingsModal from '../ModalContent/SettingsModal';

@@ -4,7 +4,7 @@ import { Form, Formik } from 'formik';
 import { DropZoneInput, FormBtn, SliderInput } from '../../FormElements';
 import { byte_size } from '../../../lib/util/byte_size';
 import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState } from '../../../lib/interfaces';
+import { GlobalState } from '$interfaces';
 import { updateSettings, closeModal } from '../../../store/deeds';
 import { equals, reject } from 'ramda';
 

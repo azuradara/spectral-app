@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { connect, ConnectedProps } from 'react-redux';
-import { Category, Favorite, NewFavorite } from '../../../lib/interfaces';
+import { Category, Favorite } from '$interfaces';
 import { updateFavorite } from '../../../store/deeds';
 
 import BookmarkSingle from '../BookmarkSingle';

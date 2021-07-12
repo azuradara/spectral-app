@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState, Notification as _Notif } from '../../../lib/interfaces';
+import { GlobalState, Notification as _Notif } from '$interfaces';
 import Notification from '../Notification';
 
 const mapStateToProps = (state: GlobalState) => {

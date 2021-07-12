@@ -1,5 +1,5 @@
 import { DeedTypes, Deed } from '../deeds';
-import { Settings } from '../../lib/interfaces';
+import { Settings } from '$interfaces';
 
 // Just to keep consistency
 export interface State {

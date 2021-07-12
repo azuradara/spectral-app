@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import PinnedIcon from '../../../../Icons/PinnedIcon';
 import SettingsIcon from '../../../../Icons/SettingsIcon';
 import TrashIcon from '../../../../Icons/TrashIcon';
-import { Favorite } from '../../../../lib/interfaces';
+import { Favorite } from '$interfaces';
 import {
   deleteFavorite,
   updateFavorite,

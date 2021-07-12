@@ -1,5 +1,5 @@
 import { DeedTypes, Deed } from '../deeds';
-import { Notification } from '../../lib/interfaces';
+import { Notification } from '$interfaces';
 
 export interface State {
   notifications: Notification[];

@@ -10,7 +10,7 @@ import {
   PinFavoriteDeed,
 } from '../deeds';
 
-import { Category, Favorite } from '../../lib/interfaces';
+import { Category, Favorite } from '$interfaces';
 
 export interface State {
   seeking: boolean;

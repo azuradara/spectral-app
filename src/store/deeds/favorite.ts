@@ -8,7 +8,7 @@ import {
   NewCategory,
   Favorite,
   NewFavorite,
-} from '../../lib/interfaces';
+} from '$interfaces';
 
 // FETCH CATEGORIES
 

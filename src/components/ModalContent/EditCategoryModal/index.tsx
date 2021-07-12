@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
-import { Category } from '../../../lib/interfaces';
+import { Category } from '$interfaces';
 import { closeModal, updateCategory } from '../../../store/deeds';
 import * as yup from 'yup';
 import { reject, equals } from 'ramda';

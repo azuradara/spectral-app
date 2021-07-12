@@ -3,7 +3,7 @@ import { IcoBtn } from '../helpers';
 import CloseIcon from '../../Icons/CloseIcon';
 import { connect, ConnectedProps } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
-import { GlobalState } from '../../lib/interfaces';
+import { GlobalState } from '$interfaces';
 import { closeModal } from '../../store/deeds';
 import Scrollbar from '../Scrollbar';
 import useExternalClick from '../../lib/hooks/useExternalClick';

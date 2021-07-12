@@ -1,6 +1,6 @@
 import { DeedTypes, Deed } from '../deeds';
 
-import { User } from '../../lib/interfaces';
+import { User } from '$interfaces';
 
 export interface State {
   seeking: boolean;

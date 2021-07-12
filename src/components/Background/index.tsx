@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { GlobalState } from '../../lib/interfaces';
+import { GlobalState } from '$interfaces';
 import { connect, ConnectedProps } from 'react-redux';
 
 const mapStateToProps = (state: GlobalState) => {

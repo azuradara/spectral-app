@@ -1,5 +1,5 @@
 import React from 'react';
-import { Favorite } from '../../../lib/interfaces';
+import { Favorite } from '$interfaces';
 import { parse_url } from '../../../lib/util/parse_url';
 import { get_url_ico } from '../../../store/deeds/get_url_ico';
 import PinnedIcon from '../../../Icons/PinnedIcon';

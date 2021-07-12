@@ -1,7 +1,7 @@
 import { Formik, Form } from 'formik';
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
-import { Favorite } from '../../../lib/interfaces';
+import { Favorite } from '$interfaces';
 import * as yup from 'yup';
 import { reject, equals } from 'ramda';
 import { TextInput, FormBtn } from '../../FormElements';

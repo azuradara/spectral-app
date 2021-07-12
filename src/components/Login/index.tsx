@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, ChangeEvent } from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { LoginData, GlobalState } from '../../lib/interfaces';
+import { LoginData, GlobalState } from '$interfaces';
 import { loginUser } from '../../store/deeds';
 import { useHistory } from 'react-router';
 import { State } from '../../store/reducers/auth';

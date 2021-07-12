@@ -3,7 +3,7 @@ import React from 'react';
 import { fetchPinnedFavorites } from '../../store/deeds';
 import { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState } from '../../lib/interfaces';
+import { GlobalState } from '$interfaces';
 import Clock from '../Clock';
 import SeekBar from '../Seek';
 import PinnedBookmarkSingle from './PinnedBookmarkSingle';

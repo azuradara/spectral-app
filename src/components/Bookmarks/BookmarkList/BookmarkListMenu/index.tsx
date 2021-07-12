@@ -1,6 +1,6 @@
 import { connect, ConnectedProps } from 'react-redux';
 import * as React from 'react';
-import { Category } from '../../../../lib/interfaces';
+import { Category } from '$interfaces';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 import AddIcon from '../../../../Icons/AddIcon';
 import { openModal } from '../../../../store/deeds';

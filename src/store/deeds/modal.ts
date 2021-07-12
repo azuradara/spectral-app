@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { DeedTypes } from '.';
-import { Modal } from '../../lib/interfaces';
+import { Modal } from '$interfaces';
 
 export interface OpenModalDeed {
   type: DeedTypes.openModal;

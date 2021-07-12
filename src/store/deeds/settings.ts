@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { DeedTypes } from '.';
-import { Settings } from '../../lib/interfaces';
+import { Settings } from '$interfaces';
 import { CreateNotificationDeed } from './notification';
 
 export interface UpdateSettingsDeed {
