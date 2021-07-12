@@ -6,7 +6,7 @@ import { animated, useSpring } from '@react-spring/web';
 import { GlobalState } from '#interfaces';
 import { closeModal } from '#store/deeds';
 import Scrollbar from '#components/Scrollbar';
-import useExternalClick from '#lib/hooks/useExternalClick';
+import useExternalClick from '#hooks/useExternalClick';
 
 const mapStateToProps = (state: GlobalState) => ({
   modal: state.modal,

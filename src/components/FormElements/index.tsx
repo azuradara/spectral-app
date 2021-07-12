@@ -3,8 +3,8 @@ import { useField, useFormikContext } from 'formik';
 // import mergeProps from 'merge-props';
 // import { useSpring, animated } from '@react-spring/web';
 import clsx from 'clsx';
-import { urlifyFile } from '#lib/util/urlifyFile';
-import concoct_id from '#lib/helpers/concoct_id';
+import { file_blob } from '#utils';
+import { generate_id } from '#utils';
 import mergeProps from 'merge-props';
 
 type DropZoneProps = {
@@ -16,7 +16,7 @@ const DropZoneInput: React.FC<DropZoneProps> = ({
   name,
   label,
 }: DropZoneProps) => {
-  const id = React.useRef(concoct_id());
+  const id = React.useRef(generate_id());
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const [grabbing, setGrabbing] = React.useState<boolean>(false);
@@ -50,7 +50,7 @@ const DropZoneInput: React.FC<DropZoneProps> = ({
         }}
         onDrop={async (e) => {
           e.preventDefault();
-          handleFile(await urlifyFile(e.dataTransfer.files[0]));
+          handleFile(await file_blob(e.dataTransfer.files[0]));
           setGrabbing(false);
         }}
         // Ae
@@ -63,7 +63,7 @@ const DropZoneInput: React.FC<DropZoneProps> = ({
           ref={inputRef}
           onClick={(e) => e.stopPropagation()}
           onChange={async (e) =>
-            handleFile(await urlifyFile((e.target.files as any)[0]))
+            handleFile(await file_blob((e.target.files as any)[0]))
           }
         />
 
@@ -99,7 +99,7 @@ const SliderInput: React.FC<SliderProps> = ({
 }: SliderProps) => {
   const [field, meta] = useField(name);
 
-  const id = React.useRef(concoct_id());
+  const id = React.useRef(generate_id());
 
   return (
     <div className="form-control">
@@ -154,7 +154,7 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 // eslint-disable-next-line react/prop-types
 const TextInput: React.FC<TextInputProps> = ({ label, name = '', ...rest }) => {
-  const id = React.useRef(concoct_id());
+  const id = React.useRef(generate_id());
   const [isFocused, setIsFocused] = React.useState<boolean>(false);
   const [field, meta] = useField(name);
 

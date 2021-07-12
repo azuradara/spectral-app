@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import { DropZoneInput, FormBtn, SliderInput } from '#components/FormElements';
-import { byte_size } from '#lib/util/byte_size';
+import { byte_size } from '#utils';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
 import { updateSettings, closeModal } from '#store/deeds';
