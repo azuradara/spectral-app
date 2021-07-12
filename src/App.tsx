@@ -1,18 +1,18 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import Home from '#components/Home';
 import Login from '#components/Login';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import AuthRoute from '#hooks/AuthRoute';
-
-import Sidebar from '#components/Sidebar';
-import Modal from '#components/Modal';
-import Background from '#components/Background';
-import Bookmarks from '#components/Bookmarks';
-import Scrollbar from '#components/Scrollbar';
-import NotificationDispatcher from '#components/helpers/NotificationDispatcher';
+import Modal from '#components/shared/Modal';
 import Tasks from '#components/Tasks';
+import AuthRoute from '#hooks/AuthRoute';
+import Sidebar from '#components/shared/Sidebar';
+import Bookmarks from '#components/Bookmarks';
+import Scrollbar from '#components/shared/Scrollbar';
+import Background from '#components/shared/Background';
+import NotificationDispatcher from '#components/shared/NotificationDispatcher';
 
-const App = (): JSX.Element => {
+const Root = (): JSX.Element => {
   return (
     <>
       <BrowserRouter>
@@ -43,4 +43,4 @@ const App = (): JSX.Element => {
   );
 };
 
-export default App;
+export default Root;

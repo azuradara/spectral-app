@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 import { openModal } from '#store/deeds';
 import AddCategoryModal from '#components/ModalContent/AddCategoryModal';
-import AddIcon from '#components/Icons/AddIcon';
+import AddIcon from '#components/shared/Icons/AddIcon';
 
 const connector = connect(null, { openModal });
 

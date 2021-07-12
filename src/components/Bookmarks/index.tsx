@@ -1,6 +1,6 @@
 import React from 'react';
 import BookmarksGrid from '#components/Bookmarks/BookmarksGrid';
-import SeekBar from '#components/Seek';
+import SeekBar from '#components/shared/Seek';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { generate_id } from '#utils';
 import CtxMenu from '#components/Bookmarks/CtxMenu';

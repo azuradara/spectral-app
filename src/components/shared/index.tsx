@@ -10,7 +10,7 @@ import { prune_children } from '#utils';
 import useBtnHelper from '#hooks/useButton';
 import useExternalClick from '#hooks/useExternalClick';
 
-import ArrowIcon from '#components/Icons/ArrowIcon';
+import ArrowIcon from '#components/shared/Icons/ArrowIcon';
 
 export const IcoBtn = (
   props: React.ButtonHTMLAttributes<any>

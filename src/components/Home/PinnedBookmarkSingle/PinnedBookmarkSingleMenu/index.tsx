@@ -1,9 +1,9 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 import { connect, ConnectedProps } from 'react-redux';
-import PinnedIcon from '#components/Icons/PinnedIcon';
-import SettingsIcon from '#components/Icons/SettingsIcon';
-import TrashIcon from '#components/Icons/TrashIcon';
+import PinnedIcon from '#components/shared/Icons/PinnedIcon';
+import SettingsIcon from '#components/shared/Icons/SettingsIcon';
+import TrashIcon from '#components/shared/Icons/TrashIcon';
 import { Favorite } from '#interfaces';
 import { deleteFavorite, updateFavorite, pinFavorite } from '#store/deeds';
 
