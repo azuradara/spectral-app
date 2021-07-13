@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { Redirect, Route } from 'react-router';
-import { connect } from 'react-redux';
 import { GlobalState } from '#interfaces';
+import { connect } from 'react-redux';
 
 const AuthRoute = (props: any) => {
   if (!props.user.user) return <Redirect to="/login" />;

@@ -4,8 +4,8 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: 'Karla', 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
-  'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: /**'Inter',*/ 'Karla', 'Open Sans', 'Helvetica Neue Light',
+  'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List

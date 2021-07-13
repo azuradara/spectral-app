@@ -1,5 +1,8 @@
-import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router';
+import React from 'react';
+
+import { ReactElement } from 'react';
+import { useHistory, Redirect } from 'react-router';
+
 import { IcoBtn } from '#components/shared';
 import LogoutIcon from '#components/shared/Icons/LogoutIcon';
 import FavoritesIcon from '#components/shared/Icons/FavoritesIcon';
@@ -23,6 +26,7 @@ type ComponentProps = Record<string, undefined> &
   ConnectedProps<typeof connector>;
 
 const Sidebar = (props: ComponentProps): ReactElement => {
+  if (!props.user.user) return <Redirect to="/login" />;
   const { logoutUser, openModal } = props;
   const { push } = useHistory();
 
