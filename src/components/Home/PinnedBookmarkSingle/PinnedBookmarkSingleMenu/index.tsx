@@ -5,12 +5,20 @@ import PinnedIcon from '#components/shared/Icons/PinnedIcon';
 import SettingsIcon from '#components/shared/Icons/SettingsIcon';
 import TrashIcon from '#components/shared/Icons/TrashIcon';
 import { Favorite } from '#interfaces';
-import { deleteFavorite, updateFavorite, pinFavorite } from '#store/deeds';
+import {
+  deleteFavorite,
+  updateFavorite,
+  pinFavorite,
+  openModal,
+} from '#store/deeds';
+import EditBookmarkModal from '#components/ModalContent/EditBookmarkModal';
+import PinnedBookmarkSingle from '..';
 
 const connector = connect(null, {
   deleteFavorite,
   updateFavorite,
   pinFavorite,
+  openModal,
 });
 
 type ComponentProps = {
@@ -18,8 +26,10 @@ type ComponentProps = {
   fav: Favorite;
 } & ConnectedProps<typeof connector>;
 
-const BookmarkSingleMenu = (props: ComponentProps): React.ReactElement => {
-  const { id, fav, deleteFavorite, pinFavorite } = props;
+const PinnedBookmarkSingleMenu = (
+  props: ComponentProps
+): React.ReactElement => {
+  const { id, fav, deleteFavorite, pinFavorite, openModal } = props;
 
   return (
     <ContextMenu id={id}>
@@ -43,7 +53,14 @@ const BookmarkSingleMenu = (props: ComponentProps): React.ReactElement => {
         Unpin
       </MenuItem>
 
-      <MenuItem onClick={() => deleteFavorite(fav.id, fav.category_id)}>
+      <MenuItem
+        onClick={() =>
+          openModal({
+            title: 'Edit Bookmark',
+            content: <EditBookmarkModal fav={fav} />,
+          })
+        }
+      >
         <SettingsIcon
           style={{
             opacity: 0.5,
@@ -56,4 +73,4 @@ const BookmarkSingleMenu = (props: ComponentProps): React.ReactElement => {
   );
 };
 
-export default connector(BookmarkSingleMenu);
+export default connector(PinnedBookmarkSingleMenu);
