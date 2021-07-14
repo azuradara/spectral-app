@@ -2,7 +2,7 @@ import React from 'react';
 import { Favorite } from '#interfaces';
 import { parse_url } from '#utils';
 import { get_url_ico } from '#store/deeds/get_url_ico';
-import PinnedIcon from '#components/Icons/PinnedIcon';
+import PinnedIcon from '#components/shared/Icons/PinnedIcon';
 import BookmarkSingleMenu from '#components/Bookmarks/BookmarkSingle/BookmarkSingleMenu';
 
 import { ContextMenuTrigger } from 'react-contextmenu';

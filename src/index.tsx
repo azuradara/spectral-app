@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './stylesheets/main.scss';
-import App from './App';
+import Root from './App';
 import axios from 'axios';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from '#store/index';
+
+// TODO: move this when revamping auth module
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 if (localStorage.token) {
@@ -19,11 +21,11 @@ document.addEventListener('contextmenu', (e) => {
   e.preventDefault();
 });
 
-ReactDOM.render(
+render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <App />
+        <Root />
       </PersistGate>
     </Provider>
   </React.StrictMode>,

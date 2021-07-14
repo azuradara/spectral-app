@@ -4,8 +4,8 @@ import { fetchPinnedFavorites } from '#store/deeds';
 import { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
-import Clock from '#components/Clock';
-import SeekBar from '#components/Seek';
+import Clock from '#components/Home/Clock';
+import SeekBar from '#components/shared/Seek';
 import PinnedBookmarkSingle from '#components/Home/PinnedBookmarkSingle';
 
 const mapStateToProps = (state: GlobalState) => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState, Notification as _Notification } from '#interfaces';
-import Notification from '#components/helpers/Notification';
+import Notification from '#components/shared/Notification';
 
 const mapStateToProps = (state: GlobalState) => {
   return {
