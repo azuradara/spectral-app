@@ -19,6 +19,7 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.2",
     "react-masonry-css": "^1.0.16",
+    "react-particles-js": "^3.5.3",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-three-fiber": "^6.0.13",
@@ -29,12 +30,14 @@
     "redux-thunk": "^2.3.0",
     "src": "^1.1.2",
     "three": "^0.130.1",
+    "tsparticles": "^1.31.1",
     "typescript": "^4.3.2",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },
   "scripts": {
     "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
     "lint": "eslint  --fix --ext js,tsx,ts src"
   },
   "eslintConfig": {
@@ -80,6 +83,8 @@
     "#store": "./src/store",
     "#components": "./src/components",
     "#hooks": "./src/helpers/hooks",
-    "#utils": "./src/helpers/utils"
+    "#utils": "./src/helpers/utils",
+    "#config": "./src/config",
+    "#assets": "./src/assets"
   }
 }

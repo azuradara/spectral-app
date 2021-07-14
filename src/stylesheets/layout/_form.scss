@@ -7,6 +7,25 @@
   &-control {
     margin-top: 1rem;
 
+    &__helper {
+      font-size: 14px;
+      color: $opaque-light;
+      @include transition(color);
+
+      &--link {
+        @extend .form-control__helper;
+        &:hover {
+          color: $text-light;
+          text-decoration: none;
+        }
+      }
+    }
+
+    &__error {
+      font-weight: 500;
+      color: #f72119;
+    }
+
     &__question {
       font-size: 1.2rem;
     }
@@ -18,6 +37,7 @@
 
     &__submission {
       margin-top: 3rem;
+      margin-bottom: 1rem;
     }
 
     &.dropzone {
@@ -121,6 +141,7 @@
       opacity: 1;
       transform: translate(0, -50%);
       z-index: 3;
+
       @include transition(top left transform);
       transform-origin: center left;
 

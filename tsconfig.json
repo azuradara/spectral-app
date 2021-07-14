@@ -20,6 +20,8 @@
       "#store/*": ["src/store/*"],
       "#components/*": ["src/components/*"],
       "#hooks/*": ["./src/helpers/hooks/*"],
+      "#config/*": ["./src/config/*"],
+      "#assets/*": ["./src/assets/*"],
 
       "#interfaces": ["src/lib/interfaces"],
       "#utils": ["./src/helpers/utils"]

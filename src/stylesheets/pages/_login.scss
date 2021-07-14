@@ -4,12 +4,49 @@
   position: fixed;
   top: 0;
   left: 0;
-  // background: black;
+  background: $main-dark;
+  display: grid;
+  place-items: center;
 
-  .webgl {
-    position: fixed;
+  .overlay {
+    backdrop-filter: blur(1px);
+    background: rgba($color: $main-dark, $alpha: 0.1);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
     top: 0;
     left: 0;
-    outline: none;
+  }
+
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__form {
+    z-index: 100;
+    width: 40rem;
+    background: radial-gradient(
+      rgba($color: $text-light, $alpha: 0.05),
+      rgba($color: $text-light, $alpha: 0)
+    );
+    // background: rgba($color: $main-dark, $alpha: 0.25);
+    // backdrop-filter: blur(4px);
+    margin: auto;
+    padding: 2rem;
+    border-radius: 7px;
+
+    .form {
+      &-control {
+        &__label {
+          position: relative;
+          left: 0;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
+    }
   }
 }
