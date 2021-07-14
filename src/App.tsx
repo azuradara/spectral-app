@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from '#components/Home';
@@ -11,6 +13,8 @@ import Bookmarks from '#components/Bookmarks';
 import Scrollbar from '#components/shared/Scrollbar';
 import Background from '#components/shared/Background';
 import NotificationDispatcher from '#components/shared/NotificationDispatcher';
+import { connect, ConnectedProps } from 'react-redux';
+import { GlobalState } from '#interfaces';
 
 const Root = (): JSX.Element => {
   return (
@@ -27,12 +31,14 @@ const Root = (): JSX.Element => {
             height="100vw"
           >
             <div className="App_inner--router">
-              <Switch>
-                <AuthRoute exact path="/" component={Home} />
-                <AuthRoute exact path="/bookmarks" component={Bookmarks} />
-                <AuthRoute exact path="/tasks" component={Tasks} />
-                <Route exact path="/login" component={Login} />
-              </Switch>
+              <Suspense fallback={null}>
+                <Switch>
+                  <AuthRoute exact path="/" component={Home} />
+                  <AuthRoute exact path="/bookmarks" component={Bookmarks} />
+                  <AuthRoute exact path="/tasks" component={Tasks} />
+                  <Route exact path="/login" component={Login} />
+                </Switch>
+              </Suspense>
             </div>
           </Scrollbar>
         </div>
