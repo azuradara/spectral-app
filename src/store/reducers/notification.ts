@@ -1,4 +1,4 @@
-import { DeedTypes, Deed } from '#store/deeds';
+import { actionTypes, action } from '#store/actions';
 import { Notification } from '#interfaces';
 
 export interface State {
@@ -11,11 +11,11 @@ const iState: State = {
   count: 0,
 };
 
-const createNotification = (state: State, deed: Deed): State => {
+const createNotification = (state: State, action: action): State => {
   const placeholder = [
     ...state.notifications,
     {
-      ...deed.payload,
+      ...action.payload,
       id: state.count,
     },
   ];
@@ -28,9 +28,9 @@ const createNotification = (state: State, deed: Deed): State => {
 
 // no idea if this works but immutables are cringe
 
-const clearNotification = (state: State, deed: Deed): State => {
+const clearNotification = (state: State, action: action): State => {
   const placeholder = [...state.notifications].filter(
-    (notification: Notification) => notification.id !== deed.payload
+    (notification: Notification) => notification.id !== action.payload
   );
 
   return {
@@ -39,13 +39,13 @@ const clearNotification = (state: State, deed: Deed): State => {
   };
 };
 
-const notificationReducer = (state = iState, deed: Deed) => {
-  switch (deed.type) {
-    case DeedTypes.createNotification:
-      return createNotification(state, deed);
+const notificationReducer = (state = iState, action: action) => {
+  switch (action.type) {
+    case actionTypes.createNotification:
+      return createNotification(state, action);
 
-    case DeedTypes.clearNotification:
-      return clearNotification(state, deed);
+    case actionTypes.clearNotification:
+      return clearNotification(state, action);
 
     default:
       return state;

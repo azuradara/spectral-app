@@ -1,4 +1,4 @@
-import { DeedTypes, Deed, OpenModalDeed } from '#store/deeds';
+import { actionTypes, action, OpenModalaction } from '#store/actions';
 import { Modal } from '#interfaces';
 
 export interface State {
@@ -11,15 +11,15 @@ const initState: State = {
   open: false,
 };
 
-const openModal = (state: State, deed: OpenModalDeed): State => {
+const openModal = (state: State, action: OpenModalaction): State => {
   return {
     ...state,
-    modal: deed.payload,
+    modal: action.payload,
     open: true,
   };
 };
 
-const closeModal = (state: State, deed: Deed): State => {
+const closeModal = (state: State, action: action): State => {
   return {
     ...state,
     // modal: null,
@@ -27,13 +27,13 @@ const closeModal = (state: State, deed: Deed): State => {
   };
 };
 
-const ModalReducer = (state: State = initState, deed: Deed): State => {
-  switch (deed.type) {
-    case DeedTypes.openModal:
-      return openModal(state, deed);
+const ModalReducer = (state: State = initState, action: action): State => {
+  switch (action.type) {
+    case actionTypes.openModal:
+      return openModal(state, action);
 
-    case DeedTypes.closeModal:
-      return closeModal(state, deed);
+    case actionTypes.closeModal:
+      return closeModal(state, action);
 
     default:
       return state;

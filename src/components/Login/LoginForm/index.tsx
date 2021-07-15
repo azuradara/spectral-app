@@ -2,7 +2,7 @@ import React from 'react';
 
 import { LoginBtn, TextInput } from '#components/FormElements';
 import { ConnectedProps, connect } from 'react-redux';
-import { loginUser } from '#store/deeds';
+import { loginUser } from '#store/actions';
 import { Formik, Form } from 'formik';
 import { useHistory } from 'react-router';
 import * as yup from 'yup';

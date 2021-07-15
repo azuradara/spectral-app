@@ -4,7 +4,7 @@ import CloseIcon from '#components/shared/Icons/CloseIcon';
 import { connect, ConnectedProps } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
 import { GlobalState } from '#interfaces';
-import { closeModal } from '#store/deeds';
+import { closeModal } from '#store/actions';
 import Scrollbar from '#components/shared/Scrollbar';
 import useExternalClick from '#hooks/useExternalClick';
 

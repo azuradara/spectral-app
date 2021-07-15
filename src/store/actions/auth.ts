@@ -1,24 +1,24 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 
-import { DeedTypes } from '.';
-import { CreateNotificationDeed } from '.';
+import { actionTypes } from '.';
+import { CreateNotificationaction } from '.';
 import { ApiResponse, LoginData, User } from '#interfaces';
 
 // LOGIN USER
 
-export interface LoginUserDeed<T> {
+export interface LoginUseraction<T> {
   type:
-    | DeedTypes.loginUser
-    | DeedTypes.loginUserError
-    | DeedTypes.loginUserSuccess;
+    | actionTypes.loginUser
+    | actionTypes.loginUserError
+    | actionTypes.loginUserSuccess;
   payload: T;
 }
 
 export const loginUser =
   (formData: LoginData) => async (dispatch: Dispatch) => {
-    dispatch<LoginUserDeed<undefined>>({
-      type: DeedTypes.loginUser,
+    dispatch<LoginUseraction<undefined>>({
+      type: actionTypes.loginUser,
       payload: undefined,
     });
 
@@ -27,8 +27,8 @@ export const loginUser =
 
       if (res.data.error) {
         console.log('err');
-        return dispatch<CreateNotificationDeed>({
-          type: DeedTypes.createNotification,
+        return dispatch<CreateNotificationaction>({
+          type: actionTypes.createNotification,
           payload: {
             title: 'error',
             message: 'Invalid Credentials',
@@ -37,8 +37,8 @@ export const loginUser =
         });
       }
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'success',
           message: `User ${res.data.data.user.username} logged in.`,
@@ -46,8 +46,8 @@ export const loginUser =
         },
       });
 
-      dispatch<LoginUserDeed<User>>({
-        type: DeedTypes.loginUserSuccess,
+      dispatch<LoginUseraction<User>>({
+        type: actionTypes.loginUserSuccess,
         payload: res.data.data,
       });
 
@@ -55,8 +55,8 @@ export const loginUser =
 
       return res;
     } catch (err) {
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Invalid credentials',
           message: 'Please try again.',
@@ -66,14 +66,14 @@ export const loginUser =
     }
   };
 
-export interface LogoutUserDeed {
-  type: DeedTypes.logoutUser;
+export interface LogoutUseraction {
+  type: actionTypes.logoutUser;
   payload: null;
 }
 
 export const logoutUser = () => async (dispatch: Dispatch) => {
-  dispatch<LogoutUserDeed>({
-    type: DeedTypes.logoutUser,
+  dispatch<LogoutUseraction>({
+    type: actionTypes.logoutUser,
     payload: null,
   });
 

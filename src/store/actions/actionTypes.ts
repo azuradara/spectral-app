@@ -1,45 +1,45 @@
 import {
   // Categories
-  FetchCategoriesDeed,
-  AddCategoryDeed,
-  // PinCategoryDeed,
-  DeleteCategoryDeed,
-  UpdateCategoryDeed,
+  FetchCategoriesaction,
+  AddCategoryaction,
+  // PinCategoryaction,
+  DeleteCategoryaction,
+  UpdateCategoryaction,
 
   // Favorites
-  AddFavoriteDeed,
-  DeleteFavoriteDeed,
-  UpdateFavoriteDeed,
-  FetchPinnedFavoritesDeed,
+  AddFavoriteaction,
+  DeleteFavoriteaction,
+  UpdateFavoriteaction,
+  FetchPinnedFavoritesaction,
 
   // Notifications
-  CreateNotificationDeed,
-  ClearNotificationDeed,
+  CreateNotificationaction,
+  ClearNotificationaction,
 
   // User
-  LoginUserDeed,
-  LogoutUserDeed,
+  LoginUseraction,
+  LogoutUseraction,
 
   // Modal
-  OpenModalDeed,
-  CloseModalDeed,
+  OpenModalaction,
+  CloseModalaction,
 
   // @TASKS - CATEGORIES
-  FetchTaskCategoriesDeed,
-  AddTaskCategoryDeed,
-  DeleteTaskCategoryDeed,
-  UpdateTaskCategoryDeed,
+  FetchTaskCategoriesaction,
+  AddTaskCategoryaction,
+  DeleteTaskCategoryaction,
+  UpdateTaskCategoryaction,
 
   // @TASKS - TASKS
-  AddTaskDeed,
-  DeleteTaskDeed,
-  UpdateTaskDeed,
+  AddTaskaction,
+  DeleteTaskaction,
+  UpdateTaskaction,
 
   // Settings
-  UpdateSettingsDeed,
-} from '#store/deeds';
+  UpdateSettingsaction,
+} from '#store/actions';
 
-export enum DeedTypes {
+export enum actionTypes {
   // Categories
   fetchCategories = 'FETCH_CATEGORIES',
   fetchCategoriesSuccess = 'FETCH_CATEGORIES_SUCC',
@@ -89,35 +89,35 @@ export enum DeedTypes {
   updateSettings = '@settings/UPDATE_SETTINGS',
 }
 
-export type Deed =
+export type action =
   // Categories
-  | FetchCategoriesDeed<any>
-  | AddCategoryDeed
-  // | PinCategoryDeed
-  | DeleteCategoryDeed
-  | UpdateCategoryDeed
+  | FetchCategoriesaction<any>
+  | AddCategoryaction
+  // | PinCategoryaction
+  | DeleteCategoryaction
+  | UpdateCategoryaction
   // Favorite
-  | AddFavoriteDeed
-  | DeleteFavoriteDeed
-  | UpdateFavoriteDeed
-  | FetchPinnedFavoritesDeed<any>
+  | AddFavoriteaction
+  | DeleteFavoriteaction
+  | UpdateFavoriteaction
+  | FetchPinnedFavoritesaction<any>
   // Notifications
-  | CreateNotificationDeed
-  | ClearNotificationDeed
+  | CreateNotificationaction
+  | ClearNotificationaction
   // User
-  | LoginUserDeed<any>
-  | LogoutUserDeed
+  | LoginUseraction<any>
+  | LogoutUseraction
   // Modal
-  | OpenModalDeed
-  | CloseModalDeed
+  | OpenModalaction
+  | CloseModalaction
   // @TASKS - CATEGORIES
-  | FetchTaskCategoriesDeed<any>
-  | AddTaskCategoryDeed
-  | DeleteTaskCategoryDeed
-  | UpdateTaskCategoryDeed
+  | FetchTaskCategoriesaction<any>
+  | AddTaskCategoryaction
+  | DeleteTaskCategoryaction
+  | UpdateTaskCategoryaction
   // @TASKS
-  | AddTaskDeed
-  | DeleteTaskDeed
-  | UpdateTaskDeed
+  | AddTaskaction
+  | DeleteTaskaction
+  | UpdateTaskaction
   //Settings
-  | UpdateSettingsDeed;
+  | UpdateSettingsaction;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Category } from '#interfaces';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 import AddIcon from '#components/shared/Icons/AddIcon';
-import { openModal } from '#store/deeds';
+import { openModal } from '#store/actions';
 import EditCategoryModal from '#components/ModalContent/EditCategoryModal';
 import SettingsIcon from '#components/shared/Icons/SettingsIcon';
 import AddBookmarkModal from '#components/ModalContent/AddBookmarkModal';

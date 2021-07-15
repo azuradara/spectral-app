@@ -1,4 +1,4 @@
-import { DeedTypes, Deed } from '#store/deeds';
+import { actionTypes, action } from '#store/actions';
 
 import { User } from '#interfaces';
 
@@ -14,7 +14,7 @@ const initState: State = {
   user: null,
 };
 
-const loginUser = (state: State, deed: Deed): State => {
+const loginUser = (state: State, action: action): State => {
   return {
     ...state,
     seeking: true,
@@ -22,23 +22,23 @@ const loginUser = (state: State, deed: Deed): State => {
   };
 };
 
-const loginUserSuccess = (state: State, deed: Deed): State => {
+const loginUserSuccess = (state: State, action: action): State => {
   return {
     ...state,
     seeking: false,
-    user: deed.payload,
+    user: action.payload,
   };
 };
 
-const loginUserError = (state: State, deed: Deed): State => {
+const loginUserError = (state: State, action: action): State => {
   return {
     ...state,
     seeking: false,
-    err: deed.payload,
+    err: action.payload,
   };
 };
 
-const logoutUser = (state: State, deed: Deed): State => {
+const logoutUser = (state: State, action: action): State => {
   return {
     ...state,
     seeking: false,
@@ -47,19 +47,19 @@ const logoutUser = (state: State, deed: Deed): State => {
   };
 };
 
-const AuthReducer = (state: State = initState, deed: Deed): State => {
-  switch (deed.type) {
-    case DeedTypes.loginUser:
-      return loginUser(state, deed);
+const AuthReducer = (state: State = initState, action: action): State => {
+  switch (action.type) {
+    case actionTypes.loginUser:
+      return loginUser(state, action);
 
-    case DeedTypes.loginUserSuccess:
-      return loginUserSuccess(state, deed);
+    case actionTypes.loginUserSuccess:
+      return loginUserSuccess(state, action);
 
-    case DeedTypes.loginUserError:
-      return loginUserError(state, deed);
+    case actionTypes.loginUserError:
+      return loginUserError(state, action);
 
-    case DeedTypes.logoutUser:
-      return logoutUser(state, deed);
+    case actionTypes.logoutUser:
+      return logoutUser(state, action);
 
     default:
       return state;

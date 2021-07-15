@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { DeedTypes } from '.';
-import { CreateNotificationDeed } from '#store/deeds';
+import { actionTypes } from '.';
+import { CreateNotificationaction } from '#store/actions';
 import {
   Category,
   ApiResponse,
@@ -12,25 +12,25 @@ import {
 
 // FETCH CATEGORIES
 
-export interface FetchCategoriesDeed<T> {
+export interface FetchCategoriesaction<T> {
   type:
-    | DeedTypes.fetchCategories
-    | DeedTypes.fetchCategoriesSuccess
-    | DeedTypes.fetchCategoriesError;
+    | actionTypes.fetchCategories
+    | actionTypes.fetchCategoriesSuccess
+    | actionTypes.fetchCategoriesError;
   payload: T;
 }
 
 export const fetchCategories = () => async (dispatch: Dispatch) => {
-  dispatch<FetchCategoriesDeed<undefined>>({
-    type: DeedTypes.fetchCategories,
+  dispatch<FetchCategoriesaction<undefined>>({
+    type: actionTypes.fetchCategories,
     payload: undefined,
   });
 
   try {
     const res = await axios.get<ApiResponse<Category[]>>('/cat');
 
-    dispatch<FetchCategoriesDeed<Category[]>>({
-      type: DeedTypes.fetchCategoriesSuccess,
+    dispatch<FetchCategoriesaction<Category[]>>({
+      type: actionTypes.fetchCategoriesSuccess,
       payload: res.data.data,
     });
   } catch (err) {
@@ -41,8 +41,8 @@ export const fetchCategories = () => async (dispatch: Dispatch) => {
 
 // ADD CATEGORY
 
-export interface AddCategoryDeed {
-  type: DeedTypes.addCategory;
+export interface AddCategoryaction {
+  type: actionTypes.addCategory;
   payload: Category;
 }
 
@@ -51,8 +51,8 @@ export const addCategory =
     try {
       const res = await axios.post<ApiResponse<Category>>('/cat', formData);
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'success',
           message: `Category ${formData.name} created.`,
@@ -60,8 +60,8 @@ export const addCategory =
         },
       });
 
-      dispatch<AddCategoryDeed>({
-        type: DeedTypes.addCategory,
+      dispatch<AddCategoryaction>({
+        type: actionTypes.addCategory,
         payload: res.data.data,
       });
     } catch (err) {
@@ -71,8 +71,8 @@ export const addCategory =
 
 // ADD FAVORITE
 
-export interface AddFavoriteDeed {
-  type: DeedTypes.addFavorite;
+export interface AddFavoriteaction {
+  type: actionTypes.addFavorite;
   payload: Favorite;
 }
 
@@ -81,8 +81,8 @@ export const addFavorite =
     try {
       const res = await axios.post<ApiResponse<Favorite>>('/fav', formData);
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'success',
           message: `Bookmark ${formData.title} created`,
@@ -90,8 +90,8 @@ export const addFavorite =
         },
       });
 
-      dispatch<AddFavoriteDeed>({
-        type: DeedTypes.addFavorite,
+      dispatch<AddFavoriteaction>({
+        type: actionTypes.addFavorite,
         payload: res.data.data,
       });
     } catch (err) {
@@ -101,8 +101,8 @@ export const addFavorite =
 
 // PIN CATEGORY
 
-// export interface PinCategoryDeed {
-//   type: DeedTypes.pinCategory;
+// export interface PinCategoryaction {
+//   type: actionTypes.pinCategory;
 //   payload: Category;
 // }
 
@@ -117,16 +117,16 @@ export const addFavorite =
 
 //       const msgSubstr = is_pinned ? 'unpinned cat' : 'pinned cat';
 
-//       dispatch<CreateNotificationDeed>({
-//         type: DeedTypes.createNotification,
+//       dispatch<CreateNotificationaction>({
+//         type: actionTypes.createNotification,
 //         payload: {
 //           title: 'success',
 //           message: `category ${name} ${msgSubstr}`,
 //         },
 //       });
 
-//       dispatch<PinCategoryDeed>({
-//         type: DeedTypes.pinCategory,
+//       dispatch<PinCategoryaction>({
+//         type: actionTypes.pinCategory,
 //         payload: res.data.data,
 //       });
 //     } catch (err) {
@@ -136,8 +136,8 @@ export const addFavorite =
 
 // DELETE CATEGORY
 
-export interface DeleteCategoryDeed {
-  type: DeedTypes.deleteCategory;
+export interface DeleteCategoryaction {
+  type: actionTypes.deleteCategory;
   payload: number;
 }
 
@@ -145,8 +145,8 @@ export const deleteCategory = (id: number) => async (dispatch: Dispatch) => {
   try {
     await axios.delete<ApiResponse<Category>>(`/cat/${id}`);
 
-    dispatch<CreateNotificationDeed>({
-      type: DeedTypes.createNotification,
+    dispatch<CreateNotificationaction>({
+      type: actionTypes.createNotification,
       payload: {
         title: 'success',
         message: `category deleted`,
@@ -154,8 +154,8 @@ export const deleteCategory = (id: number) => async (dispatch: Dispatch) => {
       },
     });
 
-    dispatch<DeleteCategoryDeed>({
-      type: DeedTypes.deleteCategory,
+    dispatch<DeleteCategoryaction>({
+      type: actionTypes.deleteCategory,
       payload: id,
     });
   } catch (err) {
@@ -165,8 +165,8 @@ export const deleteCategory = (id: number) => async (dispatch: Dispatch) => {
 
 // UPDATE CATEGORY
 
-export interface UpdateCategoryDeed {
-  type: DeedTypes.updateCategory;
+export interface UpdateCategoryaction {
+  type: actionTypes.updateCategory;
   payload: Category;
 }
 
@@ -178,8 +178,8 @@ export const updateCategory =
         formData
       );
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Success',
           message: `Category ${formData.name} updated`,
@@ -187,8 +187,8 @@ export const updateCategory =
         },
       });
 
-      dispatch<UpdateCategoryDeed>({
-        type: DeedTypes.updateCategory,
+      dispatch<UpdateCategoryaction>({
+        type: actionTypes.updateCategory,
         payload: res.data.data,
       });
     } catch (err) {
@@ -198,8 +198,8 @@ export const updateCategory =
 
 // DELETE FAVORITE
 
-export interface DeleteFavoriteDeed {
-  type: DeedTypes.deleteFavorite;
+export interface DeleteFavoriteaction {
+  type: actionTypes.deleteFavorite;
   payload: {
     favId: number;
     catId: number;
@@ -211,8 +211,8 @@ export const deleteFavorite =
     try {
       await axios.delete<ApiResponse<unknown>>(`/fav/${favId}`);
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'success',
           message: `favorite deleted`,
@@ -220,8 +220,8 @@ export const deleteFavorite =
         },
       });
 
-      dispatch<DeleteFavoriteDeed>({
-        type: DeedTypes.deleteFavorite,
+      dispatch<DeleteFavoriteaction>({
+        type: actionTypes.deleteFavorite,
         payload: {
           favId,
           catId,
@@ -234,8 +234,8 @@ export const deleteFavorite =
 
 // UPDATE FAVORITE
 
-export interface UpdateFavoriteDeed {
-  type: DeedTypes.updateFavorite;
+export interface UpdateFavoriteaction {
+  type: actionTypes.updateFavorite;
   payload: Favorite;
 }
 
@@ -251,8 +251,8 @@ export const updateFavorite =
 
       const res = await axios.put<ApiResponse<Favorite>>(`/fav/${favId}`, fav);
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Updated',
           message: `Favorite ${formData.title} updated successfully.`,
@@ -263,8 +263,8 @@ export const updateFavorite =
       const catChanged = formData.category_id !== prevCatId;
       console.log(catChanged);
 
-      dispatch<DeleteFavoriteDeed>({
-        type: DeedTypes.deleteFavorite,
+      dispatch<DeleteFavoriteaction>({
+        type: actionTypes.deleteFavorite,
         payload: {
           favId,
           catId: prevCatId,
@@ -272,13 +272,13 @@ export const updateFavorite =
       });
 
       if (catChanged) {
-        dispatch<AddFavoriteDeed>({
-          type: DeedTypes.addFavorite,
+        dispatch<AddFavoriteaction>({
+          type: actionTypes.addFavorite,
           payload: res.data.data,
         });
       } else {
-        dispatch<UpdateFavoriteDeed>({
-          type: DeedTypes.updateFavorite,
+        dispatch<UpdateFavoriteaction>({
+          type: actionTypes.updateFavorite,
           payload: res.data.data,
         });
       }
@@ -287,8 +287,8 @@ export const updateFavorite =
     }
   };
 
-export interface PinFavoriteDeed {
-  type: DeedTypes.pinFavorite;
+export interface PinFavoriteaction {
+  type: actionTypes.pinFavorite;
   payload: Favorite;
 }
 
@@ -304,8 +304,8 @@ export const pinFavorite =
 
       // dispatch notification here
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Updated',
           message: msgSubstr,
@@ -313,8 +313,8 @@ export const pinFavorite =
         },
       });
 
-      dispatch<UpdateFavoriteDeed>({
-        type: DeedTypes.updateFavorite,
+      dispatch<UpdateFavoriteaction>({
+        type: actionTypes.updateFavorite,
         payload: res.data.data,
       });
     } catch (err) {
@@ -322,25 +322,25 @@ export const pinFavorite =
     }
   };
 
-export interface FetchPinnedFavoritesDeed<T> {
+export interface FetchPinnedFavoritesaction<T> {
   type:
-    | DeedTypes.fetchPinnedFavorites
-    | DeedTypes.fetchPinnedFavoritesSuccess
-    | DeedTypes.fetchPinnedFavoritesError;
+    | actionTypes.fetchPinnedFavorites
+    | actionTypes.fetchPinnedFavoritesSuccess
+    | actionTypes.fetchPinnedFavoritesError;
   payload: T;
 }
 
 export const fetchPinnedFavorites = () => async (dispatch: Dispatch) => {
-  dispatch<FetchPinnedFavoritesDeed<undefined>>({
-    type: DeedTypes.fetchPinnedFavorites,
+  dispatch<FetchPinnedFavoritesaction<undefined>>({
+    type: actionTypes.fetchPinnedFavorites,
     payload: undefined,
   });
 
   try {
     const res = await axios.get<ApiResponse<Favorite[]>>('/fav/pinned');
 
-    dispatch<FetchPinnedFavoritesDeed<Favorite[]>>({
-      type: DeedTypes.fetchPinnedFavoritesSuccess,
+    dispatch<FetchPinnedFavoritesaction<Favorite[]>>({
+      type: actionTypes.fetchPinnedFavoritesSuccess,
       payload: res.data.data,
     });
   } catch (e) {

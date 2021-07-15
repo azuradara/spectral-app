@@ -1,4 +1,4 @@
-import { DeedTypes, Deed } from '#store/deeds';
+import { actionTypes, action } from '#store/actions';
 import { Task, TaskCategory } from '#interfaces';
 
 export interface State {
@@ -13,7 +13,7 @@ const iState: State = {
   taskCategories: [],
 };
 
-const fetchTaskCategories = (state: State, deed: Deed): State => {
+const fetchTaskCategories = (state: State, action: action): State => {
   return {
     ...state,
     seeking: true,
@@ -21,30 +21,30 @@ const fetchTaskCategories = (state: State, deed: Deed): State => {
   };
 };
 
-const fetchTaskCategoriesSuccess = (state: State, deed: Deed): State => {
+const fetchTaskCategoriesSuccess = (state: State, action: action): State => {
   return {
     ...state,
     seeking: false,
-    taskCategories: deed.payload,
+    taskCategories: action.payload,
   };
 };
 
-const addTaskCategory = (state: State, deed: Deed): State => {
+const addTaskCategory = (state: State, action: action): State => {
   return {
     ...state,
     taskCategories: [
       ...state.taskCategories,
       {
-        ...deed.payload,
+        ...action.payload,
         tasks: [],
       },
     ],
   };
 };
 
-const addTask = (state: State, deed: Deed): State => {
+const addTask = (state: State, action: action): State => {
   const idx = state.taskCategories.findIndex(
-    (cat: TaskCategory) => cat.id === deed.payload.task_category_id
+    (cat: TaskCategory) => cat.id === action.payload.task_category_id
   );
 
   return {
@@ -56,7 +56,7 @@ const addTask = (state: State, deed: Deed): State => {
         tasks: [
           ...state.taskCategories[idx].tasks,
           {
-            ...deed.payload,
+            ...action.payload,
           },
         ],
       },
@@ -65,9 +65,9 @@ const addTask = (state: State, deed: Deed): State => {
   };
 };
 
-const deleteTaskCategory = (state: State, deed: Deed): State => {
+const deleteTaskCategory = (state: State, action: action): State => {
   const idx = state.taskCategories.findIndex(
-    (cat: TaskCategory) => cat.id === deed.payload
+    (cat: TaskCategory) => cat.id === action.payload
   );
 
   return {
@@ -79,9 +79,9 @@ const deleteTaskCategory = (state: State, deed: Deed): State => {
   };
 };
 
-const updateTaskCategory = (state: State, deed: Deed): State => {
+const updateTaskCategory = (state: State, action: action): State => {
   const idx = state.taskCategories.findIndex(
-    (cat: TaskCategory) => cat.id === deed.payload
+    (cat: TaskCategory) => cat.id === action.payload
   );
 
   return {
@@ -89,16 +89,16 @@ const updateTaskCategory = (state: State, deed: Deed): State => {
     taskCategories: [
       ...state.taskCategories.slice(0, idx),
       {
-        ...deed.payload,
+        ...action.payload,
       },
       ...state.taskCategories.slice(idx + 1),
     ],
   };
 };
 
-const deleteTask = (state: State, deed: Deed): State => {
+const deleteTask = (state: State, action: action): State => {
   const idx = state.taskCategories.findIndex(
-    (cat: TaskCategory) => cat.id === deed.payload.catId
+    (cat: TaskCategory) => cat.id === action.payload.catId
   );
 
   return {
@@ -109,7 +109,7 @@ const deleteTask = (state: State, deed: Deed): State => {
         ...state.taskCategories[idx],
         tasks: [
           ...state.taskCategories[idx].tasks.filter(
-            (task: Task) => task.id !== deed.payload.taskId
+            (task: Task) => task.id !== action.payload.taskId
           ),
         ],
       },
@@ -118,12 +118,12 @@ const deleteTask = (state: State, deed: Deed): State => {
   };
 };
 
-const updateTask = (state: State, deed: Deed): State => {
+const updateTask = (state: State, action: action): State => {
   const catIdx = state.taskCategories.findIndex(
-    (category: TaskCategory) => category.id === deed.payload.category_id
+    (category: TaskCategory) => category.id === action.payload.category_id
   );
   const favIdx = state.taskCategories[catIdx].tasks.findIndex(
-    (favorite: Task) => favorite.id === deed.payload.id
+    (favorite: Task) => favorite.id === action.payload.id
   );
 
   return {
@@ -135,7 +135,7 @@ const updateTask = (state: State, deed: Deed): State => {
         tasks: [
           ...state.taskCategories[catIdx].tasks.slice(0, favIdx),
           {
-            ...deed.payload,
+            ...action.payload,
           },
           ...state.taskCategories[catIdx].tasks.slice(favIdx + 1),
         ],
@@ -145,31 +145,31 @@ const updateTask = (state: State, deed: Deed): State => {
   };
 };
 
-const taskReducer = (state: State = iState, deed: Deed): State => {
-  switch (deed.type) {
-    case DeedTypes.fetchTaskCategories:
-      return fetchTaskCategories(state, deed);
+const taskReducer = (state: State = iState, action: action): State => {
+  switch (action.type) {
+    case actionTypes.fetchTaskCategories:
+      return fetchTaskCategories(state, action);
 
-    case DeedTypes.fetchTaskCategoriesSuccess:
-      return fetchTaskCategoriesSuccess(state, deed);
+    case actionTypes.fetchTaskCategoriesSuccess:
+      return fetchTaskCategoriesSuccess(state, action);
 
-    case DeedTypes.addTaskCategory:
-      return addTaskCategory(state, deed);
+    case actionTypes.addTaskCategory:
+      return addTaskCategory(state, action);
 
-    case DeedTypes.deleteTaskCategory:
-      return deleteTaskCategory(state, deed);
+    case actionTypes.deleteTaskCategory:
+      return deleteTaskCategory(state, action);
 
-    case DeedTypes.updateTaskCategory:
-      return updateTaskCategory(state, deed);
+    case actionTypes.updateTaskCategory:
+      return updateTaskCategory(state, action);
 
-    case DeedTypes.addTask:
-      return updateTask(state, deed);
+    case actionTypes.addTask:
+      return updateTask(state, action);
 
-    case DeedTypes.updateTask:
-      return updateTask(state, deed);
+    case actionTypes.updateTask:
+      return updateTask(state, action);
 
-    case DeedTypes.deleteTask:
-      return deleteTask(state, deed);
+    case actionTypes.deleteTask:
+      return deleteTask(state, action);
 
     default:
       return state;

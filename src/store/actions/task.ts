@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DeedTypes } from '#store/deeds/deedTypes';
+import { actionTypes } from '#store/actions/actionTypes';
 import { Dispatch } from 'redux';
 import {
   TaskCategory,
@@ -8,27 +8,27 @@ import {
   Task,
   NewTask,
 } from '#interfaces';
-import { CreateNotificationDeed } from '#store/deeds';
+import { CreateNotificationaction } from '#store/actions';
 
-export interface FetchTaskCategoriesDeed<T> {
+export interface FetchTaskCategoriesaction<T> {
   type:
-    | DeedTypes.fetchTaskCategories
-    | DeedTypes.fetchTaskCategoriesSuccess
-    | DeedTypes.fetchTaskCategoriesError;
+    | actionTypes.fetchTaskCategories
+    | actionTypes.fetchTaskCategoriesSuccess
+    | actionTypes.fetchTaskCategoriesError;
   payload: T;
 }
 
 export const fetchTaskCategories = () => async (dispatch: Dispatch) => {
-  dispatch<FetchTaskCategoriesDeed<undefined>>({
-    type: DeedTypes.fetchTaskCategories,
+  dispatch<FetchTaskCategoriesaction<undefined>>({
+    type: actionTypes.fetchTaskCategories,
     payload: undefined,
   });
 
   try {
     const res = await axios.get<ApiResponse<TaskCategory[]>>('/task_cat');
 
-    dispatch<FetchTaskCategoriesDeed<TaskCategory[]>>({
-      type: DeedTypes.fetchTaskCategoriesSuccess,
+    dispatch<FetchTaskCategoriesaction<TaskCategory[]>>({
+      type: actionTypes.fetchTaskCategoriesSuccess,
       payload: res.data.data,
     });
   } catch (err) {
@@ -36,8 +36,8 @@ export const fetchTaskCategories = () => async (dispatch: Dispatch) => {
   }
 };
 
-export interface AddTaskCategoryDeed {
-  type: DeedTypes.addTaskCategory;
+export interface AddTaskCategoryaction {
+  type: actionTypes.addTaskCategory;
   payload: TaskCategory;
 }
 
@@ -49,8 +49,8 @@ export const addTaskCategory =
         formData
       );
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'success',
           message: `Category ${formData.name} created.`,
@@ -58,8 +58,8 @@ export const addTaskCategory =
         },
       });
 
-      dispatch<AddTaskCategoryDeed>({
-        type: DeedTypes.addTaskCategory,
+      dispatch<AddTaskCategoryaction>({
+        type: actionTypes.addTaskCategory,
         payload: res.data.data,
       });
     } catch (err) {
@@ -67,8 +67,8 @@ export const addTaskCategory =
     }
   };
 
-export interface DeleteTaskCategoryDeed {
-  type: DeedTypes.deleteTaskCategory;
+export interface DeleteTaskCategoryaction {
+  type: actionTypes.deleteTaskCategory;
   payload: number;
 }
 
@@ -77,8 +77,8 @@ export const deleteTaskCategory =
     try {
       await axios.delete<ApiResponse<TaskCategory>>(`task_cat/${id}`);
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Success',
           message: `Category deleted`,
@@ -86,8 +86,8 @@ export const deleteTaskCategory =
         },
       });
 
-      dispatch<DeleteTaskCategoryDeed>({
-        type: DeedTypes.deleteTaskCategory,
+      dispatch<DeleteTaskCategoryaction>({
+        type: actionTypes.deleteTaskCategory,
         payload: id,
       });
     } catch (err) {
@@ -95,8 +95,8 @@ export const deleteTaskCategory =
     }
   };
 
-export interface UpdateTaskCategoryDeed {
-  type: DeedTypes.updateTaskCategory;
+export interface UpdateTaskCategoryaction {
+  type: actionTypes.updateTaskCategory;
   payload: TaskCategory;
 }
 
@@ -108,8 +108,8 @@ export const updateTaskCategory =
         formData
       );
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Success',
           message: `Category ${formData.name} updated`,
@@ -117,8 +117,8 @@ export const updateTaskCategory =
         },
       });
 
-      dispatch<UpdateTaskCategoryDeed>({
-        type: DeedTypes.updateTaskCategory,
+      dispatch<UpdateTaskCategoryaction>({
+        type: actionTypes.updateTaskCategory,
         payload: res.data.data,
       });
     } catch (err) {
@@ -126,8 +126,8 @@ export const updateTaskCategory =
     }
   };
 
-export interface AddTaskDeed {
-  type: DeedTypes.addTask;
+export interface AddTaskaction {
+  type: actionTypes.addTask;
   payload: Task;
 }
 
@@ -135,8 +135,8 @@ export const addTask = (formData: NewTask) => async (dispatch: Dispatch) => {
   try {
     const res = await axios.post<ApiResponse<Task>>('/task', formData);
 
-    dispatch<CreateNotificationDeed>({
-      type: DeedTypes.createNotification,
+    dispatch<CreateNotificationaction>({
+      type: actionTypes.createNotification,
       payload: {
         title: 'success',
         message: `Task created`,
@@ -144,8 +144,8 @@ export const addTask = (formData: NewTask) => async (dispatch: Dispatch) => {
       },
     });
 
-    dispatch<AddTaskDeed>({
-      type: DeedTypes.addTask,
+    dispatch<AddTaskaction>({
+      type: actionTypes.addTask,
       payload: res.data.data,
     });
   } catch (err) {
@@ -153,8 +153,8 @@ export const addTask = (formData: NewTask) => async (dispatch: Dispatch) => {
   }
 };
 
-export interface DeleteTaskDeed {
-  type: DeedTypes.deleteTask;
+export interface DeleteTaskaction {
+  type: actionTypes.deleteTask;
   payload: {
     taskId: number;
     catId: number;
@@ -166,8 +166,8 @@ export const deleteTask =
     try {
       await axios.delete<ApiResponse<unknown>>(`/fav/${taskId}`);
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Success',
           message: `Task deleted.`,
@@ -175,8 +175,8 @@ export const deleteTask =
         },
       });
 
-      dispatch<DeleteTaskDeed>({
-        type: DeedTypes.deleteTask,
+      dispatch<DeleteTaskaction>({
+        type: actionTypes.deleteTask,
         payload: {
           taskId,
           catId,
@@ -187,8 +187,8 @@ export const deleteTask =
     }
   };
 
-export interface UpdateTaskDeed {
-  type: DeedTypes.updateTask;
+export interface UpdateTaskaction {
+  type: actionTypes.updateTask;
   payload: Task;
 }
 
@@ -203,8 +203,8 @@ export const updateTask =
 
       const res = await axios.put<ApiResponse<Task>>(`/fav/${taskId}`, task);
 
-      dispatch<CreateNotificationDeed>({
-        type: DeedTypes.createNotification,
+      dispatch<CreateNotificationaction>({
+        type: actionTypes.createNotification,
         payload: {
           title: 'Updated.',
           message: `Task updated successfully.`,
@@ -212,16 +212,16 @@ export const updateTask =
         },
       });
 
-      dispatch<DeleteTaskDeed>({
-        type: DeedTypes.deleteTask,
+      dispatch<DeleteTaskaction>({
+        type: actionTypes.deleteTask,
         payload: {
           taskId,
           catId: task.task_category_id,
         },
       });
 
-      dispatch<UpdateTaskDeed>({
-        type: DeedTypes.updateTask,
+      dispatch<UpdateTaskaction>({
+        type: actionTypes.updateTask,
         payload: res.data.data,
       });
     } catch (err) {

@@ -8,7 +8,7 @@ import LogoutIcon from '#components/shared/Icons/LogoutIcon';
 import FavoritesIcon from '#components/shared/Icons/FavoritesIcon';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
-import { logoutUser, openModal } from '#store/deeds';
+import { logoutUser, openModal } from '#store/actions';
 import SettingsIcon from '#components/shared/Icons/SettingsIcon';
 import SettingsModal from '#components/ModalContent/SettingsModal';
 import BookmarkIcon from '#components/shared/Icons/BookmarkIcon';

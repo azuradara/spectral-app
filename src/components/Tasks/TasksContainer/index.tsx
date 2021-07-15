@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { fetchTaskCategories } from '#store/deeds';
+import { fetchTaskCategories } from '#store/actions';
 import { GlobalState, TaskCategory } from '#interfaces';
 import { connect, ConnectedProps } from 'react-redux';
 import { string } from 'yargs';

@@ -2,7 +2,7 @@ import React from 'react';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { connect, ConnectedProps } from 'react-redux';
 import { Category, Favorite } from '#interfaces';
-import { updateFavorite } from '#store/deeds';
+import { updateFavorite } from '#store/actions';
 
 import BookmarkSingle from '#components/Bookmarks/BookmarkSingle';
 import BookmarkListMenu from '#components/Bookmarks/BookmarkList/BookmarkListMenu';

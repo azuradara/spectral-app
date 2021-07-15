@@ -2,7 +2,7 @@ import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Category, GlobalState } from '#interfaces';
 import BookmarkList from '#components/Bookmarks/BookmarkList';
-import { fetchCategories } from '#store/deeds';
+import { fetchCategories } from '#store/actions';
 import Masonry from 'react-masonry-css';
 
 const mapStatetoProps = (state: GlobalState) => {
