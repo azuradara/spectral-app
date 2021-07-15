@@ -150,7 +150,7 @@ const taskReducer = (state: State = iState, deed: Deed): State => {
     case DeedTypes.fetchTaskCategories:
       return fetchTaskCategories(state, deed);
 
-    case DeedTypes.fetchCategoriesSuccess:
+    case DeedTypes.fetchTaskCategoriesSuccess:
       return fetchTaskCategoriesSuccess(state, deed);
 
     case DeedTypes.addTaskCategory:

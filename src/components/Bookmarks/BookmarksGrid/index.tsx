@@ -25,8 +25,6 @@ const BookmarksGrid = (props: ComponentProps): React.ReactElement => {
     if (props.categories.length === 0) props.fetchCategories();
   }, [props.fetchCategories]);
 
-  if (props.categories.length === 0) return <p>no bookmarks</p>;
-
   return (
     <Masonry
       className="bookmarks-grid"
