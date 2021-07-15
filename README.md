@@ -1,4 +1,4 @@
-# Spectral
+# Spectral -- Work In Progress
 ![Login Screen](./github/login.gif)
 ## Description
 Spectral is a clean productivity ortiented replacement for the browser's default New Tab page.
