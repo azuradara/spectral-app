@@ -18,9 +18,10 @@
     margin: 2rem auto;
     max-width: 600px;
     background: radial-gradient(
-      rgba($color: $text-light, $alpha: 0.05),
-      rgba($color: $text-light, $alpha: 0)
+      rgba($color: $text-light, $alpha: 0.04),
+      rgba($color: $text-light, $alpha: 0.01)
     );
+    backdrop-filter: blur(2px);
     padding: 2rem;
     border-radius: 7px;
     position: relative;
