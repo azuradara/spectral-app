@@ -29,8 +29,6 @@ export const fetchCategories = () => async (dispatch: Dispatch) => {
   try {
     const res = await axios.get<ApiResponse<Category[]>>('/cat');
 
-    console.log(res);
-
     dispatch<FetchCategoriesDeed<Category[]>>({
       type: DeedTypes.fetchCategoriesSuccess,
       payload: res.data.data,
@@ -82,6 +80,7 @@ export const addFavorite =
   (formData: NewFavorite) => async (dispatch: Dispatch) => {
     try {
       const res = await axios.post<ApiResponse<Favorite>>('/fav', formData);
+
       dispatch<CreateNotificationDeed>({
         type: DeedTypes.createNotification,
         payload: {
@@ -90,7 +89,6 @@ export const addFavorite =
           type: 'default',
         },
       });
-      console.log(res.data.data);
 
       dispatch<AddFavoriteDeed>({
         type: DeedTypes.addFavorite,

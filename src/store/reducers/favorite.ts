@@ -128,8 +128,6 @@ const deleteFavorite = (state: State, deed: Deed): State => {
     (category: Category) => category.id === deed.payload.catId
   );
 
-  console.log(deed.payload);
-
   return {
     ...state,
     categories: [

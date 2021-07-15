@@ -24,6 +24,17 @@ import {
   OpenModalDeed,
   CloseModalDeed,
 
+  // @TASKS - CATEGORIES
+  FetchTaskCategoriesDeed,
+  AddTaskCategoryDeed,
+  DeleteTaskCategoryDeed,
+  UpdateTaskCategoryDeed,
+
+  // @TASKS - TASKS
+  AddTaskDeed,
+  DeleteTaskDeed,
+  UpdateTaskDeed,
+
   // Settings
   UpdateSettingsDeed,
 } from '#store/deeds';
@@ -61,6 +72,19 @@ export enum DeedTypes {
   openModal = '@modal/OPEN_MODAL',
   closeModal = '@modal/CLOSE_MODAL',
 
+  // @TASKS - CATEGORIES
+  fetchTaskCategories = '@tasks/FETCH_CATEGORIES',
+  fetchTaskCategoriesSuccess = '@tasks/FETCH_CATEGORIES_SUCC',
+  fetchTaskCategoriesError = '@tasks/FETCH_CATEGORIES_ERR',
+  addTaskCategory = '@tasks/ADD_CATEGORY',
+  deleteTaskCategory = '@tasks/DELETE_CATEGORY',
+  updateTaskCategory = '@tasks/UPDATE_CATEGORY',
+
+  // @TASKS - TASKS
+  addTask = '@tasks/ADD_TASK',
+  deleteTask = '@tasks/DELETE_TASK',
+  updateTask = '@tasks/UPDATE_TASK',
+
   // Settings
   updateSettings = '@settings/UPDATE_SETTINGS',
 }
@@ -83,8 +107,17 @@ export type Deed =
   // User
   | LoginUserDeed<any>
   | LogoutUserDeed
-  //Modal
+  // Modal
   | OpenModalDeed
   | CloseModalDeed
+  // @TASKS - CATEGORIES
+  | FetchTaskCategoriesDeed<any>
+  | AddTaskCategoryDeed
+  | DeleteTaskCategoryDeed
+  | UpdateTaskCategoryDeed
+  // @TASKS
+  | AddTaskDeed
+  | DeleteTaskDeed
+  | UpdateTaskDeed
   //Settings
   | UpdateSettingsDeed;
