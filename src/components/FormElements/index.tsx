@@ -129,6 +129,16 @@ const SliderInput: React.FC<SliderProps> = ({
   );
 };
 
+const LoginBtn: React.FC<any> = () => {
+  return (
+    <div className="form-buttons">
+      <button type="submit" className="btn btn-default btn-btn">
+        Log in
+      </button>
+    </div>
+  );
+};
+
 const FormBtn: React.FC<any> = () => {
   const formik = useFormikContext();
 
@@ -174,6 +184,9 @@ const TextInput: React.FC<TextInputProps> = ({ label, name = '', ...rest }) => {
           htmlFor={id.current}
         >
           {label}
+          {Boolean(meta.touched && meta.error) && (
+            <span className="form-control__error"> - {meta.error}</span>
+          )}
         </label>
         <label
           className={clsx(
@@ -198,13 +211,8 @@ const TextInput: React.FC<TextInputProps> = ({ label, name = '', ...rest }) => {
           id={id.current}
         />
       </div>
-      {Boolean(meta.touched && meta.error) && (
-        <div className="form-control__error">
-          <span>{meta.error}</span>
-        </div>
-      )}
     </div>
   );
 };
 
-export { DropZoneInput, SliderInput, FormBtn, TextInput };
+export { DropZoneInput, SliderInput, FormBtn, TextInput, LoginBtn };

@@ -52,8 +52,17 @@ export const loginUser =
       });
 
       localStorage.setItem('token', res.data.data.token);
+
+      return res;
     } catch (err) {
-      console.log(err);
+      dispatch<CreateNotificationDeed>({
+        type: DeedTypes.createNotification,
+        payload: {
+          title: 'Invalid credentials',
+          message: 'Please try again.',
+          type: 'error',
+        },
+      });
     }
   };
 

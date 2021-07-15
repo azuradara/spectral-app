@@ -22,29 +22,31 @@ const mapStateToProps = (state: GlobalState) => {
 
 const connector = connect(mapStateToProps, { openModal, logoutUser });
 
-type ComponentProps = Record<string, undefined> &
+type ComponentProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
 
 const Sidebar = (props: ComponentProps): ReactElement => {
-  if (!props.user.user) return <Redirect to="/login" />;
   const { logoutUser, openModal } = props;
   const { push } = useHistory();
 
   return (
     <div className="sidebar-inner">
-      <div className="sidebar-inner__single">
-        <IcoBtn onClick={() => push('/')}>
-          <FavoritesIcon />
-        </IcoBtn>
+      {props.user.user && (
+        <div className="sidebar-inner__single">
+          <IcoBtn onClick={() => push('/')}>
+            <FavoritesIcon />
+          </IcoBtn>
 
-        <IcoBtn onClick={() => push('/bookmarks')}>
-          <BookmarkIcon />
-        </IcoBtn>
+          <IcoBtn onClick={() => push('/bookmarks')}>
+            <BookmarkIcon />
+          </IcoBtn>
 
-        <IcoBtn onClick={() => push('/tasks')}>
-          <TaskIcon />
-        </IcoBtn>
-      </div>
+          <IcoBtn onClick={() => push('/tasks')}>
+            <TaskIcon />
+          </IcoBtn>
+        </div>
+      )}
+
       <div className="sidebar-inner__single">
         <IcoBtn
           onClick={() =>
