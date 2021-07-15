@@ -89,7 +89,7 @@ export enum actionTypes {
   updateSettings = '@settings/UPDATE_SETTINGS',
 }
 
-export type action =
+export type Action =
   // Categories
   | FetchCategoriesaction<any>
   | AddCategoryaction

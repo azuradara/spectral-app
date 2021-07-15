@@ -1,4 +1,4 @@
-import { actionTypes, action } from '#store/actions';
+import { actionTypes, Action } from '#store/actions';
 import { Task, TaskCategory } from '#interfaces';
 
 export interface State {
@@ -13,7 +13,7 @@ const iState: State = {
   taskCategories: [],
 };
 
-const fetchTaskCategories = (state: State, action: action): State => {
+const fetchTaskCategories = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: true,
@@ -21,7 +21,7 @@ const fetchTaskCategories = (state: State, action: action): State => {
   };
 };
 
-const fetchTaskCategoriesSuccess = (state: State, action: action): State => {
+const fetchTaskCategoriesSuccess = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: false,
@@ -29,7 +29,7 @@ const fetchTaskCategoriesSuccess = (state: State, action: action): State => {
   };
 };
 
-const addTaskCategory = (state: State, action: action): State => {
+const addTaskCategory = (state: State, action: Action): State => {
   return {
     ...state,
     taskCategories: [
@@ -42,7 +42,7 @@ const addTaskCategory = (state: State, action: action): State => {
   };
 };
 
-const addTask = (state: State, action: action): State => {
+const addTask = (state: State, action: Action): State => {
   const idx = state.taskCategories.findIndex(
     (cat: TaskCategory) => cat.id === action.payload.task_category_id
   );
@@ -65,7 +65,7 @@ const addTask = (state: State, action: action): State => {
   };
 };
 
-const deleteTaskCategory = (state: State, action: action): State => {
+const deleteTaskCategory = (state: State, action: Action): State => {
   const idx = state.taskCategories.findIndex(
     (cat: TaskCategory) => cat.id === action.payload
   );
@@ -79,7 +79,7 @@ const deleteTaskCategory = (state: State, action: action): State => {
   };
 };
 
-const updateTaskCategory = (state: State, action: action): State => {
+const updateTaskCategory = (state: State, action: Action): State => {
   const idx = state.taskCategories.findIndex(
     (cat: TaskCategory) => cat.id === action.payload
   );
@@ -96,7 +96,7 @@ const updateTaskCategory = (state: State, action: action): State => {
   };
 };
 
-const deleteTask = (state: State, action: action): State => {
+const deleteTask = (state: State, action: Action): State => {
   const idx = state.taskCategories.findIndex(
     (cat: TaskCategory) => cat.id === action.payload.catId
   );
@@ -118,7 +118,7 @@ const deleteTask = (state: State, action: action): State => {
   };
 };
 
-const updateTask = (state: State, action: action): State => {
+const updateTask = (state: State, action: Action): State => {
   const catIdx = state.taskCategories.findIndex(
     (category: TaskCategory) => category.id === action.payload.category_id
   );
@@ -145,7 +145,7 @@ const updateTask = (state: State, action: action): State => {
   };
 };
 
-const taskReducer = (state: State = iState, action: action): State => {
+const taskReducer = (state: State = iState, action: Action): State => {
   switch (action.type) {
     case actionTypes.fetchTaskCategories:
       return fetchTaskCategories(state, action);
