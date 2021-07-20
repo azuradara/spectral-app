@@ -5,7 +5,7 @@ import { Favorite } from '#interfaces';
 import * as yup from 'yup';
 import { reject, equals } from 'ramda';
 import { TextInput, FormBtn } from '#components/FormElements';
-import { closeModal, updateFavorite } from '#store/deeds';
+import { closeModal, updateFavorite } from '#store/actions';
 
 const connector = connect(null, { closeModal, updateFavorite });
 

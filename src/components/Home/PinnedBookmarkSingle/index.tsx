@@ -1,7 +1,7 @@
 import React from 'react';
 import { Favorite } from '#interfaces';
 import { parse_url } from '#utils';
-import { get_url_ico } from '#store/deeds/get_url_ico';
+import { get_url_ico } from '#store/actions/get_url_ico';
 
 import { ContextMenuTrigger } from 'react-contextmenu';
 import PinnedBookmarkSingleMenu from '#components/Home/PinnedBookmarkSingle/PinnedBookmarkSingleMenu';

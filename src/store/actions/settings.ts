@@ -1,21 +1,21 @@
 import { Dispatch } from 'redux';
-import { DeedTypes } from '.';
+import { actionTypes } from '.';
 import { Settings } from '#interfaces';
-import { CreateNotificationDeed } from '#store/deeds';
+import { CreateNotificationaction } from '#store/actions';
 
-export interface UpdateSettingsDeed {
-  type: DeedTypes.updateSettings;
+export interface UpdateSettingsaction {
+  type: actionTypes.updateSettings;
   payload: Settings;
 }
 
 export const updateSettings = (settings: Settings) => (dispatch: Dispatch) => {
-  dispatch<UpdateSettingsDeed>({
-    type: DeedTypes.updateSettings,
+  dispatch<UpdateSettingsaction>({
+    type: actionTypes.updateSettings,
     payload: settings,
   });
 
-  dispatch<CreateNotificationDeed>({
-    type: DeedTypes.createNotification,
+  dispatch<CreateNotificationaction>({
+    type: actionTypes.createNotification,
     payload: {
       title: 'Success',
       message: 'Settings updated.',

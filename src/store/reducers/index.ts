@@ -11,6 +11,7 @@ import favoriteReducer from '#store/reducers/favorite';
 import ModalReducer from '#store/reducers/modal';
 import SettingsReducer from '#store/reducers/settings';
 import notificationReducer from '#store/reducers/notification';
+import taskReducer from '#store/reducers/task';
 
 const persistConfig = {
   key: 'root',
@@ -30,6 +31,7 @@ const rootReducer = combineReducers<GlobalState>({
   modal: ModalReducer,
   settings: SettingsReducer,
   notification: notificationReducer,
+  task: taskReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

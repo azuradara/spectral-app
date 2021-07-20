@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { Category } from '#interfaces';
-import { closeModal, updateCategory } from '#store/deeds';
+import { closeModal, updateCategory } from '#store/actions';
 import * as yup from 'yup';
 import { reject, equals } from 'ramda';
 import { TextInput, FormBtn } from '#components/FormElements';

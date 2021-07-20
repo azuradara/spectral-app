@@ -3,7 +3,7 @@ import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import * as yup from 'yup';
 import { TextInput, FormBtn } from '#components/FormElements';
-import { addFavorite, closeModal } from '#store/deeds';
+import { addFavorite, closeModal } from '#store/actions';
 
 const connector = connect(null, { closeModal, addFavorite });
 

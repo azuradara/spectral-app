@@ -1,28 +1,28 @@
 import { Dispatch } from 'redux';
-import { DeedTypes } from '#store/deeds';
+import { actionTypes } from '#store/actions';
 import { NewNotification } from '#interfaces';
 
-export interface CreateNotificationDeed {
-  type: DeedTypes.createNotification;
+export interface CreateNotificationaction {
+  type: actionTypes.createNotification;
   payload: NewNotification;
 }
 
 export const createNotification =
   (notification: NewNotification) => (dispatch: Dispatch) => {
-    dispatch<CreateNotificationDeed>({
-      type: DeedTypes.createNotification,
+    dispatch<CreateNotificationaction>({
+      type: actionTypes.createNotification,
       payload: notification,
     });
   };
 
-export interface ClearNotificationDeed {
-  type: DeedTypes.clearNotification;
+export interface ClearNotificationaction {
+  type: actionTypes.clearNotification;
   payload: number;
 }
 
 export const clearNotification = (id: number) => (dispatch: Dispatch) => {
-  dispatch<ClearNotificationDeed>({
-    type: DeedTypes.clearNotification,
+  dispatch<ClearNotificationaction>({
+    type: actionTypes.clearNotification,
     payload: id,
   });
 };
