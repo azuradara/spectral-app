@@ -10,7 +10,7 @@ import { store, persistor } from '#store/index';
 
 // TODO: move this when revamping auth module
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
+axios.defaults.baseURL = 'http://spectralapp.ddns.net/api';
 require('#config/axios.ts');
 // if (localStorage.token) {
 //   axios.defaults.headers.common[

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Suspense } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import Home from '#components/Home';
 import Login from '#components/Login';
@@ -19,7 +19,7 @@ import { GlobalState } from '#interfaces';
 const Root = (): JSX.Element => {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Background />
         <div className="sidebar">
           <Sidebar />
@@ -43,7 +43,7 @@ const Root = (): JSX.Element => {
           </Scrollbar>
         </div>
         <Modal />
-      </BrowserRouter>
+      </HashRouter>
       <NotificationDispatcher />
     </>
   );
