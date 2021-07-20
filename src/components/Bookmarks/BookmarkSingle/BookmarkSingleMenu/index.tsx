@@ -10,7 +10,7 @@ import {
   updateFavorite,
   pinFavorite,
   openModal,
-} from '#store/deeds';
+} from '#store/actions';
 import EditBookmarkModal from '#components/ModalContent/EditBookmarkModal';
 
 const connector = connect(null, {

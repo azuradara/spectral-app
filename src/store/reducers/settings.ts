@@ -1,4 +1,4 @@
-import { DeedTypes, Deed } from '#store/deeds';
+import { actionTypes, Action } from '#store/actions';
 import { Settings } from '#interfaces';
 
 // Just to keep consistency
@@ -23,17 +23,17 @@ const initState: State = {
 // instead of passing the whole settings object every time something
 // is changed.
 
-const updateSettings = (state: State, deed: Deed): State => {
+const updateSettings = (state: State, action: Action): State => {
   return {
     ...state,
-    settings: deed.payload,
+    settings: action.payload,
   };
 };
 
-const SettingsReducer = (state: State = initState, deed: Deed): State => {
-  switch (deed.type) {
-    case DeedTypes.updateSettings:
-      return updateSettings(state, deed);
+const SettingsReducer = (state: State = initState, action: Action): State => {
+  switch (action.type) {
+    case actionTypes.updateSettings:
+      return updateSettings(state, action);
 
     default:
       return state;

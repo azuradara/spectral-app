@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Particles from 'react-particles-js';
-import particleConfig from '#config/particles';
+import particleConfig from '#config/particles_login';
 
 //TODO: convert to hook
 
@@ -10,7 +10,7 @@ const getDimensions = () => {
   return { height, width };
 };
 
-const ParticleBackground = (): React.ReactElement => {
+const LoginParticleBackground = (): React.ReactElement => {
   const [dimensions, setDimensions] = React.useState(getDimensions());
 
   React.useEffect(() => {
@@ -33,4 +33,4 @@ const ParticleBackground = (): React.ReactElement => {
   );
 };
 
-export default ParticleBackground;
+export default LoginParticleBackground;

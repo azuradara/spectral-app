@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { clearNotification } from '#store/deeds';
+import { clearNotification } from '#store/actions';
 import { animated, useSpring } from '@react-spring/web';
 
 const NotificationConnector = connect(null, { clearNotification });

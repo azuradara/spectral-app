@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { fetchPinnedFavorites } from '#store/deeds';
+import { fetchPinnedFavorites } from '#store/actions';
 import { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';

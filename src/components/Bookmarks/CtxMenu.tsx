@@ -1,7 +1,7 @@
 import { connect, ConnectedProps } from 'react-redux';
 import * as React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
-import { openModal } from '#store/deeds';
+import { openModal } from '#store/actions';
 import AddCategoryModal from '#components/ModalContent/AddCategoryModal';
 import AddIcon from '#components/shared/Icons/AddIcon';
 

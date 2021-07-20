@@ -2,7 +2,7 @@ import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Category, GlobalState } from '#interfaces';
 import BookmarkList from '#components/Bookmarks/BookmarkList';
-import { fetchCategories } from '#store/deeds';
+import { fetchCategories } from '#store/actions';
 import Masonry from 'react-masonry-css';
 
 const mapStatetoProps = (state: GlobalState) => {
@@ -24,8 +24,6 @@ const BookmarksGrid = (props: ComponentProps): React.ReactElement => {
   React.useEffect(() => {
     if (props.categories.length === 0) props.fetchCategories();
   }, [props.fetchCategories]);
-
-  if (props.categories.length === 0) return <p>no bookmarks</p>;
 
   return (
     <Masonry

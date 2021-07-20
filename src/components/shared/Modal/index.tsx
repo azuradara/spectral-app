@@ -4,9 +4,10 @@ import CloseIcon from '#components/shared/Icons/CloseIcon';
 import { connect, ConnectedProps } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
 import { GlobalState } from '#interfaces';
-import { closeModal } from '#store/deeds';
+import { closeModal } from '#store/actions';
 import Scrollbar from '#components/shared/Scrollbar';
 import useExternalClick from '#hooks/useExternalClick';
+import ParticleBackground from '../ParticleBackground/base';
 
 const mapStateToProps = (state: GlobalState) => ({
   modal: state.modal,
@@ -21,14 +22,23 @@ const Modal = (props: ModalProps) => {
 
   const [show, setShow] = React.useState<boolean>(false);
 
-  const spring = useSpring<{ opacity: string; transform: string }>({
+  const spring = useSpring<{
+    opacity: string;
+    transform: string;
+  }>({
     to: async (next) => {
       if (modal.open) {
         setShow(true);
-        await next({ opacity: 1, transform: 'translate(0%,0%)' });
+        await next({
+          opacity: 1,
+          transform: 'translate(0%,0%)',
+        });
         return;
       }
-      await next({ opacity: 0, transform: 'translate(0%,20%)' });
+      await next({
+        opacity: 0,
+        transform: 'translate(0%,20%)',
+      });
       await setShow(false);
     },
   });
@@ -43,6 +53,7 @@ const Modal = (props: ModalProps) => {
 
   return (
     <animated.div style={{ opacity: spring.opacity }} className="modal">
+      <ParticleBackground />
       <Scrollbar
         autoHeight
         autoHeightMin={window.innerHeight}

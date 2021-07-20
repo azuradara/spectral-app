@@ -5,7 +5,7 @@ import { DropZoneInput, FormBtn, SliderInput } from '#components/FormElements';
 import { byte_size } from '#utils';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
-import { updateSettings, closeModal } from '#store/deeds';
+import { updateSettings, closeModal } from '#store/actions';
 import { equals, reject } from 'ramda';
 
 const iValue = {
