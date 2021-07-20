@@ -3,13 +3,8 @@
   "name": "Spectral",
   "description": "~",
   "version": "0.1.0",
-  "content_scripts": [
-    {
-      "js": "https://cdn.rawgit.com/progers/pathseg/master/pathseg.js"
-    }
-  ],
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "permissions": ["storage", "unlimitedStorage", "bookmarks", "geolocation", "https://cdn.rawgit.com"]
+  "permissions": ["storage", "unlimitedStorage", "bookmarks", "geolocation"]
 }
