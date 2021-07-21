@@ -3,7 +3,7 @@
 Spectral is a clean productivity ortiented replacement for the browser's default New Tab page.
 ## Architecture
 - Backend
-  - PHP + Laravel (Fow now)
+  - PHP + Laravel (For now)
   - PostgresSQL
 - Frontend
   - React
