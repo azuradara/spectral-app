@@ -1,4 +1,4 @@
-import { actionTypes, action } from '#store/actions';
+import { actionTypes, Action } from '#store/actions';
 
 import { User } from '#interfaces';
 
@@ -14,7 +14,7 @@ const initState: State = {
   user: null,
 };
 
-const loginUser = (state: State, action: action): State => {
+const loginUser = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: true,
@@ -22,7 +22,7 @@ const loginUser = (state: State, action: action): State => {
   };
 };
 
-const loginUserSuccess = (state: State, action: action): State => {
+const loginUserSuccess = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: false,
@@ -30,7 +30,7 @@ const loginUserSuccess = (state: State, action: action): State => {
   };
 };
 
-const loginUserError = (state: State, action: action): State => {
+const loginUserError = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: false,
@@ -38,7 +38,7 @@ const loginUserError = (state: State, action: action): State => {
   };
 };
 
-const logoutUser = (state: State, action: action): State => {
+const logoutUser = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: false,
@@ -47,7 +47,7 @@ const logoutUser = (state: State, action: action): State => {
   };
 };
 
-const AuthReducer = (state: State = initState, action: action): State => {
+const AuthReducer = (state: State = initState, action: Action): State => {
   switch (action.type) {
     case actionTypes.loginUser:
       return loginUser(state, action);

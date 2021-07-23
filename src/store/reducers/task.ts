@@ -120,10 +120,10 @@ const deleteTask = (state: State, action: Action): State => {
 
 const updateTask = (state: State, action: Action): State => {
   const catIdx = state.taskCategories.findIndex(
-    (category: TaskCategory) => category.id === action.payload.category_id
+    (category: TaskCategory) => category.id === action.payload.task_category_id
   );
-  const favIdx = state.taskCategories[catIdx].tasks.findIndex(
-    (favorite: Task) => favorite.id === action.payload.id
+  const taskIdx = state.taskCategories[catIdx].tasks.findIndex(
+    (task: Task) => task.id === action.payload.id
   );
 
   return {
@@ -133,11 +133,11 @@ const updateTask = (state: State, action: Action): State => {
       {
         ...state.taskCategories[catIdx],
         tasks: [
-          ...state.taskCategories[catIdx].tasks.slice(0, favIdx),
+          ...state.taskCategories[catIdx].tasks.slice(0, taskIdx),
           {
             ...action.payload,
           },
-          ...state.taskCategories[catIdx].tasks.slice(favIdx + 1),
+          ...state.taskCategories[catIdx].tasks.slice(taskIdx + 1),
         ],
       },
       ...state.taskCategories.slice(catIdx + 1),

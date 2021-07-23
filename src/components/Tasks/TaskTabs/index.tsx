@@ -1,13 +1,16 @@
 import * as React from 'react';
 
 import { addTask, fetchTaskCategories } from '#store/actions';
-import { GlobalState, TaskCategory } from '#interfaces';
+import { GlobalState, Task, TaskCategory } from '#interfaces';
 import { connect, ConnectedProps } from 'react-redux';
+import Scrollbar from '#components/shared/Scrollbar';
 
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { TextInput } from '#components/FormElements';
 import SendIcon from '#components/shared/Icons/SendIcon';
+
+import TaskSingle from '../TaskSingle';
 
 const mapStatetoProps = (state: GlobalState) => {
   return {
@@ -24,14 +27,36 @@ type ComponentProps = Record<string, unknown> &
 const TaskTabs = (props: ComponentProps): React.ReactElement => {
   const { fetchTaskCategories, addTask, taskCategories, seeking } = props;
 
+  const [activeCat, setActiveCat] = React.useState<TaskCategory | null>(null);
+  const [tasksHeight, setTasksHeight] = React.useState<number | undefined>(0);
+  const [dispTasks, setDispTasks] = React.useState<Task[]>([]);
+
+  const tasksRef = React.useRef<null | HTMLDivElement>(null);
+
+  const filterTasks = (tasks: Task[], method: string): Task[] => {
+    switch (method) {
+      case 'created>asc':
+        return tasks.sort((a, b) => (a.id < b.id ? 1 : -1));
+      default:
+        return tasks;
+    }
+  };
+
+  const handleCategoryChange = (cat: TaskCategory) => {
+    setActiveCat(cat);
+    setDispTasks(filterTasks(cat.tasks, 'created>asc'));
+  };
+
   React.useEffect(() => {
-    console.log(taskCategories);
-  }, [fetchTaskCategories]);
+    if (taskCategories.length === 0) fetchTaskCategories();
+    setActiveCat(taskCategories[0]);
 
-  const [activeCat, setActiveCat] = React.useState<number>(0);
+    setDispTasks(filterTasks(taskCategories[0]?.tasks || [], 'created>asc'));
+  }, [taskCategories]);
 
-  const getCatIdx = (id: number) =>
-    taskCategories.findIndex((cat) => cat.id === id);
+  React.useEffect(() => {
+    setTasksHeight((tasksRef.current?.clientHeight || 200) - 200);
+  });
 
   return (
     <>
@@ -41,7 +66,7 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
         {taskCategories.map((cat) => {
           return (
             <div
-              onClick={() => setActiveCat(getCatIdx(cat.id))}
+              onClick={() => handleCategoryChange(cat)}
               className="tab"
               key={cat.id}
             >
@@ -55,21 +80,17 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
         })}
       </div>
 
-      <div className="tasks__container">
+      <div className="tasks__container" ref={tasksRef}>
         <div className="tasks__tasks">
           <h3 className="title">Tasks</h3>
           <span className="separator" />
-          {taskCategories[activeCat]?.tasks.map((task) => {
-            return (
-              <div className="task" key={task.id}>
-                <div
-                  className="task__color"
-                  style={{ backgroundColor: task.color }}
-                />
-                {task.content}
-              </div>
-            );
-          })}
+          <Scrollbar autoHeight autoHeightMin={tasksHeight}>
+            <div className="tasks__inner">
+              {dispTasks.map((task) => {
+                return <TaskSingle key={task.id} task={task} />;
+              })}
+            </div>
+          </Scrollbar>
         </div>
 
         <div className="tasks__add">
@@ -79,7 +100,7 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
             })}
             onSubmit={(e, { resetForm }) => {
               const nuTask: any = (({ content }) => ({ content }))(e);
-              nuTask.task_category_id = taskCategories[activeCat].id;
+              nuTask.task_category_id = activeCat?.id;
               nuTask.color = '#D3D3D3';
               resetForm({});
               addTask(nuTask);

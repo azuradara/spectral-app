@@ -193,15 +193,23 @@ export interface UpdateTaskaction {
 }
 
 export const updateTask =
-  (taskId: number, formData: NewTask) => async (dispatch: Dispatch) => {
+  (taskId: number, formData: Task) => async (dispatch: Dispatch) => {
     try {
-      const task = (({ content, color, task_category_id }) => ({
+      const task = (({
         content,
         color,
         task_category_id,
+        is_done,
+        is_important,
+      }) => ({
+        content,
+        color,
+        task_category_id,
+        is_done,
+        is_important,
       }))(formData);
 
-      const res = await axios.put<ApiResponse<Task>>(`/fav/${taskId}`, task);
+      const res = await axios.put<ApiResponse<Task>>(`/task/${taskId}`, task);
 
       dispatch<CreateNotificationaction>({
         type: actionTypes.createNotification,
@@ -209,14 +217,6 @@ export const updateTask =
           title: 'Updated.',
           message: `Task updated successfully.`,
           type: 'default',
-        },
-      });
-
-      dispatch<DeleteTaskaction>({
-        type: actionTypes.deleteTask,
-        payload: {
-          taskId,
-          catId: task.task_category_id,
         },
       });
 
