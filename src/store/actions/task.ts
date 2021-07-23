@@ -128,7 +128,7 @@ export const updateTaskCategory =
 
 export interface AddTaskaction {
   type: actionTypes.addTask;
-  payload: Task;
+  payload: NewTask;
 }
 
 export const addTask = (formData: NewTask) => async (dispatch: Dispatch) => {
