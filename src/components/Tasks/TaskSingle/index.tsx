@@ -23,7 +23,11 @@ const TaskSingle = (props: ComponentProps) => {
   };
 
   return (
-    <div onClick={() => handleMark()} className="task" key={task.id}>
+    <div
+      onClick={() => handleMark()}
+      className={`task ${task.is_done ? 'task--done' : ''}`}
+      key={task.id}
+    >
       <div>{task.is_done ? <TickBoxIcon /> : <SquareIcon />}</div>
 
       <div className="task__color" style={{ backgroundColor: task.color }} />

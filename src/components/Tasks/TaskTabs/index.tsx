@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { addTask, fetchTaskCategories } from '#store/actions';
-import { GlobalState, Task, TaskCategory } from '#interfaces';
+import { GlobalState, TaskCategory } from '#interfaces';
 import { connect, ConnectedProps } from 'react-redux';
 import TaskContainer from '../TaskContainer';
 
@@ -12,26 +12,17 @@ const mapStatetoProps = (state: GlobalState) => {
   };
 };
 
-const connector = connect(mapStatetoProps, { fetchTaskCategories, addTask });
+const connector = connect(mapStatetoProps, { fetchTaskCategories });
 
 type ComponentProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
 
 const TaskTabs = (props: ComponentProps): React.ReactElement => {
-  const { fetchTaskCategories, addTask, taskCategories, seeking } = props;
+  const { fetchTaskCategories, taskCategories } = props;
 
   const [activeCat, setActiveCat] = React.useState<TaskCategory>(
     taskCategories[0]
   );
-
-  const filterTasks = (tasks: Task[], method: string): Task[] => {
-    switch (method) {
-      case 'created>asc':
-        return tasks.sort((a, b) => (a.id < b.id ? 1 : -1));
-      default:
-        return tasks;
-    }
-  };
 
   const handleCategoryChange = (cat: TaskCategory) => {
     setActiveCat(cat);
