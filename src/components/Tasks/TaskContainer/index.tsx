@@ -38,11 +38,6 @@ const TaskContainer = (props: ComponentProps) => {
   const [tasksHeight, setTasksHeight] = React.useState<number | undefined>(0);
   const tasksRef = React.useRef<null | HTMLDivElement>(null);
 
-  // for now
-  // const dispTasks: Task[] = taskCategories[category_index].tasks;
-
-  // const activeTasks Task[] = dispTasks.filter((t) => t.is_done == false);
-  // const inactiveTasks: Task[] = dispTasks.filter((t) => t.is_done == true);
   React.useEffect(() => {
     setTasksHeight((tasksRef.current?.clientHeight || 200) - 200);
   });
