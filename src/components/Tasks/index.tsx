@@ -1,10 +1,12 @@
 import React from 'react';
 import TasksContainer from './TasksContainer';
+import TaskTabs from './TaskTabs';
 
 const Tasks = (): React.ReactElement => {
   return (
-    <div>
-      <div className="tasks">
+    <div className="tasks-page">
+      <div className="container">
+        <TaskTabs />
         <TasksContainer />
       </div>
     </div>

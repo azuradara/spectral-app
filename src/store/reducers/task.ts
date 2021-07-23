@@ -163,7 +163,7 @@ const taskReducer = (state: State = iState, action: Action): State => {
       return updateTaskCategory(state, action);
 
     case actionTypes.addTask:
-      return updateTask(state, action);
+      return addTask(state, action);
 
     case actionTypes.updateTask:
       return updateTask(state, action);

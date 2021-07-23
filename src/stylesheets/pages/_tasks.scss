@@ -1,0 +1,116 @@
+.tasks-page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    display: flex;
+    height: 100%;
+  }
+
+  .tasks__container {
+    background-color: rgba($color: #fff, $alpha: 0.02);
+    backdrop-filter: $blur-sm;
+    margin-left: 1rem;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .tasks__add {
+      margin-bottom: -1rem;
+
+      form {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      .form-control {
+        width: 100%;
+      }
+
+      input {
+        background: rgba($color: #fff, $alpha: 0.03);
+      }
+
+      .btn {
+        margin: 0;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        border-radius: 4px;
+        background: rgba($color: #fff, $alpha: 0.03);
+      }
+    }
+
+    .tasks__tasks {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        text-align: center;
+      }
+
+      .task {
+        border-radius: 4px;
+        padding: 0.7rem 1rem;
+        margin-top: 0.5rem;
+        position: relative;
+        cursor: pointer;
+        transition: all 150ms ease-out;
+
+        &:hover {
+          background: rgba($color: #fff, $alpha: 0.05);
+        }
+      }
+    }
+  }
+
+  .tasks__tabs {
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: #fff, $alpha: 0.02);
+    padding: 1rem 0.5rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 20rem;
+    backdrop-filter: $blur-sm;
+
+    .title {
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .tab {
+      cursor: pointer;
+      border-radius: 4px;
+      padding: 0.7rem 1rem;
+      margin-top: 0.5rem;
+      position: relative;
+      transition: all 150ms ease-out;
+
+      &__color {
+        position: absolute;
+        width: 7px;
+        top: 0;
+        left: 0;
+        border-radius: 4px 0 0 4px;
+        height: 100%;
+      }
+
+      &:hover,
+      &:focus {
+        background: rgba($color: #fff, $alpha: 0.05);
+      }
+    }
+  }
+}

@@ -25,6 +25,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  vertical-align: baseline;
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
@@ -83,9 +84,9 @@ a {
     width: calc(100%);
 
     &--router {
-      padding: 0 3rem;
+      padding: 2rem 3rem;
       width: 100%;
-      max-width: 1280px;
+      // max-width: 1280px;
       min-height: 100%;
       height: 100vh;
       position: relative;

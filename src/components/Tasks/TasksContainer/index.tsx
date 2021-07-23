@@ -3,7 +3,6 @@ import * as React from 'react';
 import { fetchTaskCategories } from '#store/actions';
 import { GlobalState, TaskCategory } from '#interfaces';
 import { connect, ConnectedProps } from 'react-redux';
-import { string } from 'yargs';
 
 const mapStatetoProps = (state: GlobalState) => {
   return {
@@ -24,15 +23,7 @@ const TasksContainer = (props: ComponentProps): React.ReactElement => {
     if (taskCategories.length === 0) fetchTaskCategories();
   }, [fetchTaskCategories]);
 
-  return (
-    <div>
-      {taskCategories.map(
-        (cat: TaskCategory): React.ReactElement => (
-          <div key={cat.id}>{cat.name}</div>
-        )
-      )}
-    </div>
-  );
+  return <div></div>;
 };
 
 export default connector(TasksContainer);
