@@ -71,7 +71,7 @@ export const addCategory =
 
 // ADD FAVORITE
 
-export interface AddFavoriteaction {
+export interface AddFavoriteAction {
   type: actionTypes.addFavorite;
   payload: Favorite;
 }
@@ -90,7 +90,7 @@ export const addFavorite =
         },
       });
 
-      dispatch<AddFavoriteaction>({
+      dispatch<AddFavoriteAction>({
         type: actionTypes.addFavorite,
         payload: res.data.data,
       });
@@ -272,7 +272,7 @@ export const updateFavorite =
       });
 
       if (catChanged) {
-        dispatch<AddFavoriteaction>({
+        dispatch<AddFavoriteAction>({
           type: actionTypes.addFavorite,
           payload: res.data.data,
         });

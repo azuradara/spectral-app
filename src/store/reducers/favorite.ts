@@ -1,7 +1,7 @@
 import {
   actionTypes,
   Action,
-  AddFavoriteaction,
+  AddFavoriteAction,
   AddCategoryaction,
   DeleteCategoryaction,
   UpdateCategoryaction,
@@ -52,7 +52,7 @@ const addCategory = (state: State, action: AddCategoryaction): State => {
   };
 };
 
-const addFavorite = (state: State, action: AddFavoriteaction): State => {
+const addFavorite = (state: State, action: AddFavoriteAction): State => {
   const catIdx = state.categories.findIndex(
     (category: Category) => category.id === action.payload.category_id
   );

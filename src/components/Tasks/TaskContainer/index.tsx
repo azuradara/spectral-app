@@ -10,7 +10,7 @@ import { TextInput } from '#components/FormElements';
 import SendIcon from '#components/shared/Icons/SendIcon';
 
 import TaskSingle from '../TaskSingle';
-import { GlobalState } from '#interfaces';
+import { GlobalState, Task } from '#interfaces';
 
 const mapStatetoProps = (state: GlobalState) => {
   return {
@@ -33,8 +33,10 @@ const TaskContainer = (props: ComponentProps) => {
   const category_index = taskCategories.findIndex((c) => c.id === category_id);
 
   // for now
-  const dispTasks = taskCategories[category_index].tasks;
+  const dispTasks: Task[] = taskCategories[category_index].tasks;
 
+  const activeTasks: Task[] = dispTasks.filter((t) => t.is_done == false);
+  const inactiveTasks: Task[] = dispTasks.filter((t) => t.is_done == true);
   React.useEffect(() => {
     setTasksHeight((tasksRef.current?.clientHeight || 200) - 200);
   });
@@ -46,9 +48,16 @@ const TaskContainer = (props: ComponentProps) => {
         <span className="separator" />
         <Scrollbar autoHeight autoHeightMin={tasksHeight}>
           <div className="tasks__inner">
-            {dispTasks.map((task) => {
-              return <TaskSingle key={task.id} task={task} />;
-            })}
+            <div className="tasks__inner--active">
+              {activeTasks.map((task) => {
+                return <TaskSingle key={task.id} task={task} />;
+              })}
+            </div>
+            <div className="tasks__inner--inactive">
+              {inactiveTasks.map((task) => {
+                return <TaskSingle key={task.id} task={task} />;
+              })}
+            </div>
           </div>
         </Scrollbar>
       </div>
@@ -63,6 +72,7 @@ const TaskContainer = (props: ComponentProps) => {
             nuTask.task_category_id = category_id;
             nuTask.color = '#D3D3D3';
             resetForm({});
+
             addTask(nuTask);
           }}
           initialValues={{ content: '' }}

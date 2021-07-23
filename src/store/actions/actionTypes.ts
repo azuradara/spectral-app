@@ -7,7 +7,7 @@ import {
   UpdateCategoryaction,
 
   // Favorites
-  AddFavoriteaction,
+  AddFavoriteAction,
   DeleteFavoriteaction,
   UpdateFavoriteaction,
   FetchPinnedFavoritesaction,
@@ -97,7 +97,7 @@ export type Action =
   | DeleteCategoryaction
   | UpdateCategoryaction
   // Favorite
-  | AddFavoriteaction
+  | AddFavoriteAction
   | DeleteFavoriteaction
   | UpdateFavoriteaction
   | FetchPinnedFavoritesaction<any>

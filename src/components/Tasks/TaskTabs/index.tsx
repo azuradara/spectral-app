@@ -33,6 +33,10 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
     setActiveCat(taskCategories[0]);
   }, [fetchTaskCategories]);
 
+  React.useEffect(() => {
+    if (!activeCat) setActiveCat(taskCategories[0]);
+  }, [taskCategories]);
+
   return (
     <>
       <div className="tasks__tabs">
@@ -55,7 +59,7 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
         })}
       </div>
 
-      <TaskContainer category_id={activeCat.id} />
+      {activeCat && <TaskContainer category_id={activeCat.id} />}
     </>
   );
 };

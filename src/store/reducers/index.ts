@@ -16,7 +16,7 @@ import taskReducer from '#store/reducers/task';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'settings', 'favorite', 'task'],
+  whitelist: ['user', 'settings'],
 };
 
 /**
