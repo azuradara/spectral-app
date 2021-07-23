@@ -1,6 +1,6 @@
 import {
   actionTypes,
-  action,
+  Action,
   AddFavoriteaction,
   AddCategoryaction,
   DeleteCategoryaction,
@@ -23,7 +23,7 @@ const initState: State = {
   pinnedFavorites: [],
 };
 
-const fetchCategories = (state: State, action: action): State => {
+const fetchCategories = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: true,
@@ -31,7 +31,7 @@ const fetchCategories = (state: State, action: action): State => {
   };
 };
 
-const fetchCategoriesSuccess = (state: State, action: action): State => {
+const fetchCategoriesSuccess = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: false,
@@ -123,7 +123,7 @@ const updateCategory = (state: State, action: UpdateCategoryaction): State => {
   };
 };
 
-const deleteFavorite = (state: State, action: action): State => {
+const deleteFavorite = (state: State, action: Action): State => {
   const catIdx = state.categories.findIndex(
     (category: Category) => category.id === action.payload.catId
   );
@@ -145,7 +145,7 @@ const deleteFavorite = (state: State, action: action): State => {
   };
 };
 
-const updateFavorite = (state: State, action: action): State => {
+const updateFavorite = (state: State, action: Action): State => {
   const catIdx = state.categories.findIndex(
     (category: Category) => category.id === action.payload.category_id
   );
@@ -172,7 +172,7 @@ const updateFavorite = (state: State, action: action): State => {
   };
 };
 
-const fetchPinnedFavorites = (state: State, action: action): State => {
+const fetchPinnedFavorites = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: true,
@@ -180,7 +180,7 @@ const fetchPinnedFavorites = (state: State, action: action): State => {
   };
 };
 
-const fetchPinnedFavoritesSuccess = (state: State, action: action): State => {
+const fetchPinnedFavoritesSuccess = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: false,
@@ -190,7 +190,7 @@ const fetchPinnedFavoritesSuccess = (state: State, action: action): State => {
 
 // implement error case
 
-const favoriteReducer = (state: State = initState, action: action): State => {
+const favoriteReducer = (state: State = initState, action: Action): State => {
   switch (action.type) {
     case actionTypes.fetchCategories:
       return fetchCategories(state, action);

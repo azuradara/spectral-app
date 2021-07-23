@@ -3,14 +3,7 @@ import * as React from 'react';
 import { addTask, fetchTaskCategories } from '#store/actions';
 import { GlobalState, Task, TaskCategory } from '#interfaces';
 import { connect, ConnectedProps } from 'react-redux';
-import Scrollbar from '#components/shared/Scrollbar';
-
-import { Formik, Form } from 'formik';
-import * as yup from 'yup';
-import { TextInput } from '#components/FormElements';
-import SendIcon from '#components/shared/Icons/SendIcon';
-
-import TaskSingle from '../TaskSingle';
+import TaskContainer from '../TaskContainer';
 
 const mapStatetoProps = (state: GlobalState) => {
   return {
@@ -27,11 +20,9 @@ type ComponentProps = Record<string, unknown> &
 const TaskTabs = (props: ComponentProps): React.ReactElement => {
   const { fetchTaskCategories, addTask, taskCategories, seeking } = props;
 
-  const [activeCat, setActiveCat] = React.useState<TaskCategory | null>(null);
-  const [tasksHeight, setTasksHeight] = React.useState<number | undefined>(0);
-  const [dispTasks, setDispTasks] = React.useState<Task[]>([]);
-
-  const tasksRef = React.useRef<null | HTMLDivElement>(null);
+  const [activeCat, setActiveCat] = React.useState<TaskCategory>(
+    taskCategories[0]
+  );
 
   const filterTasks = (tasks: Task[], method: string): Task[] => {
     switch (method) {
@@ -44,19 +35,12 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
 
   const handleCategoryChange = (cat: TaskCategory) => {
     setActiveCat(cat);
-    setDispTasks(filterTasks(cat.tasks, 'created>asc'));
   };
 
   React.useEffect(() => {
     if (taskCategories.length === 0) fetchTaskCategories();
     setActiveCat(taskCategories[0]);
-
-    setDispTasks(filterTasks(taskCategories[0]?.tasks || [], 'created>asc'));
-  }, [taskCategories]);
-
-  React.useEffect(() => {
-    setTasksHeight((tasksRef.current?.clientHeight || 200) - 200);
-  });
+  }, [fetchTaskCategories]);
 
   return (
     <>
@@ -80,47 +64,7 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
         })}
       </div>
 
-      <div className="tasks__container" ref={tasksRef}>
-        <div className="tasks__tasks">
-          <h3 className="title">Tasks</h3>
-          <span className="separator" />
-          <Scrollbar autoHeight autoHeightMin={tasksHeight}>
-            <div className="tasks__inner">
-              {dispTasks.map((task) => {
-                return <TaskSingle key={task.id} task={task} />;
-              })}
-            </div>
-          </Scrollbar>
-        </div>
-
-        <div className="tasks__add">
-          <Formik
-            validationSchema={yup.object().shape({
-              content: yup.string().required().max(2000),
-            })}
-            onSubmit={(e, { resetForm }) => {
-              const nuTask: any = (({ content }) => ({ content }))(e);
-              nuTask.task_category_id = activeCat?.id;
-              nuTask.color = '#D3D3D3';
-              resetForm({});
-              addTask(nuTask);
-            }}
-            initialValues={{ content: '' }}
-          >
-            {(formik) => {
-              return (
-                <Form>
-                  <TextInput name="content" label="Add a new task" />
-
-                  <button type="submit" className="ico-btn btn btn-default">
-                    <SendIcon />
-                  </button>
-                </Form>
-              );
-            }}
-          </Formik>
-        </div>
-      </div>
+      <TaskContainer category_id={activeCat.id} />
     </>
   );
 };
