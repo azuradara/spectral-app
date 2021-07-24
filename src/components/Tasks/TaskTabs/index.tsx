@@ -1,9 +1,13 @@
 import * as React from 'react';
 
-import { addTask, fetchTaskCategories } from '#store/actions';
+import { openModal, fetchTaskCategories } from '#store/actions';
 import { GlobalState, TaskCategory } from '#interfaces';
 import { connect, ConnectedProps } from 'react-redux';
 import TaskContainer from '../TaskContainer';
+import AddTaskCategoryModal from '#components/ModalContent/Tasks/AddTaskCategoryModal';
+import { IcoBtn } from '#components/shared';
+import AddIcon from '#components/shared/Icons/AddIcon';
+import TaskCategorySingle from '../TaskCategorySingle';
 
 const mapStatetoProps = (state: GlobalState) => {
   return {
@@ -12,15 +16,15 @@ const mapStatetoProps = (state: GlobalState) => {
   };
 };
 
-const connector = connect(mapStatetoProps, { fetchTaskCategories });
+const connector = connect(mapStatetoProps, { fetchTaskCategories, openModal });
 
 type ComponentProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
 
 const TaskTabs = (props: ComponentProps): React.ReactElement => {
-  const { fetchTaskCategories, taskCategories } = props;
+  const { fetchTaskCategories, taskCategories, openModal } = props;
 
-  const [activeCat, setActiveCat] = React.useState<TaskCategory>(
+  const [activeCat, setActiveCat] = React.useState<TaskCategory | null>(
     taskCategories[0]
   );
 
@@ -30,30 +34,35 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
 
   React.useEffect(() => {
     if (taskCategories.length === 0) fetchTaskCategories();
-    setActiveCat(taskCategories[0]);
+    setActiveCat(null);
   }, [fetchTaskCategories]);
 
   React.useEffect(() => {
-    if (!activeCat) setActiveCat(taskCategories[0]);
+    if (!taskCategories.find((t) => t.id == activeCat?.id)) setActiveCat(null);
   }, [taskCategories]);
 
   return (
     <>
       <div className="tasks__tabs">
-        <h3 className="title">Task Categories</h3>
+        <h3 className="title">
+          <span>Task Categories</span>
+          <IcoBtn
+            onMouseDown={(e) => {
+              e.stopPropagation();
+              openModal({
+                title: 'Edit Bookmark',
+                content: <AddTaskCategoryModal />,
+              });
+            }}
+          >
+            <AddIcon />
+          </IcoBtn>
+        </h3>
         <span className="separator" />
         {taskCategories.map((cat) => {
           return (
-            <div
-              onClick={() => handleCategoryChange(cat)}
-              className="tab"
-              key={cat.id}
-            >
-              <div
-                className="tab__color"
-                style={{ backgroundColor: cat.color }}
-              />
-              {cat.name}
+            <div key={cat.id} onClick={() => handleCategoryChange(cat)}>
+              <TaskCategorySingle category={cat} />
             </div>
           );
         })}

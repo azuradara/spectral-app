@@ -4,6 +4,7 @@
   appearance: none;
   color: $text-light;
   border: none;
+  z-index: 100;
   transition: opacity 250ms ease-out !important;
 }
 
@@ -15,9 +16,11 @@
   width: max-content;
   top: calc(100%);
   left: 50%;
-  background: rgba($color: $main-dark, $alpha: 0.7);
+  z-index: 100;
+  background: rgba($color: $main-dark, $alpha: 0.9);
   backdrop-filter: $blur-sm;
   border-radius: 4px;
+  filter: drop-shadow(3px, 3px, 10px, rgba($color: black, $alpha: 0.9));
 }
 
 .react-contextmenu-item {
@@ -26,6 +29,7 @@
   padding-left: 1rem;
   position: relative;
   overflow: hidden;
+  z-index: 100;
   display: flex !important;
   align-items: center;
   justify-content: flex-start;

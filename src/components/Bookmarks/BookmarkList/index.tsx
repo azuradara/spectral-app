@@ -4,6 +4,8 @@ import { connect, ConnectedProps } from 'react-redux';
 import { Category, Favorite } from '#interfaces';
 import { updateFavorite } from '#store/actions';
 
+import { motion } from 'framer-motion';
+
 import BookmarkSingle from '#components/Bookmarks/BookmarkSingle';
 import BookmarkListMenu from '#components/Bookmarks/BookmarkList/BookmarkListMenu';
 
@@ -17,11 +19,28 @@ const BookmarkList = (props: ComponentProps): React.ReactElement => {
   const { category, updateFavorite } = props;
   const ctxId = `ctx_cat_${category.id}`;
 
+  const motionVariants = {
+    hidden: {
+      translateY: -10,
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      translateY: 0,
+      transition: {
+        duration: 0.25,
+      },
+    },
+  };
+
   return (
     <>
       {' '}
       <ContextMenuTrigger id={ctxId} holdToDisplay={-1}>
-        <div
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={motionVariants}
           className="bookmarks-list"
           onDrop={(e) => {
             e.preventDefault();
@@ -47,7 +66,7 @@ const BookmarkList = (props: ComponentProps): React.ReactElement => {
               <BookmarkSingle fav={fav} key={fav.id} />
             ))}
           </div>
-        </div>
+        </motion.div>
       </ContextMenuTrigger>
       <BookmarkListMenu id={ctxId} category={category} />
     </>

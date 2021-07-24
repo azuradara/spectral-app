@@ -1,17 +1,17 @@
 import React from 'react';
-import { connect, ConnectedProps, shallowEqual } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import Scrollbar from '#components/shared/Scrollbar';
 import { addTask } from '#store/actions';
 
-import { selectActiveTasks, selectInactiveTasks } from '#store/selectors';
+import { selectAllTasks } from '#store/selectors';
 
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { TextInput } from '#components/FormElements';
 import SendIcon from '#components/shared/Icons/SendIcon';
 
-import TaskSingle from '../TaskSingle';
+import TaskSingle from './TaskSingle';
 import { GlobalState } from '#interfaces';
 
 const mapStatetoProps = (state: GlobalState, { category_id }: any) => {
@@ -21,8 +21,7 @@ const mapStatetoProps = (state: GlobalState, { category_id }: any) => {
 
   return {
     taskCategories: state.task.taskCategories,
-    activeTasks: selectActiveTasks(state, category_index),
-    inactiveTasks: selectInactiveTasks(state, category_index),
+    tasks: () => selectAllTasks(state, category_index),
   };
 };
 
@@ -33,13 +32,15 @@ type ComponentProps = { category_id: number } & ConnectedProps<
 >;
 
 const TaskContainer = (props: ComponentProps) => {
-  const { category_id, activeTasks, inactiveTasks, addTask } = props;
+  const { category_id, addTask, tasks } = props;
 
   const [tasksHeight, setTasksHeight] = React.useState<number | undefined>(0);
   const tasksRef = React.useRef<null | HTMLDivElement>(null);
 
+  const [activeTasks, inactiveTasks] = tasks();
+
   React.useEffect(() => {
-    setTasksHeight((tasksRef.current?.clientHeight || 200) - 200);
+    setTasksHeight((tasksRef.current?.clientHeight || 170) - 170);
   });
 
   return (

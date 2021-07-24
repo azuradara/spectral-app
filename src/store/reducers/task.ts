@@ -81,7 +81,7 @@ const deleteTaskCategory = (state: State, action: Action): State => {
 
 const updateTaskCategory = (state: State, action: Action): State => {
   const idx = state.taskCategories.findIndex(
-    (cat: TaskCategory) => cat.id === action.payload
+    (cat: TaskCategory) => cat.id === action.payload.id
   );
 
   return {

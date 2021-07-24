@@ -8,13 +8,11 @@ const Scrollbar: React.FC<ScrollbarProps> = ({ children, ...rest }) => {
       renderThumbVertical={(props) => (
         <div {...props} className="scrollbars-knob" />
       )}
-      renderThumbHorizontal={(props) => (
-        <div {...props} className="scrollbars-knob" />
-      )}
       renderView={(props) => <div {...props} className="renderView" />}
       width="100%"
       height="100%"
       autoHeight
+      renderTrackHorizontal={(props) => <div></div>}
       {...rest}
     >
       {children}

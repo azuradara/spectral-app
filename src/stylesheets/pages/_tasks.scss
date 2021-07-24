@@ -7,6 +7,8 @@
   .container {
     display: flex;
     height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .tasks__container {
@@ -19,6 +21,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 0;
 
     .tasks__add {
       margin-bottom: -1rem;
@@ -61,8 +64,12 @@
 
       .title {
         font-size: 1.5rem;
-        padding: 1rem 2rem;
+        padding: 0 1.5rem;
+        padding-top: 0.5rem;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
       .task {
@@ -103,18 +110,33 @@
     height: 100%;
     width: 100%;
     background-color: rgba($color: #fff, $alpha: 0.05);
-    padding: 1rem 0.5rem;
+    padding: 1rem 0;
     border-radius: 8px;
     font-size: 1.2rem;
     display: flex;
     flex-direction: column;
     max-width: 20rem;
     backdrop-filter: $blur-sm;
+    z-index: 1;
 
     .title {
       font-size: 1.5rem;
-      padding: 1rem 2rem;
+      padding: 0 1rem;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        margin-left: 0.5rem;
+      }
+
+      .ico-btn {
+        border: none;
+        margin: 0;
+        backdrop-filter: none;
+        margin-right: -0.5rem;
+      }
     }
 
     .tab {
@@ -127,10 +149,10 @@
 
       &__color {
         position: absolute;
-        width: 7px;
+        width: 5px;
         top: 0;
         left: 0;
-        border-radius: 4px 0 0 4px;
+        border-radius: 0 2px 2px 0;
         height: 100%;
       }
 

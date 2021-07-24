@@ -13,7 +13,7 @@ import { store, persistor } from '#store/index';
 
 // TODO: move this when revamping auth module
 
-axios.defaults.baseURL = 'http://spectralapp.ddns.net/api';
+axios.defaults.baseURL = 'https://spectralapp.dev/api';
 require('#config/axios.ts');
 // if (localStorage.token) {
 //   axios.defaults.headers.common[

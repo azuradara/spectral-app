@@ -104,7 +104,7 @@ export const updateTaskCategory =
   (id: number, formData: NewTaskCategory) => async (dispatch: Dispatch) => {
     try {
       const res = await axios.put<ApiResponse<TaskCategory>>(
-        `/cat/$id`,
+        `/task_cat/${id}`,
         formData
       );
 

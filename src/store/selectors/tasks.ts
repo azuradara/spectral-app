@@ -1,24 +1,12 @@
-import { GlobalState } from '#interfaces';
+import { GlobalState, Task } from '#interfaces';
 import { createSelector } from 'reselect';
+import { partition } from '#utils';
 
-export const selectActiveTasks = createSelector(
+export const selectAllTasks = createSelector(
   (state: GlobalState, category_index: number) =>
-    state.task.taskCategories[category_index].tasks,
+    state.task.taskCategories[category_index]?.tasks,
   (tasks) => {
-    return tasks.filter((t) => {
-      console.log('filtering');
-      return t.is_done == false;
-    });
-  }
-);
-
-export const selectInactiveTasks = createSelector(
-  (state: GlobalState, category_index: number) =>
-    state.task.taskCategories[category_index].tasks,
-  (tasks) => {
-    return tasks.filter((t) => {
-      console.log('filtering');
-      return t.is_done == true;
-    });
+    if (!tasks) return [[], []];
+    return partition(tasks, (e) => !e.is_done) as [Task[], Task[]];
   }
 );

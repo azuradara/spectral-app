@@ -6,6 +6,10 @@ import clsx from 'clsx';
 import { file_blob } from '#utils';
 import { generate_id } from '#utils';
 import mergeProps from 'merge-props';
+import { CustomPicker } from 'react-color';
+import EditableInput, {
+  EditableInputProps,
+} from 'react-color/lib/components/common/EditableInput';
 
 type DropZoneProps = {
   name: string;
@@ -215,4 +219,81 @@ const TextInput: React.FC<TextInputProps> = ({ label, name = '', ...rest }) => {
   );
 };
 
-export { DropZoneInput, SliderInput, FormBtn, TextInput, LoginBtn };
+interface ColorInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+// eslint-disable-next-line react/prop-types
+const ColorInput: React.FC<ColorInputProps> = ({
+  label,
+  name = '',
+  ...rest
+}) => {
+  const id = React.useRef(generate_id());
+  const [isFocused, setIsFocused] = React.useState<boolean>(false);
+  const [field, meta] = useField(name);
+
+  return (
+    <div
+      className={clsx(
+        'form-control',
+        Boolean(meta.touched && meta.error) && 'error'
+      )}
+    >
+      <div className="form-control__inner">
+        <label
+          className={clsx(
+            'form-control__label',
+            Boolean(field.value || isFocused) && 'hide'
+          )}
+          htmlFor={id.current}
+        >
+          {label}
+          {Boolean(meta.touched && meta.error) && (
+            <span className="form-control__error"> - {meta.error}</span>
+          )}
+        </label>
+        <label
+          className={clsx(
+            'form-control__placeholder',
+            Boolean(field.value || !isFocused) && 'hide'
+          )}
+          htmlFor={id.current}
+        >
+          {rest.placeholder}
+        </label>
+        <div className="form-control__input--color">
+          <input
+            {...mergeProps(field, rest, {
+              onBlur: () => {
+                setIsFocused(false);
+              },
+            })}
+            onFocus={() => {
+              setIsFocused(true);
+            }}
+            className="form-control__input--color__color"
+            placeholder=""
+            type="color"
+            id={id.current}
+          />
+          <input
+            {...mergeProps(field, rest, {
+              onBlur: () => {
+                setIsFocused(false);
+              },
+            })}
+            onFocus={() => {
+              setIsFocused(true);
+            }}
+            className="form-control__input--color__text"
+            placeholder=""
+            id={id.current}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { DropZoneInput, SliderInput, FormBtn, TextInput, LoginBtn, ColorInput };

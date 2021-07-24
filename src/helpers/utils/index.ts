@@ -55,3 +55,12 @@ export const delete_from_list_where: (e: string) => (x: any[]) => any[] = (
 /** CONSTANTS */
 
 export const HAMON_DELAY = 0.7;
+
+export const partition = (array: any[], callback: (elem: any) => boolean) => {
+  return array.reduce(
+    ([pass, fail], elem) => {
+      return callback(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]];
+    },
+    [[], []]
+  );
+};
