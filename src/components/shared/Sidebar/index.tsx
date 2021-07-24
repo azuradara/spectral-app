@@ -5,7 +5,7 @@ import { useHistory, Redirect } from 'react-router';
 
 import { IcoBtn } from '#components/shared';
 import LogoutIcon from '#components/shared/Icons/LogoutIcon';
-import FavoritesIcon from '#components/shared/Icons/FavoritesIcon';
+import HomeIcon from '#components/shared/Icons/HomeIcon';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
 import { logoutUser, openModal } from '#store/actions';
@@ -34,7 +34,7 @@ const Sidebar = (props: ComponentProps): ReactElement => {
       {props.user.user && (
         <div className="sidebar-inner__single">
           <IcoBtn onClick={() => push('/')}>
-            <FavoritesIcon />
+            <HomeIcon />
           </IcoBtn>
 
           <IcoBtn onClick={() => push('/bookmarks')}>

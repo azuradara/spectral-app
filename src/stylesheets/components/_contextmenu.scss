@@ -41,6 +41,11 @@
   font-weight: 700;
   max-width: 100%;
 
+  svg {
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+
   @include transition(background);
 
   &:hover {
