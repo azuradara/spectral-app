@@ -37,9 +37,7 @@ const Home = (props: ComponentProps): JSX.Element => {
   );
 
   const noFavElement: JSX.Element = (
-    <div className="nexus__bookmarks--nopins">
-      {"You don't have any pinned bookmarks."}
-    </div>
+    <div className="nexus__bookmarks--nopins">{''}</div>
   );
 
   return (

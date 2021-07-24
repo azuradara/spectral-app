@@ -212,6 +212,7 @@ const TextInput: React.FC<TextInputProps> = ({ label, name = '', ...rest }) => {
           }}
           className="form-control__input"
           placeholder=""
+          autoComplete="off"
           id={id.current}
         />
       </div>
@@ -287,6 +288,7 @@ const ColorInput: React.FC<ColorInputProps> = ({
               setIsFocused(true);
             }}
             className="form-control__input--color__text"
+            autoComplete="off"
             placeholder=""
             id={id.current}
           />

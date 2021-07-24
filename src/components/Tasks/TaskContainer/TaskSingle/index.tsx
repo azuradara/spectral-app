@@ -19,13 +19,15 @@ type ComponentProps = { task: Task } & ConnectedProps<typeof connector>;
 const TaskSingle = (props: ComponentProps) => {
   const { task, updateTask } = props;
 
+  const [done, setDone] = React.useState(task.is_done);
+
   const motionVariants = {
     hidden: {
       translateY: -10,
       opacity: 0,
     },
     visible: {
-      opacity: task.is_done ? 0.3 : 1,
+      opacity: done ? 0.3 : 1,
       translateY: 0,
       transition: {
         duration: 0.25,
@@ -34,7 +36,7 @@ const TaskSingle = (props: ComponentProps) => {
   };
 
   const handleMark = () => {
-    task.is_done = !task.is_done;
+    setDone(!done);
     updateTask(task.id, task);
   };
 
@@ -44,10 +46,10 @@ const TaskSingle = (props: ComponentProps) => {
       animate="visible"
       variants={motionVariants}
       onClick={() => handleMark()}
-      className={`task ${task.is_done ? 'task--done' : ''}`}
+      className={`task ${done ? 'task--done' : ''}`}
       key={task.id}
     >
-      <div>{task.is_done ? <TickBoxIcon /> : <SquareIcon />}</div>
+      <div>{done ? <TickBoxIcon /> : <SquareIcon />}</div>
 
       <div className="task__color" style={{ backgroundColor: task.color }} />
       {task.content}

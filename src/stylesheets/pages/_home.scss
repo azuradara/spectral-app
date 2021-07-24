@@ -7,6 +7,8 @@
   height: 100%;
   grid-gap: 2rem;
   grid-template-rows: 1fr 1fr;
+  max-width: 1280px;
+  margin: auto;
 
   &__bookmarks {
     display: grid;
