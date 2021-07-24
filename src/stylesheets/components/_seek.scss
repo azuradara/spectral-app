@@ -11,6 +11,7 @@
   }
 
   .clock {
+    margin-bottom: 1rem;
     &__msg {
       font-size: 1.2rem;
 
@@ -39,7 +40,7 @@
   }
 
   &-bar {
-    margin-top: 1rem;
+    // margin-top: 1rem;
     position: relative;
     display: flex;
 

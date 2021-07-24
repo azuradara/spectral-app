@@ -12,7 +12,6 @@ import {
   openModal,
 } from '#store/actions';
 import EditBookmarkModal from '#components/ModalContent/EditBookmarkModal';
-import PinnedBookmarkSingle from '..';
 
 const connector = connect(null, {
   deleteFavorite,

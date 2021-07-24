@@ -6,6 +6,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
 import Clock from '#components/Home/Clock';
 import SeekBar from '#components/shared/Seek';
+import { motion } from 'framer-motion';
 import PinnedBookmarkSingle from '#components/Home/PinnedBookmarkSingle';
 
 const mapStateToProps = (state: GlobalState) => {
@@ -25,6 +26,20 @@ export enum ContentType {
   favorite,
 }
 
+const motionVariants = {
+  hidden: {
+    translateY: -20,
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    translateY: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 const Home = (props: ComponentProps): JSX.Element => {
   const { seeking, pins, fetchPinnedFavorites } = props;
 
@@ -41,7 +56,12 @@ const Home = (props: ComponentProps): JSX.Element => {
   );
 
   return (
-    <div className="nexus">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={motionVariants}
+      className="nexus"
+    >
       <div className="seek">
         <div className="seek-header">
           <Clock />
@@ -55,7 +75,7 @@ const Home = (props: ComponentProps): JSX.Element => {
           ? noFavElement
           : pins.map((pin) => <PinnedBookmarkSingle key={pin.id} fav={pin} />)}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
