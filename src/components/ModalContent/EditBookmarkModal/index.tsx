@@ -25,8 +25,8 @@ const EditBookmarkModal = (
   return (
     <Formik
       validationSchema={yup.object().shape({
-        title: yup.string().max(128),
-        url: yup.string().url(),
+        title: yup.string().max(128).required(),
+        url: yup.string().url().required(),
       })}
       onSubmit={(e) => {
         const updatedFav: any = (({ title, url }) => ({ title, url }))(e);
