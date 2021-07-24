@@ -135,15 +135,6 @@ export const addTask = (formData: NewTask) => async (dispatch: Dispatch) => {
   try {
     const res = await axios.post<ApiResponse<Task>>('/task', formData);
 
-    dispatch<CreateNotificationaction>({
-      type: actionTypes.createNotification,
-      payload: {
-        title: 'success',
-        message: `Task created`,
-        type: 'default',
-      },
-    });
-
     dispatch<AddTaskaction>({
       type: actionTypes.addTask,
       payload: res.data.data,

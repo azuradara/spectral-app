@@ -8,12 +8,27 @@ import AddTaskCategoryModal from '#components/ModalContent/Tasks/AddTaskCategory
 import { IcoBtn } from '#components/shared';
 import AddIcon from '#components/shared/Icons/AddIcon';
 import TaskCategorySingle from '../TaskCategorySingle';
+import { motion } from 'framer-motion';
 
 const mapStatetoProps = (state: GlobalState) => {
   return {
     taskCategories: state.task.taskCategories,
     seeking: state.task.seeking,
   };
+};
+
+const motionVariants = {
+  hidden: {
+    translateX: -50,
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    translateX: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
 };
 
 const connector = connect(mapStatetoProps, { fetchTaskCategories, openModal });
@@ -43,7 +58,12 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
 
   return (
     <>
-      <div className="tasks__tabs">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={motionVariants}
+        className="tasks__tabs"
+      >
         <h3 className="title">
           <span>Task Categories</span>
           <IcoBtn
@@ -66,7 +86,7 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
             </div>
           );
         })}
-      </div>
+      </motion.div>
 
       {activeCat && <TaskContainer category_id={activeCat.id} />}
     </>

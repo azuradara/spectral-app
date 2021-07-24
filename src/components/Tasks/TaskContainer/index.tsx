@@ -14,6 +14,8 @@ import SendIcon from '#components/shared/Icons/SendIcon';
 import TaskSingle from './TaskSingle';
 import { GlobalState } from '#interfaces';
 
+import { motion } from 'framer-motion';
+
 const mapStatetoProps = (state: GlobalState, { category_id }: any) => {
   const category_index = state.task.taskCategories.findIndex(
     (c) => c.id === category_id
@@ -31,6 +33,20 @@ type ComponentProps = { category_id: number } & ConnectedProps<
   typeof connector
 >;
 
+const motionVariants = {
+  hidden: {
+    translateX: -50,
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    translateX: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 const TaskContainer = (props: ComponentProps) => {
   const { category_id, addTask, tasks } = props;
 
@@ -44,7 +60,13 @@ const TaskContainer = (props: ComponentProps) => {
   });
 
   return (
-    <div className="tasks__container" ref={tasksRef}>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={motionVariants}
+      className="tasks__container"
+      ref={tasksRef}
+    >
       <div className="tasks__tasks">
         <h3 className="title">Tasks</h3>
         <span className="separator" />
@@ -92,7 +114,7 @@ const TaskContainer = (props: ComponentProps) => {
           }}
         </Formik>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
