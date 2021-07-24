@@ -37,6 +37,7 @@ const TaskSingle = (props: ComponentProps) => {
 
   const handleMark = () => {
     setDone(!done);
+    task.is_done = !task.is_done;
     updateTask(task.id, task);
   };
 

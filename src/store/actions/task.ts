@@ -133,12 +133,11 @@ export interface AddTaskaction {
 
 export const addTask = (formData: NewTask) => async (dispatch: Dispatch) => {
   try {
-    const res = await axios.post<ApiResponse<Task>>('/task', formData);
-
     dispatch<AddTaskaction>({
       type: actionTypes.addTask,
-      payload: res.data.data,
+      payload: formData,
     });
+    const res = await axios.post<ApiResponse<Task>>('/task', formData);
   } catch (err) {
     console.log(err);
   }
@@ -201,15 +200,6 @@ export const updateTask =
       }))(formData);
 
       const res = await axios.put<ApiResponse<Task>>(`/task/${taskId}`, task);
-
-      dispatch<CreateNotificationaction>({
-        type: actionTypes.createNotification,
-        payload: {
-          title: 'Updated.',
-          message: `Task updated successfully.`,
-          type: 'default',
-        },
-      });
 
       dispatch<UpdateTaskaction>({
         type: actionTypes.updateTask,
