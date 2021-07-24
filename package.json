@@ -46,7 +46,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "INLINE_RUNTIME_CHUNK=false && NODE_ENV=development && parcel build src/index.html --out-dir build/ --no-source-maps",
-    "prepare": "INLINE_RUNTIME_CHUNK=false && NODE_ENV=development && parcel build src/index.html --out-dir build/ --no-source-maps && node ./prepare.js",
+    "prep": "INLINE_RUNTIME_CHUNK=false && NODE_ENV=development && parcel build src/index.html --out-dir build/ --no-source-maps && node ./prepare.js",
     "lint": "eslint  --fix --ext js,tsx,ts src"
   },
   "eslintConfig": {
