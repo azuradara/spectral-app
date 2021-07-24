@@ -59,7 +59,7 @@ const BookmarksGrid = (props: ComponentProps): React.ReactElement => {
           variants={motionVariants}
           className="bookmarks-grid__none"
         >
-          <h2>You don't have any pinned bookmarks :(</h2>
+          <h2>You don't have any bookmarks :(</h2>
           <p>Right click here to start.</p>
         </motion.div>
       )}
