@@ -7,11 +7,12 @@
   border: 0;
   margin: 0 auto;
   display: block;
-  border-radius: 100px;
+  border-radius: 4px;
   width: 50px;
   height: 50px;
   display: grid;
   place-items: center;
+  border-color: $trans-light-xs !important;
 
   svg {
     width: 23px;
@@ -63,7 +64,7 @@
     filter: $blur-sm;
     width: 100%;
     padding-top: 100%;
-    background-color: white;
+    background-color: $text-light;
     transform: translate(-50%, -50%);
     animation: hamonAnim 0.5s ease-out;
     animation-iteration-count: 1;

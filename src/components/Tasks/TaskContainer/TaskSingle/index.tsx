@@ -5,19 +5,21 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { Task } from '#interfaces';
 
-import { updateTask } from '#store/actions';
+import { deleteTask, updateTask } from '#store/actions';
 
 import SquareIcon from '#components/shared/Icons/SquareIcon';
 import TickBoxIcon from '#components/shared/Icons/TickBoxIcon';
+import CloseIcon from '#components/shared/Icons/CloseIcon';
+import { IcoBtn } from '#components/shared';
 
 const mapStatetoProps = null;
 
-const connector = connect(mapStatetoProps, { updateTask });
+const connector = connect(mapStatetoProps, { updateTask, deleteTask });
 
 type ComponentProps = { task: Task } & ConnectedProps<typeof connector>;
 
 const TaskSingle = (props: ComponentProps) => {
-  const { task, updateTask } = props;
+  const { task, updateTask, deleteTask } = props;
 
   const [done, setDone] = React.useState(task.is_done);
 
@@ -50,10 +52,22 @@ const TaskSingle = (props: ComponentProps) => {
       className={`task ${done ? 'task--done' : ''}`}
       key={task.id}
     >
-      <div>{done ? <TickBoxIcon /> : <SquareIcon />}</div>
-
       <div className="task__color" style={{ backgroundColor: task.color }} />
-      {task.content}
+      <div className="task__inner">
+        <div>{done ? <TickBoxIcon /> : <SquareIcon />}</div>
+        <p>{task.content}</p>
+      </div>
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteTask(task.id, task.task_category_id);
+        }}
+        className="task__remove"
+      >
+        <IcoBtn>
+          <CloseIcon />
+        </IcoBtn>
+      </div>
     </motion.div>
   );
 };
