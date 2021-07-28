@@ -22,7 +22,7 @@ const mapStatetoProps = (state: GlobalState, { category_id }: any) => {
   );
 
   return {
-    taskCategories: state.task.taskCategories,
+    category: state.task.taskCategories[category_index],
     tasks: () => selectAllTasks(state, category_index),
   };
 };
@@ -48,7 +48,7 @@ const motionVariants = {
 };
 
 const TaskContainer = (props: ComponentProps) => {
-  const { category_id, addTask, tasks } = props;
+  const { category_id, addTask, category, tasks } = props;
 
   const [tasksHeight, setTasksHeight] = React.useState<number | undefined>(0);
   const tasksRef = React.useRef<null | HTMLDivElement>(null);
@@ -68,7 +68,7 @@ const TaskContainer = (props: ComponentProps) => {
       ref={tasksRef}
     >
       <div className="tasks__tasks">
-        <h3 className="title">Tasks</h3>
+        <h3 className="title">{category.name}</h3>
         <span className="separator" />
         <Scrollbar autoHeight autoHeightMin={tasksHeight}>
           <div className="tasks__inner">

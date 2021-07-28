@@ -28,6 +28,10 @@ html {
   vertical-align: baseline;
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
+::-webkit-scrollbar {
+  // width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
 
 // body theming
 

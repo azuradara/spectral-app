@@ -13,6 +13,9 @@ const Scrollbar: React.FC<ScrollbarProps> = ({ children, ...rest }) => {
       width="100%"
       height="100%"
       autoHeight
+      autoHide
+      autoHideTimeout={300}
+      renderTrackHorizontal={(props) => <div></div>}
       {...rest}
     >
       {children}

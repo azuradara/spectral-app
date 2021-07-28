@@ -59,6 +59,7 @@ function SeekBar(): ReactElement {
       <form onSubmit={handleSubmit}>
         <input
           name="seek"
+          autoComplete="off"
           placeholder="Search.."
           className="seek-bar__facade"
         />
