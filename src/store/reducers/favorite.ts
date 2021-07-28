@@ -186,9 +186,6 @@ const favoriteReducer = (state: State = initState, action: Action): State => {
     case actionTypes.deleteCategory:
       return deleteCategory(state, action);
 
-    // case actionTypes.pinCategory:
-    //   return pinCategory(state, action);
-
     case actionTypes.updateCategory:
       return updateCategory(state, action);
 
@@ -200,9 +197,6 @@ const favoriteReducer = (state: State = initState, action: Action): State => {
 
     case actionTypes.deleteFavorite:
       return deleteFavorite(state, action);
-
-    case actionTypes.fetchPinnedFavorites:
-      return fetchPinnedFavorites(state, action);
 
     default:
       return state;
