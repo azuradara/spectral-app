@@ -7,6 +7,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
 import { updateSettings, closeModal } from '#store/actions';
 import { equals, reject } from 'ramda';
+import Scrollbar from '#components/shared/Scrollbar';
 
 const iValue = {
   bg: {
@@ -61,39 +62,46 @@ const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
     >
       {(formik) => {
         return (
-          <Form>
-            <DropZoneInput
-              name="bg.url"
-              label="Drag a background image here, or click to browse."
-            />
+          <Scrollbar
+            height={window.innerHeight * 0.8}
+            autoHeightMin={window.innerHeight * 0.8}
+          >
+            <div className="settings__body">
+              <Form>
+                <DropZoneInput
+                  name="bg.url"
+                  label="Drag a background image here, or click to browse."
+                />
 
-            <SliderInput
-              name="bg.opacity"
-              label="Overlay Opacity"
-              max={1}
-              min={0}
-              step={0.01}
-            />
+                <SliderInput
+                  name="bg.opacity"
+                  label="Overlay Opacity"
+                  max={1}
+                  min={0}
+                  step={0.01}
+                />
 
-            <SliderInput
-              step={1}
-              name="bg.blur"
-              label="Overlay Blur"
-              max={50}
-              min={0}
-            />
+                <SliderInput
+                  step={1}
+                  name="bg.blur"
+                  label="Overlay Blur"
+                  max={50}
+                  min={0}
+                />
 
-            <SliderInput
-              name="bookmarks.category_columns"
-              label="Category Columns"
-              max={5}
-              min={1}
-              step={1}
-            />
-            <div className="form-control__submission">
-              <FormBtn />
+                <SliderInput
+                  name="bookmarks.category_columns"
+                  label="Category Columns"
+                  max={5}
+                  min={1}
+                  step={1}
+                />
+                <div className="form-control__submission">
+                  <FormBtn />
+                </div>
+              </Form>
             </div>
-          </Form>
+          </Scrollbar>
         );
       }}
     </Formik>
