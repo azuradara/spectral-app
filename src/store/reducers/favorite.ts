@@ -13,14 +13,12 @@ export interface State {
   seeking: boolean;
   err: string | undefined;
   categories: Category[];
-  pinnedFavorites: Favorite[];
 }
 
 const initState: State = {
   seeking: true,
   err: undefined,
   categories: [],
-  pinnedFavorites: [],
 };
 
 const fetchCategories = (state: State, action: Action): State => {

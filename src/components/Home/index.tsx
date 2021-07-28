@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { fetchPinnedFavorites } from '#store/actions';
+import { fetchCategories, fetchPinnedFavorites } from '#store/actions';
 import { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '#interfaces';
@@ -8,15 +8,18 @@ import Clock from '#components/Home/Clock';
 import SeekBar from '#components/shared/Seek';
 import { motion } from 'framer-motion';
 import PinnedBookmarkSingle from '#components/Home/PinnedBookmarkSingle';
+import { selectPinnedBookmarks } from '#store/selectors/bookmarks';
 
 const mapStateToProps = (state: GlobalState) => {
   return {
     seeking: state.favorite.seeking,
-    pins: state.favorite.pinnedFavorites,
+    pins: () => selectPinnedBookmarks(state),
   };
 };
 
-const connector = connect(mapStateToProps, { fetchPinnedFavorites });
+const connector = connect(mapStateToProps, {
+  fetchCategories,
+});
 
 type ComponentProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
@@ -41,11 +44,13 @@ const motionVariants = {
 };
 
 const Home = (props: ComponentProps): JSX.Element => {
-  const { seeking, pins, fetchPinnedFavorites } = props;
+  const { seeking, pins, fetchCategories } = props;
+
+  const allPins = pins();
 
   useEffect(() => {
-    fetchPinnedFavorites();
-  }, [fetchPinnedFavorites]);
+    if (pins().length === 0) fetchCategories();
+  }, [fetchCategories]);
 
   const loadingElement: JSX.Element = (
     <div className="nexus__bookmarks--loading">Loading..</div>
@@ -71,9 +76,11 @@ const Home = (props: ComponentProps): JSX.Element => {
       <div className="nexus__bookmarks">
         {seeking
           ? loadingElement
-          : !pins.length
+          : !allPins.length
           ? noFavElement
-          : pins.map((pin) => <PinnedBookmarkSingle key={pin.id} fav={pin} />)}
+          : allPins.map((pin) => (
+              <PinnedBookmarkSingle key={pin.id} fav={pin} />
+            ))}
       </div>
     </motion.div>
   );
