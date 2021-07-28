@@ -261,7 +261,6 @@ export const updateFavorite =
       });
 
       const catChanged = formData.category_id !== prevCatId;
-      console.log(catChanged);
 
       dispatch<DeleteFavoriteaction>({
         type: actionTypes.deleteFavorite,
