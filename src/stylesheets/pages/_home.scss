@@ -11,19 +11,20 @@
   margin: auto;
 
   &__bookmarks {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(64px, 64px));
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
 
     .bookmark {
       display: flex;
       align-items: center;
-      width: 100%;
+      flex-flow: column;
+      width: 10rem;
       color: $text-light;
       text-decoration: none;
       padding: 0.5rem;
       border-radius: 5px;
-
+      justify-content: center;
       @include transition(all);
 
       &:hover,
@@ -31,22 +32,19 @@
         background: $trans-light-s;
       }
 
-      p {
-        margin-left: 0.5rem;
-      }
-
       svg {
         margin-left: auto;
       }
 
       &__img {
-        width: 42px;
-        height: 42px;
+        margin-bottom: 0.5rem;
+        width: 48px;
+        height: 48px;
         display: grid;
         place-items: center;
 
         img {
-          height: 32px;
+          height: 38px;
           border-radius: 4px;
         }
       }
