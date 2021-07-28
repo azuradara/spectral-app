@@ -50,6 +50,7 @@ const BookmarkSingle = (props: ComponentProps): React.ReactElement => {
             key={`bm_${fav.id}`}
             rel="noreferrer"
             href={redir}
+            draggable
           >
             <div className="bookmarks-list__favorite__img">
               <img src={get_url_ico(fav.url)} alt={fav.title} />

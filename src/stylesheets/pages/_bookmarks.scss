@@ -48,6 +48,10 @@
 
       @include transition(all);
 
+      &--dragging {
+        display: none;
+      }
+
       &:hover,
       &:focus {
         background: $trans-light-s;
