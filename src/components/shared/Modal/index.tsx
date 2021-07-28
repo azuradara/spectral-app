@@ -1,13 +1,11 @@
 import React from 'react';
 import { IcoBtn } from '#components/shared';
-import CloseIcon from '#components/shared/Icons/CloseIcon';
 import { connect, ConnectedProps } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
 import { GlobalState } from '#interfaces';
 import { closeModal } from '#store/actions';
-import Scrollbar from '#components/shared/Scrollbar';
 import useExternalClick from '#hooks/useExternalClick';
-import ParticleBackground from '../ParticleBackground/base';
+import ExitIcon from '../Icons/ExitIcon';
 
 const mapStateToProps = (state: GlobalState) => ({
   modal: state.modal,
@@ -53,22 +51,15 @@ const Modal = (props: ModalProps) => {
 
   return (
     <animated.div style={{ opacity: spring.opacity }} className="modal">
-      <ParticleBackground />
-      <Scrollbar
-        autoHeight
-        autoHeightMin={window.innerHeight}
-        height={window.innerHeight}
-      >
-        <animated.div style={spring} ref={ref} className="modal-body">
+      <animated.div style={spring} ref={ref} className="modal-body">
+        <div className="modal-body__title">
+          <h2>{modal.modal?.title}</h2>
           <IcoBtn className="modal-close" onClick={() => onCloseBtnClick()}>
-            <CloseIcon />
+            <ExitIcon />
           </IcoBtn>
-          <div className="modal-body__title">
-            <h2>{modal.modal?.title}</h2>
-          </div>
-          <div className="modal-body__content">{modal.modal?.content}</div>
-        </animated.div>
-      </Scrollbar>
+        </div>
+        <div className="modal-body__content">{modal.modal?.content}</div>
+      </animated.div>
     </animated.div>
   );
 };

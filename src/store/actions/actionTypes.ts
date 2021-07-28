@@ -7,10 +7,9 @@ import {
   UpdateCategoryaction,
 
   // Favorites
-  AddFavoriteaction,
+  AddFavoriteAction,
   DeleteFavoriteaction,
   UpdateFavoriteaction,
-  FetchPinnedFavoritesaction,
 
   // Notifications
   CreateNotificationaction,
@@ -54,9 +53,6 @@ export enum actionTypes {
   deleteFavorite = 'DELETE_FAVORITE',
   updateFavorite = 'UPDATE_FAVORITE',
   pinFavorite = 'PIN_FAVORITE',
-  fetchPinnedFavorites = 'FETCH_PINNED_FAVORITES',
-  fetchPinnedFavoritesSuccess = 'FETCH_PINNED_FAVORITES_SUCC',
-  fetchPinnedFavoritesError = 'FETCH_PINNED_FAVORITES_ERR',
 
   // Notifications
   createNotification = 'CREATE_NOTIFICATION',
@@ -97,10 +93,9 @@ export type Action =
   | DeleteCategoryaction
   | UpdateCategoryaction
   // Favorite
-  | AddFavoriteaction
+  | AddFavoriteAction
   | DeleteFavoriteaction
   | UpdateFavoriteaction
-  | FetchPinnedFavoritesaction<any>
   // Notifications
   | CreateNotificationaction
   | ClearNotificationaction

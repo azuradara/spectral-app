@@ -10,14 +10,14 @@ const Bookmarks = (): React.ReactElement => {
   const ctxId = `ctx_bkpage_${generate_id()}`;
   return (
     <>
-      <ContextMenuTrigger id={ctxId} holdToDisplay={-1}>
-        <div className="bookmarks">
-          <div className="seek seek--not-home">
-            <SeekBar />
-          </div>
-          <BookmarksGrid />
+      <div className="bookmarks">
+        <div className="seek seek--not-home">
+          <SeekBar />
         </div>
-      </ContextMenuTrigger>
+        <ContextMenuTrigger id={ctxId} holdToDisplay={-1}>
+          <BookmarksGrid />
+        </ContextMenuTrigger>
+      </div>
 
       <CtxMenu id={ctxId} />
     </>

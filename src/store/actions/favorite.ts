@@ -71,7 +71,7 @@ export const addCategory =
 
 // ADD FAVORITE
 
-export interface AddFavoriteaction {
+export interface AddFavoriteAction {
   type: actionTypes.addFavorite;
   payload: Favorite;
 }
@@ -90,7 +90,7 @@ export const addFavorite =
         },
       });
 
-      dispatch<AddFavoriteaction>({
+      dispatch<AddFavoriteAction>({
         type: actionTypes.addFavorite,
         payload: res.data.data,
       });
@@ -261,7 +261,6 @@ export const updateFavorite =
       });
 
       const catChanged = formData.category_id !== prevCatId;
-      console.log(catChanged);
 
       dispatch<DeleteFavoriteaction>({
         type: actionTypes.deleteFavorite,
@@ -272,7 +271,7 @@ export const updateFavorite =
       });
 
       if (catChanged) {
-        dispatch<AddFavoriteaction>({
+        dispatch<AddFavoriteAction>({
           type: actionTypes.addFavorite,
           payload: res.data.data,
         });
@@ -321,30 +320,3 @@ export const pinFavorite =
       console.log(err);
     }
   };
-
-export interface FetchPinnedFavoritesaction<T> {
-  type:
-    | actionTypes.fetchPinnedFavorites
-    | actionTypes.fetchPinnedFavoritesSuccess
-    | actionTypes.fetchPinnedFavoritesError;
-  payload: T;
-}
-
-export const fetchPinnedFavorites = () => async (dispatch: Dispatch) => {
-  dispatch<FetchPinnedFavoritesaction<undefined>>({
-    type: actionTypes.fetchPinnedFavorites,
-    payload: undefined,
-  });
-
-  try {
-    const res = await axios.get<ApiResponse<Favorite[]>>('/fav/pinned');
-
-    dispatch<FetchPinnedFavoritesaction<Favorite[]>>({
-      type: actionTypes.fetchPinnedFavoritesSuccess,
-      payload: res.data.data,
-    });
-  } catch (e) {
-    // ye
-    console.log(e);
-  }
-};

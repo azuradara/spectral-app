@@ -1,7 +1,7 @@
 import {
   actionTypes,
-  action,
-  AddFavoriteaction,
+  Action,
+  AddFavoriteAction,
   AddCategoryaction,
   DeleteCategoryaction,
   UpdateCategoryaction,
@@ -13,17 +13,15 @@ export interface State {
   seeking: boolean;
   err: string | undefined;
   categories: Category[];
-  pinnedFavorites: Favorite[];
 }
 
 const initState: State = {
   seeking: true,
   err: undefined,
   categories: [],
-  pinnedFavorites: [],
 };
 
-const fetchCategories = (state: State, action: action): State => {
+const fetchCategories = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: true,
@@ -31,7 +29,7 @@ const fetchCategories = (state: State, action: action): State => {
   };
 };
 
-const fetchCategoriesSuccess = (state: State, action: action): State => {
+const fetchCategoriesSuccess = (state: State, action: Action): State => {
   return {
     ...state,
     seeking: false,
@@ -52,7 +50,7 @@ const addCategory = (state: State, action: AddCategoryaction): State => {
   };
 };
 
-const addFavorite = (state: State, action: AddFavoriteaction): State => {
+const addFavorite = (state: State, action: AddFavoriteAction): State => {
   const catIdx = state.categories.findIndex(
     (category: Category) => category.id === action.payload.category_id
   );
@@ -123,7 +121,7 @@ const updateCategory = (state: State, action: UpdateCategoryaction): State => {
   };
 };
 
-const deleteFavorite = (state: State, action: action): State => {
+const deleteFavorite = (state: State, action: Action): State => {
   const catIdx = state.categories.findIndex(
     (category: Category) => category.id === action.payload.catId
   );
@@ -145,7 +143,7 @@ const deleteFavorite = (state: State, action: action): State => {
   };
 };
 
-const updateFavorite = (state: State, action: action): State => {
+const updateFavorite = (state: State, action: Action): State => {
   const catIdx = state.categories.findIndex(
     (category: Category) => category.id === action.payload.category_id
   );
@@ -172,25 +170,9 @@ const updateFavorite = (state: State, action: action): State => {
   };
 };
 
-const fetchPinnedFavorites = (state: State, action: action): State => {
-  return {
-    ...state,
-    seeking: true,
-    err: undefined,
-  };
-};
-
-const fetchPinnedFavoritesSuccess = (state: State, action: action): State => {
-  return {
-    ...state,
-    seeking: false,
-    pinnedFavorites: action.payload,
-  };
-};
-
 // implement error case
 
-const favoriteReducer = (state: State = initState, action: action): State => {
+const favoriteReducer = (state: State = initState, action: Action): State => {
   switch (action.type) {
     case actionTypes.fetchCategories:
       return fetchCategories(state, action);
@@ -204,9 +186,6 @@ const favoriteReducer = (state: State = initState, action: action): State => {
     case actionTypes.deleteCategory:
       return deleteCategory(state, action);
 
-    // case actionTypes.pinCategory:
-    //   return pinCategory(state, action);
-
     case actionTypes.updateCategory:
       return updateCategory(state, action);
 
@@ -218,12 +197,6 @@ const favoriteReducer = (state: State = initState, action: action): State => {
 
     case actionTypes.deleteFavorite:
       return deleteFavorite(state, action);
-
-    case actionTypes.fetchPinnedFavorites:
-      return fetchPinnedFavorites(state, action);
-
-    case actionTypes.fetchPinnedFavoritesSuccess:
-      return fetchPinnedFavoritesSuccess(state, action);
 
     default:
       return state;

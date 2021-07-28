@@ -57,7 +57,10 @@ const LoginForm = (props: LoginFormProps): React.ReactElement => {
             </div>
             <span className="form-control__helper">
               Need an account?{' '}
-              <a href="#" className="form-control__helper--link">
+              <a
+                href="https://spectral-web.vercel.app"
+                className="form-control__helper--link"
+              >
                 Register
               </a>
             </span>

@@ -1,0 +1,85 @@
+.settings {
+  height: 100%;
+
+  .renderView {
+    width: 100%;
+    height: 100%;
+  }
+
+  .settings__body {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 15rem 800px;
+    grid-template-rows: 100%;
+    gap: 1rem;
+    align-items: stretch;
+    justify-content: stretch;
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .form-control {
+        width: 740px;
+
+        &__submission {
+          margin: 1rem;
+
+          .form-buttons {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: flex-end;
+
+            .btn {
+              width: fit-content;
+
+              &-default {
+                background: none;
+                backdrop-filter: none;
+                padding: 0.5rem 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__tabs {
+      background: $trans-light-xs;
+      height: 100%;
+      width: 15rem;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0.5rem;
+      border-radius: 4px;
+
+      .tab {
+        display: flex;
+        border-radius: 4px;
+        padding: 0.7rem;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+          background: $trans-light-xs;
+        }
+
+        &--active {
+          background: $trans-light-xs;
+        }
+
+        &--label {
+          @extend .form-control__label, .tab;
+
+          &:hover,
+          &:focus {
+            background: initial;
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}

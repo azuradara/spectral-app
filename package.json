@@ -1,19 +1,18 @@
 {
   "name": "spectral-app",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "private": true,
   "homepage": ".",
   "dependencies": {
     "@react-spring/web": "^9.2.3",
-    "@react-three/drei": "^7.1.0",
-    "@react-three/fiber": "^7.0.4",
     "axios": "^0.21.1",
     "bestzip": "^2.2.0",
     "clsx": "^1.1.1",
+    "colornames": "^1.1.1",
     "csstype": "^3.0.8",
     "dayjs": "^1.10.5",
     "formik": "^2.2.9",
-    "fs": "0.0.1-security",
+    "framer-motion": "^4.1.17",
     "merge-props": "^5.0.3",
     "node-sass": "^6.0.0",
     "ramda": "^0.27.1",
@@ -25,23 +24,20 @@
     "react-particles-js": "^3.5.3",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "react-three-fiber": "^6.0.13",
     "react-use-measure": "^2.0.4",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "src": "^1.1.2",
-    "three": "^0.130.1",
-    "tsparticles": "^1.31.1",
-    "typescript": "^4.3.2",
+    "reselect": "^4.0.0",
+    "tsparticles": "^1.32.0",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },
   "scripts": {
     "start": "parcel src/index.html",
     "build": "INLINE_RUNTIME_CHUNK=false && NODE_ENV=development && parcel build src/index.html --out-dir build/ --no-source-maps",
-    "prepare": "INLINE_RUNTIME_CHUNK=false && NODE_ENV=development && parcel build src/index.html --out-dir build/ --no-source-maps && node ./prepare.js",
+    "prep": "INLINE_RUNTIME_CHUNK=false && NODE_ENV=development && parcel build src/index.html --out-dir build/ --no-source-maps && node ./prepare.js",
     "lint": "eslint  --fix --ext js,tsx,ts src"
   },
   "eslintConfig": {
@@ -77,10 +73,10 @@
     "@types/three": "^0.130.0",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
-    "dat.gui": "^0.7.7",
     "eslint": "^7.28.0",
     "eslint-plugin-react": "^7.24.0",
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "typescript": "^4.3.2"
   },
   "alias": {
     "#interfaces": "./src/lib/interfaces",

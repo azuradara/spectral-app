@@ -13,8 +13,6 @@ import Bookmarks from '#components/Bookmarks';
 import Scrollbar from '#components/shared/Scrollbar';
 import Background from '#components/shared/Background';
 import NotificationDispatcher from '#components/shared/NotificationDispatcher';
-import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState } from '#interfaces';
 
 const Root = (): JSX.Element => {
   return (

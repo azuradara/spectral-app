@@ -20,7 +20,7 @@ const AddCategoryModal = (props: AddBookmarkModalProps): React.ReactElement => {
   return (
     <Formik
       validationSchema={yup.object().shape({
-        name: yup.string().max(32),
+        name: yup.string().max(32).required(),
       })}
       onSubmit={(e) => {
         const cat: NewCategory = (({ name }) => ({ name }))(e);

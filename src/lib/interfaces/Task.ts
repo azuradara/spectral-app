@@ -11,5 +11,5 @@ export interface Task extends Model {
 export interface NewTask {
   content: string;
   task_category_id: number;
-  color: string;
+  color?: string;
 }

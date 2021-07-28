@@ -3,18 +3,21 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+
   &-inner {
     width: 100%;
-    height: calc(100vh - 48px);
+    backdrop-filter: $blur-sm;
+    height: 100vh;
     margin: 0 auto;
     align-self: center;
-    border-right: 1px solid $opaque-light;
+    border-right: 1px solid $trans-light-xs;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: space-between;
 
     &__single {
+      padding: 1rem 0;
       .btn + .btn {
         margin-top: 1rem;
       }

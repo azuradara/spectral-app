@@ -1,6 +1,7 @@
 import React, { ReactElement, useCallback, useRef } from 'react';
 import { keys } from 'ramda';
 import { Slc } from '#components/shared';
+import { motion } from 'framer-motion';
 
 interface SeekProviders {
   Google: (e: string) => string;
@@ -22,6 +23,20 @@ const redirSeek = (e: string) => {
   window.location.href = e;
 };
 
+const motionVariants = {
+  hidden: {
+    translateY: -20,
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    translateY: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 function SeekBar(): ReactElement {
   const seekFunction = useRef(SEEK_PROVIDERS[SEEK_ENGINES[0]]);
   const handleSubmit = useCallback(
@@ -35,10 +50,16 @@ function SeekBar(): ReactElement {
   );
 
   return (
-    <div className="seek-bar">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={motionVariants}
+      className="seek-bar"
+    >
       <form onSubmit={handleSubmit}>
         <input
           name="seek"
+          autoComplete="off"
           placeholder="Search.."
           className="seek-bar__facade"
         />
@@ -54,7 +75,7 @@ function SeekBar(): ReactElement {
           }}
         />
       </form>
-    </div>
+    </motion.div>
   );
 }
 

@@ -104,7 +104,7 @@ export const updateTaskCategory =
   (id: number, formData: NewTaskCategory) => async (dispatch: Dispatch) => {
     try {
       const res = await axios.put<ApiResponse<TaskCategory>>(
-        `/cat/$id`,
+        `/task_cat/${id}`,
         formData
       );
 
@@ -128,26 +128,16 @@ export const updateTaskCategory =
 
 export interface AddTaskaction {
   type: actionTypes.addTask;
-  payload: Task;
+  payload: NewTask;
 }
 
 export const addTask = (formData: NewTask) => async (dispatch: Dispatch) => {
   try {
-    const res = await axios.post<ApiResponse<Task>>('/task', formData);
-
-    dispatch<CreateNotificationaction>({
-      type: actionTypes.createNotification,
-      payload: {
-        title: 'success',
-        message: `Task created`,
-        type: 'default',
-      },
-    });
-
     dispatch<AddTaskaction>({
       type: actionTypes.addTask,
-      payload: res.data.data,
+      payload: formData,
     });
+    const res = await axios.post<ApiResponse<Task>>('/task', formData);
   } catch (err) {
     console.log(err);
   }
@@ -193,32 +183,23 @@ export interface UpdateTaskaction {
 }
 
 export const updateTask =
-  (taskId: number, formData: NewTask) => async (dispatch: Dispatch) => {
+  (taskId: number, formData: Task) => async (dispatch: Dispatch) => {
     try {
-      const task = (({ content, color, task_category_id }) => ({
+      const task = (({
         content,
         color,
         task_category_id,
+        is_done,
+        is_important,
+      }) => ({
+        content,
+        color,
+        task_category_id,
+        is_done,
+        is_important,
       }))(formData);
 
-      const res = await axios.put<ApiResponse<Task>>(`/fav/${taskId}`, task);
-
-      dispatch<CreateNotificationaction>({
-        type: actionTypes.createNotification,
-        payload: {
-          title: 'Updated.',
-          message: `Task updated successfully.`,
-          type: 'default',
-        },
-      });
-
-      dispatch<DeleteTaskaction>({
-        type: actionTypes.deleteTask,
-        payload: {
-          taskId,
-          catId: task.task_category_id,
-        },
-      });
+      const res = await axios.put<ApiResponse<Task>>(`/task/${taskId}`, task);
 
       dispatch<UpdateTaskaction>({
         type: actionTypes.updateTask,

@@ -11,6 +11,8 @@
   }
 
   .clock {
+    margin-bottom: 1rem;
+
     &__msg {
       font-size: 1.2rem;
 
@@ -23,6 +25,7 @@
     h2 {
       font-size: 5rem;
       line-height: 5.1rem;
+      font-weight: 700;
     }
   }
 
@@ -39,7 +42,7 @@
   }
 
   &-bar {
-    margin-top: 1rem;
+    // margin-top: 1rem;
     position: relative;
     display: flex;
 
@@ -50,9 +53,8 @@
 
     input {
       padding: 1rem 2rem;
-      background: $trans-light-xs;
-      backdrop-filter: blur(1px);
-      border: 1px solid $opaque-light;
+      backdrop-filter: $blur-sm;
+      border: 1px solid $trans-light-xs;
       border-radius: 4px;
       color: $text-light;
       width: 100%;
@@ -67,9 +69,8 @@
       font-size: 1.2rem;
 
       &:focus {
-        background: rgba($color: #fff, $alpha: 0.15);
-        backdrop-filter: blur(7px);
-        border: 1px solid $opaque-light;
+        background: $trans-light-s;
+        border: 1px solid $trans-light-s;
       }
     }
   }

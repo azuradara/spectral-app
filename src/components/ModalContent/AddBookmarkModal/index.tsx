@@ -22,8 +22,8 @@ const AddBookmarkModal = (props: AddBookmarkModalProps): React.ReactElement => {
   return (
     <Formik
       validationSchema={yup.object().shape({
-        title: yup.string().max(128),
-        url: yup.string().url(),
+        title: yup.string().max(128).required(),
+        url: yup.string().url().required(),
       })}
       onSubmit={(e) => {
         const nuFav: any = (({ title, url }) => ({ title, url }))(e);

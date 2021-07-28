@@ -8,10 +8,22 @@
   display: flex;
   margin-left: -30px; /* gutter size offset */
   width: auto;
+  justify-content: center;
 
   &__category {
     margin-left: 30px;
     background-clip: padding-box;
+  }
+
+  &__none {
+    background: $trans-light-s;
+    padding: 2rem;
+    border-radius: 4px;
+    text-align: center;
+
+    p {
+      font-size: 1.1rem;
+    }
   }
 
   .bookmarks-list {
@@ -36,6 +48,10 @@
 
       @include transition(all);
 
+      &--dragging {
+        display: none;
+      }
+
       &:hover,
       &:focus {
         background: $trans-light-s;
@@ -47,6 +63,7 @@
 
       svg {
         margin-left: auto;
+        height: 2rem;
       }
 
       &__img {

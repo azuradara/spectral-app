@@ -1,4 +1,7 @@
 import React from 'react';
+
+require('./lib/scripts/pathseg');
+
 import { render } from 'react-dom';
 import './stylesheets/main.scss';
 import Root from './App';

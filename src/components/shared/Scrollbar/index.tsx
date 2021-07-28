@@ -5,16 +5,17 @@ import Scrollbars, { ScrollbarProps } from 'react-custom-scrollbars';
 const Scrollbar: React.FC<ScrollbarProps> = ({ children, ...rest }) => {
   return (
     <Scrollbars
-      autoHide
+      className="renderScroll"
       renderThumbVertical={(props) => (
-        <div {...props} className="scrollbars-knob" />
-      )}
-      renderThumbHorizontal={(props) => (
         <div {...props} className="scrollbars-knob" />
       )}
       renderView={(props) => <div {...props} className="renderView" />}
       width="100%"
+      height="100%"
       autoHeight
+      autoHide
+      autoHideTimeout={300}
+      renderTrackHorizontal={(props) => <div></div>}
       {...rest}
     >
       {children}
