@@ -152,12 +152,19 @@ input {
 }
 
 .scrollbars-knob {
-  background: $opaque-light;
+  background: $trans-light-s;
   border-radius: 2rem;
-
   @include transition(background);
 
   &:hover {
     background: $text-light;
   }
+}
+
+.renderScroll {
+  border-right: 1px solid transparent;
+}
+
+.renderView {
+  padding-right: 1rem;
 }

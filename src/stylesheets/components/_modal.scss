@@ -6,7 +6,7 @@
   height: 100vh;
   z-index: 1000;
   backdrop-filter: $blur-sm;
-  background: rgba($main-dark, 0.3);
+  background: $trans-light-s;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -41,6 +41,8 @@
 
     &__content {
       padding: 1rem 2rem;
+      height: 100%;
+      width: 100%;
     }
   }
   &-close {
