@@ -170,22 +170,6 @@ const updateFavorite = (state: State, action: Action): State => {
   };
 };
 
-const fetchPinnedFavorites = (state: State, action: Action): State => {
-  return {
-    ...state,
-    seeking: true,
-    err: undefined,
-  };
-};
-
-const fetchPinnedFavoritesSuccess = (state: State, action: Action): State => {
-  return {
-    ...state,
-    seeking: false,
-    pinnedFavorites: action.payload,
-  };
-};
-
 // implement error case
 
 const favoriteReducer = (state: State = initState, action: Action): State => {
@@ -219,9 +203,6 @@ const favoriteReducer = (state: State = initState, action: Action): State => {
 
     case actionTypes.fetchPinnedFavorites:
       return fetchPinnedFavorites(state, action);
-
-    case actionTypes.fetchPinnedFavoritesSuccess:
-      return fetchPinnedFavoritesSuccess(state, action);
 
     default:
       return state;
