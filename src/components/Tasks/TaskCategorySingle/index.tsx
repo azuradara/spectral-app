@@ -12,10 +12,11 @@ import TaskCategorySingleMenu from './TaskCategorySingleMenu';
 
 type ComponentProps = {
   category: TaskCategory;
+  active: boolean;
 };
 
 const TaskCategorySingle = (props: ComponentProps): React.ReactElement => {
-  const { category } = props;
+  const { category, active } = props;
   const ctxId = `ctx_tcat_${category.id}`;
 
   const motionVariants = {
@@ -41,7 +42,7 @@ const TaskCategorySingle = (props: ComponentProps): React.ReactElement => {
             initial="hidden"
             animate="visible"
             variants={motionVariants}
-            className="tab"
+            className={`tab ${active ? 'tab--active' : ''}`}
           >
             <div
               className="tab__color"

@@ -183,6 +183,10 @@
       position: relative;
       transition: all 150ms ease-out;
 
+      &--active {
+        background: rgba($color: #fff, $alpha: 0.05);
+      }
+
       &__color {
         position: absolute;
         width: 3px;

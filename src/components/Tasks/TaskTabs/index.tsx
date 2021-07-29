@@ -82,7 +82,10 @@ const TaskTabs = (props: ComponentProps): React.ReactElement => {
         {taskCategories.map((cat) => {
           return (
             <div key={cat.id} onClick={() => handleCategoryChange(cat)}>
-              <TaskCategorySingle category={cat} />
+              <TaskCategorySingle
+                active={activeCat?.id == cat.id}
+                category={cat}
+              />
             </div>
           );
         })}
