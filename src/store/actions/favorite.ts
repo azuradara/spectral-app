@@ -249,7 +249,7 @@ export const updateFavorite =
         category_id,
       }))(formData);
 
-      const res = await axios.put<ApiResponse<Favorite>>(`/fav/${favId}`, fav);
+      axios.put<ApiResponse<Favorite>>(`/fav/${favId}`, fav);
 
       dispatch<CreateNotificationaction>({
         type: actionTypes.createNotification,
@@ -273,12 +273,12 @@ export const updateFavorite =
       if (catChanged) {
         dispatch<AddFavoriteAction>({
           type: actionTypes.addFavorite,
-          payload: res.data.data,
+          payload: formData,
         });
       } else {
         dispatch<UpdateFavoriteaction>({
           type: actionTypes.updateFavorite,
-          payload: res.data.data,
+          payload: formData,
         });
       }
     } catch (err) {

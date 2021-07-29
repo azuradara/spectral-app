@@ -47,7 +47,7 @@ const BookmarkList = (props: ComponentProps): React.ReactElement => {
 
             const fav: Favorite = JSON.parse(e.dataTransfer.getData('fav'));
 
-            if (fav.category_id === category.id) return;
+            // if (fav.category_id === category.id) return;
 
             const prevCat = fav.category_id;
 

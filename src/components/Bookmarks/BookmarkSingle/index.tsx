@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { DragEventHandler } from 'react';
 import { Favorite } from '#interfaces';
 import { parse_url } from '#utils';
 import { get_url_ico } from '#store/actions/get_url_ico';
 import PinnedIcon from '#components/shared/Icons/PinnedIcon';
 import BookmarkSingleMenu from '#components/Bookmarks/BookmarkSingle/BookmarkSingleMenu';
+import { pin_motion } from '#utils';
 
 import { ContextMenuTrigger } from 'react-contextmenu';
 
@@ -38,14 +39,21 @@ const BookmarkSingle = (props: ComponentProps): React.ReactElement => {
       <div
         onDragStart={(e) => {
           e.dataTransfer.setData('fav', JSON.stringify(fav));
+          const target = e.target as HTMLDivElement;
+
+          setTimeout(() => {
+            target.classList.add('dragging');
+          }, 0);
+        }}
+        onDragEnd={(e) => {
+          const target = e.target as HTMLDivElement;
+          target.classList.remove('dragging');
         }}
         style={{ userSelect: 'all' }}
       >
         <ContextMenuTrigger id={ctxId} holdToDisplay={-1}>
           <motion.a
-            initial="hidden"
-            animate="visible"
-            variants={motionVariants}
+            {...pin_motion}
             className="bookmarks-list__favorite"
             key={`bm_${fav.id}`}
             rel="noreferrer"

@@ -46,6 +46,14 @@
       padding: 0.5rem;
       border-radius: 5px;
 
+      &.dragging {
+        // transform: translateY(10px) !important;
+        opacity: 0 !important;
+        transform-origin: bottom;
+        transition: transform opacity 50ms ease-out !important;
+        transition-duration: 200ms !important;
+      }
+
       @include transition(all);
 
       &--dragging {
