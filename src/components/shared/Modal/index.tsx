@@ -35,7 +35,7 @@ const Modal = (props: ModalProps) => {
       }
       await next({
         opacity: 0,
-        transform: 'translate(0%,20%)',
+        transform: 'translate(0%,10%)',
       });
       await setShow(false);
     },
