@@ -25,14 +25,12 @@ const TaskSingle = (props: ComponentProps) => {
 
   const motionVariants = {
     hidden: {
-      translateY: -10,
-      opacity: 0,
+      opacity: 0.5,
     },
     visible: {
       opacity: done ? 0.3 : 1,
-      translateY: 0,
       transition: {
-        duration: 0.25,
+        duration: 0.05,
       },
     },
   };
