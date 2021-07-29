@@ -25,14 +25,14 @@ const redirSeek = (e: string) => {
 
 const motionVariants = {
   hidden: {
-    translateY: -20,
+    translateY: -10,
     opacity: 0,
   },
   visible: {
     opacity: 1,
     translateY: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.25,
     },
   },
 };

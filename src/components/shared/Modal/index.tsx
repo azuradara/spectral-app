@@ -24,6 +24,7 @@ const Modal = (props: ModalProps) => {
     opacity: string;
     transform: string;
   }>({
+    config: { duration: 200 },
     to: async (next) => {
       if (modal.open) {
         setShow(true);

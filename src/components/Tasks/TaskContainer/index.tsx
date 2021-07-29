@@ -42,7 +42,7 @@ const motionVariants = {
     opacity: 1,
     translateX: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
     },
   },
 };
