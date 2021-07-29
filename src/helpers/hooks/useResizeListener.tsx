@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 
-export default function useResizeListener() {
+export default function useResizeListener(): number[] {
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(() => {
     function updateSize() {
