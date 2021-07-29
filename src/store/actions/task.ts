@@ -199,11 +199,11 @@ export const updateTask =
         is_important,
       }))(formData);
 
-      const res = await axios.put<ApiResponse<Task>>(`/task/${taskId}`, task);
+      axios.put<ApiResponse<Task>>(`/task/${taskId}`, task);
 
       dispatch<UpdateTaskaction>({
         type: actionTypes.updateTask,
-        payload: res.data.data,
+        payload: formData,
       });
     } catch (err) {
       console.log(err);

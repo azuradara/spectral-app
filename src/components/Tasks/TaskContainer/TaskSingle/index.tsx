@@ -9,8 +9,8 @@ import { deleteTask, updateTask } from '#store/actions';
 
 import SquareIcon from '#components/shared/Icons/SquareIcon';
 import TickBoxIcon from '#components/shared/Icons/TickBoxIcon';
-import CloseIcon from '#components/shared/Icons/CloseIcon';
 import { IcoBtn } from '#components/shared';
+import TrashIcon from '#components/shared/Icons/TrashIcon';
 
 const mapStatetoProps = null;
 
@@ -65,7 +65,7 @@ const TaskSingle = (props: ComponentProps) => {
         className="task__remove"
       >
         <IcoBtn>
-          <CloseIcon />
+          <TrashIcon />
         </IcoBtn>
       </div>
     </motion.div>
