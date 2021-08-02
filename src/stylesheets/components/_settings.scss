@@ -13,17 +13,26 @@
     grid-template-columns: 15rem auto;
     grid-template-rows: 100%;
     gap: 1rem;
-    align-items: stretch;
-    justify-content: stretch;
+    // align-items: stretch;
+    // justify-content: stretch;
 
     &__content {
       display: flex;
       align-items: center;
       justify-content: center;
 
+      form {
+        width: 100%;
+      }
+
       .form-control {
         max-width: 740px;
+        min-width: 600px;
         width: 100%;
+
+        &__inner {
+          width: 100%;
+        }
 
         &__submission {
           margin: 1rem;

@@ -5,6 +5,8 @@
   "homepage": ".",
   "dependencies": {
     "@react-spring/web": "^9.2.3",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@types/redux-logger": "^3.0.9",
     "axios": "^0.21.1",
     "bestzip": "^2.2.0",
     "clsx": "^1.1.1",
@@ -14,6 +16,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
     "merge-props": "^5.0.3",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.0",
     "ramda": "^0.27.1",
     "react": "^17.0.2",
@@ -77,6 +80,7 @@
     "eslint": "^7.28.0",
     "eslint-plugin-react": "^7.24.0",
     "parcel-bundler": "^1.12.5",
+    "redux-logger": "^3.0.6",
     "typescript": "^4.3.2"
   },
   "alias": {

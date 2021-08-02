@@ -10,10 +10,13 @@ import axios from 'axios';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from '#store/index';
+import { BASE_URL } from './environment';
 
 // TODO: move this when revamping auth module
 
-axios.defaults.baseURL = 'https://spectralapp.dev/api';
+// axios.defaults.baseURL = 'https://spectralapp.dev/api';
+axios.defaults.baseURL = BASE_URL;
+
 require('#config/axios.ts');
 // if (localStorage.token) {
 //   axios.defaults.headers.common[

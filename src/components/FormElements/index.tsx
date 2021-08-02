@@ -6,10 +6,6 @@ import clsx from 'clsx';
 import { file_blob } from '#utils';
 import { generate_id } from '#utils';
 import mergeProps from 'merge-props';
-import { CustomPicker } from 'react-color';
-import EditableInput, {
-  EditableInputProps,
-} from 'react-color/lib/components/common/EditableInput';
 
 type DropZoneProps = {
   name: string;

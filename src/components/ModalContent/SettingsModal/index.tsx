@@ -4,6 +4,7 @@ import { GlobalState } from '#interfaces';
 import { updateSettings, closeModal } from '#store/actions';
 import Scrollbar from '#components/shared/Scrollbar';
 import SettingsAppearance from './Tabs/SettingsAppearance';
+import SettingsWeather from './Tabs/SettingsWeather';
 
 const mapStateToProps = (state: GlobalState) => ({
   initialSettings: state.settings.settings,
@@ -14,7 +15,10 @@ const connector = connect(mapStateToProps, { updateSettings, closeModal });
 const tabs = [
   {
     category: 'App Settings',
-    items: [{ label: 'Appearance', component: <SettingsAppearance /> }],
+    items: [
+      { label: 'Appearance', component: <SettingsAppearance /> },
+      { label: 'Weather', component: <SettingsWeather /> },
+    ],
   },
 ];
 
@@ -22,8 +26,6 @@ type SettingsModalProps = Record<string, unknown> &
   ConnectedProps<typeof connector>;
 
 const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
-  const {} = props;
-
   const [activeTab, setActiveTab] = React.useState<{
     label: string;
     component: React.ReactElement;
@@ -35,10 +37,8 @@ const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
         <div className="settings__body__tabs">
           {tabs.map((t) => {
             return (
-              <>
-                <div key={t.category} className="tab--label">
-                  {t.category}
-                </div>
+              <div key={t.category}>
+                <div className="tab--label">{t.category}</div>
                 {t.items.map((i) => {
                   return (
                     <div
@@ -50,7 +50,7 @@ const SettingsModal = (props: SettingsModalProps): React.ReactElement => {
                     </div>
                   );
                 })}
-              </>
+              </div>
             );
           })}
         </div>
